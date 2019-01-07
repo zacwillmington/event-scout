@@ -1,5 +1,8 @@
 eventScout
-eventSearch
+
+TODO
+    - Hook up create front end
+    - set up appropriate routesa
 
 Requirements
 
@@ -18,6 +21,8 @@ Requirements
 - Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
 
 you can search for events, by liking thr event it saves it to you liked list.
+
+/Users/zacwillmington/.npm-global/lib/node_modules
 
 maybe event on share on social media?
 
@@ -52,7 +57,7 @@ Schema
         - fee 
         - free
         - maximum_quantity
-        
+
 Pages
     - /users/events
     - /users/events/:id
