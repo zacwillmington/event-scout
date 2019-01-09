@@ -57,13 +57,23 @@ Schema
         - maximum_quantity
 
 Pages
-    - /users/events
-    - /users/events/:id
-    - /users/events/new
-    - /users/events/:id/edit
-    - /users/events/:id/delete
+    - /users/:id/events = likes page
+    - /events/:id = event page
+    - /users/:id/events/new = create a new event
+    - /users/:id/events/:id/edit
+    - /users/:id/events/:id/delete 
 
 Containers 
 
-Components
+    - EventsContainerComponent
+    - AccountContainerComponent
+    - HomeContainerComponent
+    
 
+Components
+    - EventComponent(stateless)
+    - EventFormComponent(state)
+    - VenueComponent(stateless)
+    - VeuneFormComponent(state)
+    - AccountComponent
+    - AccountEditComponent(state)
