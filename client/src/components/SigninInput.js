@@ -32,12 +32,12 @@ class SigninInput extends Component {
         return (
             <div className='siginInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
-                    <label for='email'>Email</label><br></br>
-                    <input id='email' onChange={event => this.handleOnChangeEmail(event)} name='email' type='text' value={this.state.email}/>
+                    <label htmlFor='signin-email'>Email</label><br></br>
+                    <input id='sigin-email' onChange={event => this.handleOnChangeEmail(event)} name='email' type='text' value={this.state.email}/>
                     <br></br>
-                    <label for='password'>Password</label><br></br>
-                    <input id='password' onChange={event => this.handleOnChangePassword(event)} name='password' type='password' value={this.state.password}/>
-                    <input type='submit'/>
+                    <label htmlFor='signin-password'>Password</label><br></br>
+                    <input id='signin-password' onChange={event => this.handleOnChangePassword(event)} name='password' type='password' value={this.state.password}/>
+                    <input className='btn btn-primary' type='submit' value='Sign in'/>
                 </form>
             </div>
         )

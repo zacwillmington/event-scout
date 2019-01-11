@@ -39,19 +39,43 @@ class SignupInput extends Component {
     render() {
         return (
             <div className='sigupInput'>
-                <form onSubmit={event => this.handleSubmit(event)} >
-                    <label for='userName'>User Name</label><br></br>
-                    <input id='userName' onChange={event => this.handleOnChangeUserName(event)} name='userName' type='text' value={this.state.userName}/>
-                    <br>
-                    </br> 
-                    <label for='email'>Email</label><br></br>
-                    <input id='email' onChange={event => this.handleOnChangeEmail(event)} name='email' type='text' value={this.state.email}/>
-                    <br>
-                    </br>
-                    <label for='password'>Password</label><br></br>
-                    <input id='password' onChange={event => this.handleOnChangePassword(event)} name='password' type='password' value={this.state.password}/>
-                    <br>
-                    </br>
+                <form className='form-group'
+                      onSubmit={event => this.handleSubmit(event)}>
+                    {/* UserName input */}
+                    <label htmlFor='userName'>
+                        User Name
+                    </label>
+                    <br></br>
+                    <input id='userName'
+                        className='form-control' 
+                        onChange={event => this.handleOnChangeUserName(event)} name='userName' 
+                        type='text' 
+                        value={this.state.userName}
+                     />
+                    <br></br> 
+                    {/* email input */}
+                    <label htmlFor='signup-email'>
+                        Email
+                    </label>
+                    <br></br>
+                    <input id='signup-email' 
+                           className='form-control'
+                           onChange={event => this.handleOnChangeEmail(event)} 
+                           name='email' 
+                           type='text' 
+                           value={this.state.email}/>
+                    <br></br>
+                    {/* password input */}
+                    <label
+                    htmlFor='signup-password'>
+                        Password
+                    </label>
+                    <br></br>
+                    <input id='signup-password'
+                           onChange={event => this.handleOnChangePassword(event)}
+                           name='password' type='password'
+                           value={this.state.password} className=''/>
+                    <br></br>
                     <input type='submit'/>
                 </form>
             </div>
