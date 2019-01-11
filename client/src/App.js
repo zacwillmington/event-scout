@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
+
 import SigninContainer from './containers/SigninContainer';
 import SignupContainer from './containers/SignupContainer';
 import NavBar from './components/NavBar';
 import HomePageContainer from './containers/HomePageContainer';
 import EventsContainer from './containers/EventsContainer';
 import AccountContainer from './containers/AccountContainer';
+
+
 
 
 class App extends Component {
