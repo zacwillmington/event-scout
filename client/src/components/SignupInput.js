@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 
-class SigninInput extends Component {
+class SignupInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            userName: "",
             email: "",
             password: ""
         }
+    }
+
+    handleOnChangeUserName = event => {
+        this.setState({
+            userName: event.target.value
+        })
     }
 
     handleOnChangeEmail = event => {
@@ -21,8 +28,9 @@ class SigninInput extends Component {
         })
     }
 
-    handleSubmit = event => {
+    handleSubmit = () => {
         this.setState({
+            userName: this.state.userName,
             email: this.state.email,
             password: this.state.password
         })
@@ -30,13 +38,20 @@ class SigninInput extends Component {
 
     render() {
         return (
-            <div className='siginInput'>
-                <form onSubmit={event => this.handleSubmit(event)} > 
+            <div className='sigupInput'>
+                <form onSubmit={event => this.handleSubmit(event)} >
+                    <label for='userName'>User Name</label><br></br>
+                    <input id='userName' onChange={event => this.handleOnChangeUserName(event)} name='userName' type='text' value={this.state.userName}/>
+                    <br>
+                    </br> 
                     <label for='email'>Email</label><br></br>
                     <input id='email' onChange={event => this.handleOnChangeEmail(event)} name='email' type='text' value={this.state.email}/>
-                    <br></br>
+                    <br>
+                    </br>
                     <label for='password'>Password</label><br></br>
                     <input id='password' onChange={event => this.handleOnChangePassword(event)} name='password' type='password' value={this.state.password}/>
+                    <br>
+                    </br>
                     <input type='submit'/>
                 </form>
             </div>
@@ -44,4 +59,4 @@ class SigninInput extends Component {
     }
 }
 
-export default SigninInput;
+export default SignupInput;
