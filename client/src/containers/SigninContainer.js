@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import SigninInput from '../components/SigninInput';
 
 class SigninContainer extends Component {
 
     render() {
       return (
         <div>
-            text
+            SigninContainer
+            <SigninInput />
         </div>
       )
     }
