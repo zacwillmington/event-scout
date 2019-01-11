@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../components/NavBar';
 
 
 class HomePageContainer extends Component {
@@ -12,7 +11,7 @@ class HomePageContainer extends Component {
 
     render() {
         return(
-            <div>
+            <div className='homePageContainer'>
                 HomePageContainer 
             </div>
         )

@@ -5,8 +5,9 @@ import './App.css';
 import SigninContainer from './containers/SigninContainer';
 import SignupContainer from './containers/SignupContainer';
 import NavBar from './components/NavBar';
-import Eventscontainer from './containers/EventsContainer';
-import HomePageContainer from './containers/HomePageContainer'
+import HomePageContainer from './containers/HomePageContainer';
+import EventsContainer from './containers/EventsContainer';
+import AccountContainer from './containers/AccountContainer';
 
 
 class App extends Component {
@@ -20,7 +21,8 @@ class App extends Component {
           <React.Fragment>
           <NavBar />
             <Route exact path='/' component={HomePageContainer} />
-            <Route exact path='events/' component={Eventscontainer} />
+            <Route exact path='/events' component={EventsContainer} />
+            <Route exact path='/account' component={AccountContainer} />
             <Route exact path='/signup' component={SignupContainer} />
             <Route exact path='/signin' component={SigninContainer} />
           </React.Fragment>
