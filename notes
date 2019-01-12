@@ -2,12 +2,11 @@ eventScout
 
 TODO
     - add sessions controllers and routes
-    - React routes 
-    - Redux setup
+    - siginup funtionality
     - login funtionality 
     - authentication
 
-    
+
 Requirements
 
 - The code should be written in ES6 as much as possible

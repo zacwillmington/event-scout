@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class SigninContainer extends Component {
 
   checkUserDetails = (user) => {
-    debugger
     //Send credentials to API for validation.
     fetch('/signin').then(res => res.toJSON()).then(validatedUser => {
       return console.log(validatedUser);
