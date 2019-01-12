@@ -4,12 +4,24 @@ import { connect } from 'react-redux';
 
 class SigninContainer extends Component {
 
+  componentDidMount() {
+    debugger
+  }
+
   checkUserDetails = (user) => {
     //Send credentials to API for validation.
-    fetch('/signin').then(res => res.toJSON()).then(validatedUser => {
-      return console.log(validatedUser);
-    });
-    this.props.addCurrentUser(user);
+    fetch('/signin', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then( user => {
+        debugger
+        this.props.addCurrentUser(user)
+      });
   }
 
     render() {

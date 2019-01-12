@@ -21,7 +21,8 @@ class SigninInput extends Component {
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         this.setState({
             email: this.state.email,
             password: this.state.password

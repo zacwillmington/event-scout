@@ -1,14 +1,20 @@
+require 'pry'
 class SessionsController < ApplicationController
-    def new 
-        @user = User.all.first
-        respond_to do |format|
-            format.html
-            format.json { render json: @events }
+    
+    def create 
+        @user = User.find_by(email: params[:email])
+        
+        if @user && @user.authenticate(params['password'])
+            respond_to do |format|
+                format.json { render json: @user }
+                format.html
+            end
+        else
+            #Your email doesn't seem to be on our records
+            binding.pry
         end
     end
 
-    def create
-        
+    def destroy
     end
-
 end
