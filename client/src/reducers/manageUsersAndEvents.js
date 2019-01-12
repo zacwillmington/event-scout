@@ -1,17 +1,18 @@
 import { combineReducers } from "redux";    
 
 const rootReducer = combineReducers({
-    users: usersReducer,
+    currentUser: usersReducer,
     events: eventsReducer
 });
 
 export default rootReducer;
 
 function usersReducer(state = [], action) {
+    // debugger
     switch (action.type) {
-        case 'ADD_USER':
+        case 'ADD_CURRENT_USER':
             console.log("adding user", action);
-            break;
+            return state;
     
         default:
             return state;

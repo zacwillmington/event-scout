@@ -21,11 +21,12 @@ class SigninInput extends Component {
         })
     }
 
-    handleSubmit = event => {
+    handleSubmit = () => {
         this.setState({
             email: this.state.email,
             password: this.state.password
         })
+        this.props.checkUserDetails(this.state);
     } 
 
     render() {
