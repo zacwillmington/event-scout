@@ -10,19 +10,21 @@ export default function addCurrentUser(user) {
                'Content-Type': 'application/json' 
             },
             body: JSON.stringify(user)
-        }).then(resp => {
-            if(resp.status === "error") {
-                console.log(resp.error);
+        }).then(resp => resp.json()).then( data => {
+            if(data.errors) {
+                const userErrors = {
+                    type: "USER_HAS_ERRORS",
+                    userErrors: data.errors
+                }
+                dispatch(userErrors);
             }else {
-                console.log(resp.json());
+                const user = {
+                    type: "ADD_CURRENT_USER",
+                    user: data
+                }
+                dispatch(user);        
             }
-        })
-        // .then(userData =>{
-        //     const user = {
-        //         type: "ADD_CURRENT_USER",
-        //         user: userData
-        //     }
-        // })
+        });
     }
 }
 

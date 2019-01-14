@@ -10,7 +10,7 @@ export default function usersReducer(state = defaultState, action) {
                 return state;
        
             case 'USER_HAS_ERRORS':
-                console.log("User has errors...");
+                console.log("User has errors...", action.userErrors);
                 return state;
             default:
                 return state;

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     def create 
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params['password'])
-            # set session
+            session[:id] = @user.id
             respond_to do |format|
                 format.json { render json: @user, status: 201 } 
                 format.html
@@ -16,24 +16,11 @@ class SessionsController < ApplicationController
         else
 
             if @user
-                respond_to do |format|
-                    format.json { render json: {
-                        status: "error",
-                        code: 3000,
-                        message: "Your password doesn't match."
-                     }}
-                    format.html
-                end
+                render json: { "errors": "Your password doesn't match." }
             else
-                respond_to do |format|
-                    format.json { render json: {
-                        errors: "Your email isn't on record with us."
-                    }, status: "error"}
-                    format.html
+            render :json => { "errors": "Your email isn't on record with us." }
             end
-           
-           end
-
+    
         end
     end
 
