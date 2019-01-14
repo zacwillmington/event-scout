@@ -3,8 +3,8 @@ export default function eventsReducer(state = [], action) {
     switch (action.type) {
         case 'ADD_EVENT':
             console.log("adding event", action);
-            break;
-    
+            return state
+        
         default:
             return state;
     }
