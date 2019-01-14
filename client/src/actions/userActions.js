@@ -1,6 +1,5 @@
 
 export default function addCurrentUser(user) {
-    console.log('sending request to add user..', user);
     return (dispatch) => {
         dispatch({ type: "SENDING_ADD_USER_REQUEST"})
 
@@ -11,14 +10,19 @@ export default function addCurrentUser(user) {
                'Content-Type': 'application/json' 
             },
             body: JSON.stringify(user)
-        }).then(resp => resp.json()).then(userData =>{
-            console.log(userData)
-            const user = {
-                type: "ADD_CURRENT_USER",
-                user: userData
+        }).then(resp => {
+            if(resp.status === "error") {
+                console.log(resp.error);
+            }else {
+                console.log(resp.json());
             }
-            dispatch(user);
         })
+        // .then(userData =>{
+        //     const user = {
+        //         type: "ADD_CURRENT_USER",
+        //         user: userData
+        //     }
+        // })
     }
 }
 

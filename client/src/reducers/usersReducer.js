@@ -1,12 +1,16 @@
 
 export default function usersReducer(state = defaultState, action) {
         switch (action.type) {
-            case 'SENDING_REQUEST':
-            console.log('The request is being sent...');
+            case 'SENDING_ADD_USER_REQUEST':
+            console.log('Add user request is being sent...');
             return state;
 
             case 'ADD_CURRENT_USER':
                 console.log("adding user...");
+                return state;
+       
+            case 'USER_HAS_ERRORS':
+                console.log("User has errors...");
                 return state;
             default:
                 return state;
