@@ -3,7 +3,7 @@ export default function addCurrentUser(user) {
     return (dispatch) => {
         dispatch({ type: "SENDING_ADD_USER_REQUEST"})
 
-       return fetch('/signin', {
+       return fetch('/api/v1/signin', {
             method: 'POST',
             headers: {
                accept: 'application/json',

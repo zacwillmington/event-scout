@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class HomePageContainer extends Component {
@@ -6,6 +7,16 @@ class HomePageContainer extends Component {
         super(props);
         this.state = {
             
+        }
+    }
+
+    componentWillMount() {
+        
+    }
+    componentDidMount() {
+        if (this.props.isLoggedin === false){
+            // redirect to sigin
+            debugger
         }
     }
 
@@ -18,4 +29,12 @@ class HomePageContainer extends Component {
     }
 }
 
-export default HomePageContainer 
+const mapStateToProps = state => {
+    return {
+        currentUser: state.usersReducer.currentUser,
+        isLoggedin: state.isLoggedin,
+        isLoading: state.isLoading
+    }
+}
+
+export default connect(mapStateToProps)(HomePageContainer) 

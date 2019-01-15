@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   #Trim unnecessary routes after MPV is functioning
   
-  # namespace :api do 
-    # namespace :v1 do 
+  namespace :api do 
+    namespace :v1 do 
       get '/signin', to: 'sessions#new'
       post '/signin', to: 'sessions#create' 
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :events
       resources :venues
       resources :ticket_classes
-    # end
-  # end
+    end
+  end
 
 end
