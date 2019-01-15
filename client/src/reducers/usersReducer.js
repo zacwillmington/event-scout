@@ -5,7 +5,11 @@ export default function usersReducer(state = defaultState, action) {
                 return { currentUser: null, isLoading: true, hasErrors: false }
 
             case 'ADD_CURRENT_USER':
-                return { currentUser: action.user, isLoading: false }
+                return { 
+                    currentUser: action.user,  
+                    isLoading: false,
+                    hasErrors: false
+                 }
        
             case 'USER_HAS_ERRORS':
                 return { currentUser: null, hasErrors: true, errors: action.errors, isLoading: false }

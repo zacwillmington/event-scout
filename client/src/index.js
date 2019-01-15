@@ -21,13 +21,12 @@ const options = {
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-    <Provider store={store}>
-       <React.Fragment>
-            <AlertProvider template={AlertTemplate}>
+    
+    <AlertProvider template={AlertTemplate}>
+            <Provider store={store}>
                 <App />
-            </AlertProvider>
-        </React.Fragment>
-    </Provider>, document.getElementById('root')
+            </Provider>
+        </AlertProvider>, document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

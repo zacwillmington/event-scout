@@ -13,11 +13,12 @@ class SigninContainer extends Component {
   }
 
   componentDidMount() {
-    debugger
   }
 
-  componentDidUpdate() {
-    //   debugger;
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.hasErrors === false && this.props.hasErrors){
+        return this.props.alert.error(this.props.errors)
+    } 
   }
 
   handleOnChange = event => {
@@ -37,18 +38,10 @@ class SigninContainer extends Component {
       this.setState({ email: '',
     password: ''});
   } 
-  
-  renderErrors = () => {
-      debugger
-    return this.props.alert.error(this.state.errors)
-}
 
     render() {
       return (
         <div>
-            
-            {this.renderErrors()}
-            <h2>Signin</h2>
             <div className='siginInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
                     <label htmlFor='signin-email'>Email</label><br></br>
@@ -73,7 +66,7 @@ class SigninContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    return { currentUser: state.currentUser, isLoading: state.isLoading, hasErrors: state.hasErrors, errors: state.errors }
+    return { currentUser: state.usersReducer.currentUser, isLoading: state.usersReducer.isLoading, hasErrors: state.usersReducer.hasErrors, errors: state.usersReducer.errors }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);
+export default withAlert(connect(mapStateToProps, mapDispatchToProps)(SigninContainer));

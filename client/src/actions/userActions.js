@@ -14,8 +14,10 @@ export default function addCurrentUser(user) {
             if(data.errors) {
                 const userErrors = {
                     type: "USER_HAS_ERRORS",
+                    hasErrors: true,
                     errors: data.errors
                 }
+                console.log(userErrors);
                 dispatch(userErrors);
             }else {
                 const user = {
