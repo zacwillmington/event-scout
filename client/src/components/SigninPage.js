@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import addCurrentUser from '../actions/userActions';
+import { withAlert } from "react-alert";
 
 class SigninContainer extends Component {
   constructor(props) {
@@ -12,7 +13,11 @@ class SigninContainer extends Component {
   }
 
   componentDidMount() {
-    // debugger
+    debugger
+  }
+
+  componentDidUpdate() {
+    //   debugger;
   }
 
   handleOnChange = event => {
@@ -33,9 +38,16 @@ class SigninContainer extends Component {
     password: ''});
   } 
   
+  renderErrors = () => {
+      debugger
+    return this.props.alert.error(this.state.errors)
+}
+
     render() {
       return (
         <div>
+            
+            {this.renderErrors()}
             <h2>Signin</h2>
             <div className='siginInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
@@ -60,4 +72,8 @@ class SigninContainer extends Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SigninContainer);
+const mapStateToProps = state => {
+    return { currentUser: state.currentUser, isLoading: state.isLoading, hasErrors: state.hasErrors, errors: state.errors }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

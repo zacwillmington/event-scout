@@ -5,8 +5,11 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "react": "^16.7.0",
+    "react-alert": "^4.0.4",
+    "react-alert-template-basic": "^1.0.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
+    "react-popup": "^0.9.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",

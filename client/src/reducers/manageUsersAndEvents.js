@@ -3,8 +3,8 @@ import usersReducer from './usersReducer';
 import eventsReducer from './eventsReducer';    
 
 const rootReducer = combineReducers({
-    currentUser: usersReducer,
-    events: eventsReducer
+    usersReducer,
+    eventsReducer
 });
 
 export default rootReducer;

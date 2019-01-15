@@ -1,10 +1,18 @@
 
 export default function eventsReducer(state = [], action) {
     switch (action.type) {
-        case 'ADD_EVENT':
-            console.log("adding event", action);
+        case 'EVENTS_HAS_ERRORED':
+            console.log("Error retreviving event", action);
             return state
-        
+
+        case 'EVENTS_ARE_LOADING':
+            console.log('events are loading..');
+            return state;
+
+        case 'EVENTS_FETCH_DATA_SUCCESS':
+            console.log('events fetched success..');
+            return state;
+
         default:
             return state;
     }

@@ -6,15 +6,27 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 
 import { Provider } from 'react-redux';
+import { Provider as AlertProvider }  from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/manageUsersAndEvents';
 
+
+const options = {
+    timeout: 5000,
+    position: "bottom center"
+  };
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+       <React.Fragment>
+            <AlertProvider template={AlertTemplate}>
+                <App />
+            </AlertProvider>
+        </React.Fragment>
     </Provider>, document.getElementById('root')
 );
 
