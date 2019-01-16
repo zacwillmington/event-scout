@@ -33,8 +33,9 @@ export default function usersReducer(state = defaultState, action) {
     const defaultState = {
         currentUser: {
             id: null,
-            userName: null,
-            email: null
+            user_name: null,
+            email: null,
+            password_digest: null
         },
         errors: [],
         isLoading: true

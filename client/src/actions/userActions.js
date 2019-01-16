@@ -1,4 +1,4 @@
-import { authFailure } from "./authActions";
+import { authFailure, authSuccess, authRequest } from "./authActions";
 
 export const addCurrentUser = user => {
     return (dispatch) => {
@@ -31,7 +31,23 @@ export const addCurrentUser = user => {
     }
 }
 
+export const getUser = user => {
+    return dispatch => {
+        return fetch('/api/v1/find', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(user)
+        }).then(resp => resp.json())
+        .then( receivedUser => {
+            return {receivedUser}
+        })
+    }
+}
+
 export const signupUser = user => {
+    const newUser = user;
     return dispatch => {
         return fetch('/api/v1/signup', {
             method: 'post',
@@ -44,14 +60,37 @@ export const signupUser = user => {
         .then( resp => resp.json())
         .then( userData => {
             console.log(userData);
-            // dispatch(authenticate({
-            //         name: userData.user_name,
-            //         email: userData.email,
-            //         password: userData.password_digest
-            //     })
-            // )
+            dispatch(authenticate({
+                    email: newUser.email,
+                    password: newUser.password
+                }))
         }).catch( errors => {
             dispatch(authFailure(errors));    
+        })
+    }
+}
+
+export const authenticate = user => {
+    console.log(user);
+    return dispatch => {
+        dispatch(authRequest())
+        return fetch('http://localhost:3000/api/user_token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+             body: JSON.stringify({auth: user})
+        })
+        .then( resp => resp.json())
+        .then(response => {
+            debugger
+            const token = response.jwt;
+            localStorage.setItem('token', token);
+            console.log(token);
+            return getUser(user)
+        }).catch( errors => {
+            dispatch(authFailure(errors))
+            localStorage.clear()
         })
     }
 }

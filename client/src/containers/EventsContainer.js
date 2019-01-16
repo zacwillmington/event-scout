@@ -9,6 +9,10 @@ class EventsContainer extends Component {
     }
 
     componentDidMount() {
+        
+    }
+
+    renderEvents = events => {
         debugger;
     }
 
@@ -16,9 +20,10 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'>
                 EventsContainer 
+                { this.renderEvents() }
             </div>
         )
     }
 }
 
-export default EventsContainer
+export default connect()(EventsContainer)

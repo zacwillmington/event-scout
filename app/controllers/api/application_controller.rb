@@ -1,5 +1,4 @@
-
-class ApplicationController < ActionController::API
-    include ActionController::MimeResponds
-    # protect_from_forgery with: :null_session
+class Api::ApplicationController < ActionController::API
+        # include ActionController::MimeResponds
+        include Knock::Authenticable
 end

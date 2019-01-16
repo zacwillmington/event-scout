@@ -1,6 +1,7 @@
 eventScout
 
 TODO
+    - Fix NameSpacing issue 
     - add sessions controllers and routes
     - siginup funtionality
     - login funtionality 

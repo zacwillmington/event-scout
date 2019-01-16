@@ -6,7 +6,7 @@ class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      user_name: "",
         email: "",
         password: ""
     }
@@ -21,15 +21,14 @@ class SignupPage extends Component {
   handleSubmit = (event) => {
       event.preventDefault();
       this.setState({
-          username: this.state.userName,
+          user_name: this.state.user_name,
           email: this.state.email,
-          password: this.state.password
+          password: this.state.password_digest
       })
       const newUser = this.state;
-      debugger
       this.props.signupUser(newUser);
       this.setState({ 
-        username: '',
+        user_name: '',
         email: '',
         password: ''
       });
@@ -40,8 +39,8 @@ class SignupPage extends Component {
         <div>
             <div className='signupInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
-                    <label htmlFor='signup-username'>Username</label><br></br>
-                    <input id='signup-username' onChange={event => this.handleOnChange(event)} name='username' type='text' value={this.state.username}/>
+                    <label htmlFor='signup-user_name'>Username</label><br></br>
+                    <input id='signup-user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}/>
                     <br></br>
 
                     <label htmlFor='signup-email'>Email</label><br></br>
@@ -60,7 +59,7 @@ class SignupPage extends Component {
   const mapDispatchToProps = dispatch => {
     return {
       signupUser: (user) => {
-       return dispatch(signupUser(user))
+          return dispatch(signupUser(user))
       } 
     }
   }

@@ -5,14 +5,13 @@ Rails.application.routes.draw do
   #Trim unnecessary routes after MPV is functioning
   
   namespace :api do 
+    post '/user_token' => 'user_token#create'
     namespace :v1 do 
       get '/signin', to: 'sessions#new'
       post '/signin', to: 'sessions#create'
 
-      post '/signup', to: 'users#new'
-      
-      post 'user_token', to: 'user_token#create'
-      post 'find_user', to: 'users#find'
+      post '/signup', to: 'users#create'
+      post '/find_user', to: 'users#find'
 
       resources :users
       resources :events

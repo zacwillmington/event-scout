@@ -1,18 +1,27 @@
-// export function itemsHasErrored(bool) {
-//     return {
-//         type: 'ITEMS_HAS_ERRORED',
-//         hasErrored: bool
-//     };
-// }
-// export function itemsIsLoading(bool) {
-//     return {
-//         type: 'ITEMS_IS_LOADING',
-//         isLoading: bool
-//     };
-// }
-// export function itemsFetchDataSuccess(items) {
-//     return {
-//         type: 'ITEMS_FETCH_DATA_SUCCESS',
-//         items
-//     };
-// }
+function eventsHasErrored(bool) {
+    return {
+        type: 'EVENTS_HAS_ERRORED',
+        hasErrored: bool
+    };
+}
+function eventsIsLoading(bool) {
+    return {
+        type: 'EVENTS_IS_LOADING',
+        isLoading: bool
+    };
+}
+function eventsFetchDataSuccess(events) {
+    return {
+        type: 'EVENTS_FETCH_DATA_SUCCESS',
+        events
+    };
+}
+
+
+export const getEvents = searchTerm => {
+    return { searchTerm }
+}
+
+export const getEvent = searchTerm => {
+    return { searchTerm }
+}
