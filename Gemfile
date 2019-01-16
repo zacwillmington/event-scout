@@ -19,6 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
 
+gem 'knock'
 gem 'jwt'
 gem 'dotenv-rails'
 

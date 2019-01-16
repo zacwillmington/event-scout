@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import addCurrentUser from '../actions/userActions';
+import { addCurrentUser, signupUser } from '../actions/userActions';
 import { withAlert } from "react-alert";
 
 class SigninContainer extends Component {

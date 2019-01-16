@@ -4,17 +4,14 @@ module Api
         class SessionsController < ApplicationController
             
             def new 
-                binding.pry
+                # binding.pry
             end
 
             def create 
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params['password'])
                     session[:id] = @user.id
-                    respond_to do |format|
-                        format.json { render json: @user, status: 201 } 
-                        format.html
-                    end
+                    render json: @user, status: 201 
                 else
 
                     if @user
@@ -29,6 +26,6 @@ module Api
             def destroy
             end
         end
-        
+
     end
 end         

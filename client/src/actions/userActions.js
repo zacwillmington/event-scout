@@ -1,5 +1,6 @@
+import { authFailure } from "./authActions";
 
-export default function addCurrentUser(user) {
+export const addCurrentUser = user => {
     return (dispatch) => {
         dispatch({ type: "SENDING_ADD_USER_REQUEST"})
 
@@ -27,5 +28,29 @@ export default function addCurrentUser(user) {
                 dispatch(user);        
             }
         });
+    }
+}
+
+export const signupUser = user => {
+    return dispatch => {
+        return fetch('/api/v1/signup', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: user })
+        })
+        .then( resp => resp.json())
+        .then( userData => {
+            dispatch(authenticate({
+                    name: userData.user_name,
+                    email: userData.email,
+                    password: userData.password_digest
+                })
+            )
+        }).catch( errors => {
+            dispatch(authFailure(errors));    
+        })
     }
 }
