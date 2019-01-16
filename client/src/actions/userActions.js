@@ -43,12 +43,13 @@ export const signupUser = user => {
         })
         .then( resp => resp.json())
         .then( userData => {
-            dispatch(authenticate({
-                    name: userData.user_name,
-                    email: userData.email,
-                    password: userData.password_digest
-                })
-            )
+            console.log(userData);
+            // dispatch(authenticate({
+            //         name: userData.user_name,
+            //         email: userData.email,
+            //         password: userData.password_digest
+            //     })
+            // )
         }).catch( errors => {
             dispatch(authFailure(errors));    
         })

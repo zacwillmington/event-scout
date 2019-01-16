@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { signupUser } from '../actions/userActions';
 
 class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
+      username: "",
         email: "",
         password: ""
     }
@@ -20,15 +21,15 @@ class SignupPage extends Component {
   handleSubmit = (event) => {
       event.preventDefault();
       this.setState({
-          userName: this.state.userName,
+          username: this.state.userName,
           email: this.state.email,
           password: this.state.password
       })
       const newUser = this.state;
       debugger
-      this.props.signupUser(user);
+      this.props.signupUser(newUser);
       this.setState({ 
-        userName: '',
+        username: '',
         email: '',
         password: ''
       });
@@ -39,6 +40,10 @@ class SignupPage extends Component {
         <div>
             <div className='signupInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
+                    <label htmlFor='signup-username'>Username</label><br></br>
+                    <input id='signup-username' onChange={event => this.handleOnChange(event)} name='username' type='text' value={this.state.username}/>
+                    <br></br>
+
                     <label htmlFor='signup-email'>Email</label><br></br>
                     <input id='sigup-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
                     <br></br>
@@ -52,4 +57,13 @@ class SignupPage extends Component {
     }
   }
 
-export default SignupPage;
+  const mapDispatchToProps = dispatch => {
+    return {
+      signupUser: (user) => {
+       return dispatch(signupUser(user))
+      } 
+    }
+  }
+
+
+export default connect(null, mapDispatchToProps)(SignupPage);

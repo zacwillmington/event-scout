@@ -3,6 +3,13 @@ module Api
         class UsersController < ApplicationController
 
             def new
+                binding.pry
+                @user = User.new(strong_params)
+                if @user.save
+                    render json: @user, status: 201
+                else
+                    render json: @user.errors, status: 400
+                end
 
             end
 
@@ -34,7 +41,11 @@ module Api
                 end
             end
 
-            
+            def strong_params
+                params.require(:user).pertmit(:username, :email, :password)
+            end
+
+
         end
     end
 end
