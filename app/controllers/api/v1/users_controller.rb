@@ -8,6 +8,7 @@ module Api
             end
 
             def create
+                binding.pry
                 @user = User.new(strong_params)
                 if @user.save
                     render json: @user, status: 201
@@ -15,7 +16,7 @@ module Api
                     render json: @user.errors, status: 400
                 end
             end
-
+            
             def show
 
             end
@@ -29,12 +30,11 @@ module Api
             end
 
             def find_user
-                binding.pry
                 @user = User.find_by(email: params['user']['email'])
                 if @user 
-                    render json: @user
+                    render json: @user, status: 201
                 else
-                    render json: { 'error': 'customise error message in find controller'}
+                    render json: { 'errors': 'customise error message in find controller'}
                 end
             end
 

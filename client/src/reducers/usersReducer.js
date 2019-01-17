@@ -1,6 +1,16 @@
 
 export default function usersReducer(state = defaultState, action) {
         switch (action.type) {
+
+            case 'AUTHENTICATION_SUCCESS':
+                return {
+                    currentUser: action.user,
+                    token: action.token,
+                    isLoggedin: true,  
+                    isLoading: false,
+                    hasErrors: false
+                }
+
             case 'SENDING_ADD_USER_REQUEST':
                 return { 
                     currentUser: null,

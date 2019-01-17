@@ -33,7 +33,7 @@ export const addCurrentUser = user => {
 
 export const getUser = user => {
     return dispatch => {
-        return fetch('/api/v1/find', {
+        return fetch('/api/v1/find_user', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -42,8 +42,7 @@ export const getUser = user => {
         })
         .then(resp => resp.json())
         .then( receivedUser => {
-            debugger;
-            return {receivedUser}
+            dispatch(authSuccess(receivedUser, localStorage.getItem('token')))
         })
     }
 }
@@ -61,7 +60,7 @@ export const signupUser = user => {
         })
         .then( resp => resp.json())
         .then( userData => {
-            dispatch(authenticate({
+           return dispatch(authenticate({
                     email: newUser.email,
                     password: newUser.password
                 }))
@@ -74,11 +73,7 @@ export const signupUser = user => {
 export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
-        console.log(user);
-        const homePageUrl = "http://localhost:3000/";
-        const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
         const userTokenUrl = 'http://localhost:3000/api/user_token';
-        // https://cors-anywhere.herokuapp.com/http://localhost:3000/api/user_token
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
@@ -91,7 +86,7 @@ export const authenticate = user => {
         .then(response => {
             const token = response.jwt;
             localStorage.setItem('token', token);
-            return getUser(user)
+           return dispatch(getUser(user))
         }).catch( errors => {
             dispatch(authFailure(errors))
             localStorage.clear()

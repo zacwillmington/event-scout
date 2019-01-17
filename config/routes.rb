@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post '/signin', to: 'sessions#create'
 
       post '/signup', to: 'users#create'
-      post '/find_user', to: 'users#find'
+      post '/find_user', to: 'users#find_user'
 
       resources :users
       resources :events
