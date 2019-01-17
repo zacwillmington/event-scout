@@ -1,12 +1,12 @@
 function eventsHasErrored(bool) {
     return {
-        type: 'EVENTS_HAS_ERRORED',
+        type: 'EVENTS_HAS_ERRORS',
         hasErrored: bool
     };
 }
 function eventsIsLoading(bool) {
     return {
-        type: 'EVENTS_IS_LOADING',
+        type: 'EVENTS_ARE_LOADING',
         isLoading: bool
     };
 }
@@ -19,9 +19,11 @@ function eventsFetchDataSuccess(events) {
 
 
 export const getEvents = searchTerm => {
+    debugger    
     return { searchTerm }
 }
 
 export const getEvent = searchTerm => {
+    debugger
     return { searchTerm }
 }

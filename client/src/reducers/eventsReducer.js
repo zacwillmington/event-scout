@@ -1,7 +1,7 @@
 
-export default function eventsReducer(state = [], action) {
+export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
-        case 'EVENTS_HAS_ERRORED':
+        case 'EVENTS_HAS_ERRORS':
             console.log("Error retreviving event", action);
             return state
 
@@ -17,3 +17,10 @@ export default function eventsReducer(state = [], action) {
             return state;
     }
 }
+
+
+const defaultState = {
+    events: [],
+    eventsHasErrors: false,
+    eventsAreLoading: true
+} 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from './actions/eventsActions';
+import { getEvents } from '../actions/eventsActions';
+import EventsSearchPage from '../components/eventsSearchPage';
 
 class EventsContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            searchTerm: '',
             events: []
         }
     }
@@ -23,6 +23,7 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'>
                 EventsContainer 
+                <EventsSearchPage />
                 { this.renderEvents() }
             </div>
         )
@@ -30,9 +31,9 @@ class EventsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    debugger;
+    // debugger;
     return {
-        eventsIsLoading: state.eventsIsLoading,
+        eventsAreLoading: state.eventsAreLoading,
         events: state.events
 
     }
