@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getEvents } from './actions/eventsActions';
 
 class EventsContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
+            searchTerm: '',
             events: []
         }
     }
@@ -12,8 +15,8 @@ class EventsContainer extends Component {
         
     }
 
-    renderEvents = events => {
-        debugger;
+    renderEvents = () => {
+        // debugger;
     }
 
     render() {
@@ -26,4 +29,21 @@ class EventsContainer extends Component {
     }
 }
 
-export default connect()(EventsContainer)
+const mapStateToProps = state => {
+    debugger;
+    return {
+        eventsIsLoading: state.eventsIsLoading,
+        events: state.events
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getEvents: (searchTerm) => {
+            return dispatch(getEvents(searchTerm))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer)
