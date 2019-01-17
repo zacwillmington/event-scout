@@ -15,6 +15,12 @@ class EventsContainer extends Component {
         
     }
 
+    getSearchTerm = (searchTerm) => {
+        // run dispatch
+        debugger;
+        this.props.getEvents(searchTerm);
+    }
+
     renderEvents = () => {
         // debugger;
     }
@@ -23,7 +29,7 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'>
                 EventsContainer 
-                <EventsSearchPage />
+                <EventsSearchPage getSearchTerm={this.getSearchTerm} />
                 { this.renderEvents() }
             </div>
         )

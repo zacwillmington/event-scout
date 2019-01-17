@@ -10,7 +10,7 @@ export default function eventsReducer(state = defaultState, action) {
             return state;
 
         case 'EVENTS_FETCH_DATA_SUCCESS':
-            console.log('events fetched success..');
+            console.log('events fetched success..', action);
             return state;
 
         default:

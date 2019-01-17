@@ -4,7 +4,7 @@ function eventsHasErrored(bool) {
         hasErrored: bool
     };
 }
-function eventsIsLoading(bool) {
+function eventsAreLoading(bool) {
     return {
         type: 'EVENTS_ARE_LOADING',
         isLoading: bool
@@ -19,11 +19,23 @@ function eventsFetchDataSuccess(events) {
 
 
 export const getEvents = searchTerm => {
-    debugger    
-    return { searchTerm }
+    return (dispatch) => {
+        dispatch(eventsAreLoading(true));
+
+         //fetch events from API eventBright
+        return fetch('',{
+            method: 'POST',
+              
+        })
+        .then( response => response.json())
+        .then( events => {
+            console.log(events);
+        })
+        .catch( error => console.log(error))
+        }
 }
 
-export const getEvent = searchTerm => {
-    debugger
-    return { searchTerm }
-}
+    export const getEvent = searchTerm => {
+        debugger
+        return { searchTerm }
+        }
