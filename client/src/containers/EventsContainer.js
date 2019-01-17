@@ -11,33 +11,24 @@ class EventsContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        
-    }
 
     getSearchTerm = (searchTerm) => {
         // run dispatch
-        debugger;
         this.props.getEvents(searchTerm);
     }
 
-    renderEvents = () => {
-        // debugger;
-    }
 
     render() {
         return(
             <div className='eventsContainer'>
                 EventsContainer 
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                { this.renderEvents() }
             </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    // debugger;
     return {
         eventsAreLoading: state.eventsAreLoading,
         events: state.events
