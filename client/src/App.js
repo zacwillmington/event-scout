@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 
 import SigninPage from './components/SigninPage';
@@ -23,11 +23,13 @@ class App extends Component {
         <Router>
           <React.Fragment>
           <NavBar />
+          <Switch>
             <Route exact path='/' component={HomePageContainer} />
-            <Route exact path='/events' component={EventsContainer} />
-            <Route exact path='/account' component={AccountContainer} />
-            <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/signin' component={SigninPage} />
+            <Route path='/events' component={EventsContainer} />
+            <Route path='/account' component={AccountContainer} />
+            <Route path='/signup' component={SignupPage} />
+            <Route path='/signin' component={SigninPage} />
+            </Switch>
           </React.Fragment>
         </Router>
       </div>

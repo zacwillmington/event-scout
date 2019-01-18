@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+
 import { getEvents } from '../actions/eventsActions';
-import EventsSearchPage from '../components/eventsSearchPage';
+import EventsSearchPage from '../components/EventsSearchPage';
+import Events from '../components/Events';
+import Event from '../components/Event';
+
+
 
 class EventsContainer extends Component {
     constructor(props){
@@ -13,7 +19,6 @@ class EventsContainer extends Component {
 
 
     getSearchTerm = (searchTerm) => {
-        // run dispatch
         this.props.getEvents(searchTerm);
     }
 
@@ -21,8 +26,15 @@ class EventsContainer extends Component {
     render() {
         return(
             <div className='eventsContainer'>
-                EventsContainer 
-                <EventsSearchPage getSearchTerm={this.getSearchTerm} />
+                <Switch>
+                    <Route exact path='/events' component={Events} />
+                    <Route path='events/:id' component={Event}/>
+                    <Route path='users/:id/events/:id' component={Event} />
+                    <Route path='users/:id/events' component={Events} /> {/*Exact path maybe ^^*/}
+                     {/*Exact path maybe ^^*/}
+                </Switch>
+                    EventsContainer 
+                    <EventsSearchPage getSearchTerm={this.getSearchTerm} />
             </div>
         )
     }

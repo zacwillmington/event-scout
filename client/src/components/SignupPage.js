@@ -32,6 +32,10 @@ class SignupPage extends Component {
         email: '',
         password: ''
       });
+
+      if ( this.props.isLoggedin ){
+          // direct to home page 
+      }
   } 
 
     render() {
@@ -64,5 +68,14 @@ class SignupPage extends Component {
     }
   }
 
+  const mapStateToProps = state => {
+    // debugger
+    return {
+      isLoggedin: state.isLoggedin,
+      isLoading: state.isLoading,
+      hasErrors: state.hasErrors
+    }
+  }
 
-export default connect(null, mapDispatchToProps)(SignupPage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
