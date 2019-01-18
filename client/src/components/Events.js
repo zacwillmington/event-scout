@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Event from './components/Event';
+import EventComponent from './EventComponent';
 
 
 class Events extends Component {
@@ -10,7 +10,8 @@ class Events extends Component {
     render() {
         return (
             <div>
-
+                Events
+                <EventComponent />
             </div>
         )
     }

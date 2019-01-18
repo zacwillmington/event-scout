@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+
 
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
-import Event from '../components/Event';
+import EventComponent from '../components/EventComponent';
 
 
 
@@ -26,24 +28,27 @@ class EventsContainer extends Component {
     render() {
         return(
             <div className='eventsContainer'>
+                EventsContainer 
+                <EventsSearchPage getSearchTerm={this.getSearchTerm} />
                 <Switch>
                     <Route exact path='/events' component={Events} />
-                    <Route path='events/:id' component={Event}/>
-                    <Route path='users/:id/events/:id' component={Event} />
+                    <Route path='users/:id/events/:id' component={EventComponent} />
                     <Route path='users/:id/events' component={Events} /> {/*Exact path maybe ^^*/}
                      {/*Exact path maybe ^^*/}
+                     <Route path='events/:id' component={EventComponent}/>
                 </Switch>
-                    EventsContainer 
-                    <EventsSearchPage getSearchTerm={this.getSearchTerm} />
             </div>
         )
     }
 }
 
 const mapStateToProps = state => {
+    debugger
     return {
+        isLoggedin: state.isLoggedin,
         eventsAreLoading: state.eventsAreLoading,
-        events: state.events
+        events: state.events,
+        eventsHasErrors: state.eventsHasErrors
 
     }
 }

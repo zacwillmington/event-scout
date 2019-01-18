@@ -31,6 +31,13 @@ export const addCurrentUser = user => {
     }
 }
 
+// export const setUser = user => {
+//     return { 
+//         type: 'ADD_CURRENT_USER',
+//         user: user
+//     }
+// }
+
 export const getUser = user => {
     return dispatch => {
         return fetch('/api/v1/find_user', {
@@ -42,7 +49,8 @@ export const getUser = user => {
         })
         .then(resp => resp.json())
         .then( receivedUser => {
-            dispatch(authSuccess(receivedUser, localStorage.getItem('token')))
+            dispatch(authSuccess(receivedUser, localStorage.getItem('token')));
+            // dispatch(setUser(receivedUser));
         })
     }
 }
@@ -91,5 +99,11 @@ export const authenticate = user => {
             dispatch(authFailure(errors))
             localStorage.clear()
         })
+    }
+}
+
+export const logoutUser = user => {
+    return dispatch => {
+        
     }
 }

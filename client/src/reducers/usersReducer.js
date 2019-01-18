@@ -3,11 +3,20 @@ export default function usersReducer(state = defaultState, action) {
         switch (action.type) {
 
             case 'AUTHENTICATION_SUCCESS':
+            debugger
                 return {
                     currentUser: action.user,
                     token: action.token,
                     isLoggedin: true,  
                     isLoading: false,
+                    hasErrors: false
+                }
+
+            case 'AUTHENTICATION_REQUEST':
+                return {
+                    currentUser: null,
+                    isLoggedin: false,  
+                    isLoading: true,
                     hasErrors: false
                 }
 
@@ -48,5 +57,6 @@ export default function usersReducer(state = defaultState, action) {
             password_digest: null
         },
         errors: [],
-        isLoading: true
+        isLoading: true,
+        isLoggedin: false
     }

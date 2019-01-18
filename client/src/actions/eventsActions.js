@@ -1,7 +1,7 @@
 function eventsHasErrored(bool) {
     return {
         type: 'EVENTS_HAS_ERRORS',
-        hasErrored: bool
+        eventsHasErrors: bool
     };
 }
 function eventsAreLoading(bool) {

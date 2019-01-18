@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Can this component be stateless?
-class Event extends Component {
+class EventComponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -9,10 +9,10 @@ class Event extends Component {
     render() {
         return (
             <div>
-
+                EventComponent
             </div>
         )
     }
 }
 
-export default Event
+export default EventComponent

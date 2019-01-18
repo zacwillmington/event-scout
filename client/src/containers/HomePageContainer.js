@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+
 
 
 class HomePageContainer extends Component {
@@ -11,19 +13,21 @@ class HomePageContainer extends Component {
     }
 
     componentWillMount() {
-        
-    }
-    componentDidMount() {
-        if (this.props.isLoggedin === false){
+        if (!this.props.isLoggedin && !this.props.isLoading){
             // redirect to sigin
-            debugger
+            this.props.history.push('/signin');
         }
+    }
+
+    componentDidMount() {
+        debugger
     }
 
     render() {
         return(
             <div className='homePageContainer'>
                 HomePageContainer 
+                Welcome {this.props.currentUser.user_name}
             </div>
         )
     }
@@ -32,8 +36,8 @@ class HomePageContainer extends Component {
 const mapStateToProps = state => {
     return {
         currentUser: state.usersReducer.currentUser,
-        isLoggedin: state.isLoggedin,
-        isLoading: state.isLoading
+        isLoggedin: state.usersReducer.isLoggedin,
+        isLoading: state.usersReducer.isLoading
     }
 }
 

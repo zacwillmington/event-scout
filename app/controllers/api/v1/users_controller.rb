@@ -8,7 +8,6 @@ module Api
             end
 
             def create
-                binding.pry
                 @user = User.new(strong_params)
                 if @user.save
                     render json: @user, status: 201

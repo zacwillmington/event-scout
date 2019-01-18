@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import { signupUser } from '../actions/userActions';
 
 class SignupPage extends Component {
@@ -12,13 +13,21 @@ class SignupPage extends Component {
     }
   }
 
+
+  componentDidUpdate(prevProps, prevState) {
+      if ( !prevProps.isLoggedin && this.props.isLoggedin){
+          //eslint-disable-next-line
+          this.props.history.push("/");
+      }
+  }
+
   handleOnChange = event => {
     this.setState({
         [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
       event.preventDefault();
       this.setState({
           user_name: this.state.user_name,
@@ -32,10 +41,6 @@ class SignupPage extends Component {
         email: '',
         password: ''
       });
-
-      if ( this.props.isLoggedin ){
-          // direct to home page 
-      }
   } 
 
     render() {
@@ -69,13 +74,12 @@ class SignupPage extends Component {
   }
 
   const mapStateToProps = state => {
-    // debugger
     return {
-      isLoggedin: state.isLoggedin,
-      isLoading: state.isLoading,
-      hasErrors: state.hasErrors
+      isLoggedin: state.usersReducer.isLoggedin,
+      isLoading: state.usersReducer.isLoading,
+      hasErrors: state.usersReducer.hasErrors
     }
   }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupPage));
