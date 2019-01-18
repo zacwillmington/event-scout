@@ -12,22 +12,23 @@ class HomePageContainer extends Component {
         }
     }
 
-    componentWillMount() {
-        if (!this.props.isLoggedin && !this.props.isLoading){
-            // redirect to sigin
+    componentDidUpdate(prevProps, prevState) {
+        if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.history.push('/signin');
         }
     }
 
     componentDidMount() {
-        debugger
+        if (!this.props.isLoggedin && !this.props.isLoading){
+            this.props.history.push('/signin');
+        }
     }
 
     render() {
         return(
             <div className='homePageContainer'>
                 HomePageContainer 
-                Welcome {this.props.currentUser.user_name}
+                
             </div>
         )
     }
@@ -35,10 +36,10 @@ class HomePageContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.usersReducer.currentUser,
-        isLoggedin: state.usersReducer.isLoggedin,
-        isLoading: state.usersReducer.isLoading
+        currentUser: state.authReducer.currentUser,
+        isAuthenticating: state.authReducer.isAuthenticating,
+        isAuthenticated: state.authReducer.isAuthenticated
     }
 }
 
-export default connect(mapStateToProps)(HomePageContainer) 
+export default withRouter(connect(mapStateToProps)(HomePageContainer)) 

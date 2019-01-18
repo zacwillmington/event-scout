@@ -10,7 +10,7 @@ import { Provider as AlertProvider }  from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers/manageUsersAndEvents';
+import rootReducer from './reducers/manageReducers';
 
 
 const options = {

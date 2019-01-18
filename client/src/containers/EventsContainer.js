@@ -43,12 +43,11 @@ class EventsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    debugger
     return {
-        isLoggedin: state.isLoggedin,
-        eventsAreLoading: state.eventsAreLoading,
-        events: state.events,
-        eventsHasErrors: state.eventsHasErrors
+        isLoggedin: state.usersReducer.isLoggedin,
+        eventsAreLoading: state.eventsReducer.eventsAreLoading,
+        events: state.eventsReducer.events,
+        eventsHasErrors: state.eventsReducer.eventsHasErrors
 
     }
 }

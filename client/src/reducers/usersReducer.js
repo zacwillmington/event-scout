@@ -2,26 +2,10 @@
 export default function usersReducer(state = defaultState, action) {
         switch (action.type) {
 
-            case 'AUTHENTICATION_SUCCESS':
-            debugger
-                return {
-                    currentUser: action.user,
-                    token: action.token,
-                    isLoggedin: true,  
-                    isLoading: false,
-                    hasErrors: false
-                }
-
-            case 'AUTHENTICATION_REQUEST':
-                return {
-                    currentUser: null,
-                    isLoggedin: false,  
-                    isLoading: true,
-                    hasErrors: false
-                }
 
             case 'SENDING_ADD_USER_REQUEST':
                 return { 
+                    ...state,
                     currentUser: null,
                     isLoggedin: false,  
                     isLoading: true,
@@ -30,6 +14,7 @@ export default function usersReducer(state = defaultState, action) {
 
             case 'ADD_CURRENT_USER':
                 return { 
+                    ...state,
                     currentUser: action.user,
                     isLoggedin: true,  
                     isLoading: false,
@@ -38,25 +23,22 @@ export default function usersReducer(state = defaultState, action) {
        
             case 'USER_HAS_ERRORS':
                 return { 
+                    ...state,
                     currentUser: null,
                     isLoggedin: false,
                     hasErrors: true,
                     errors: action.errors,
                     isLoading: false
                  }
+
             default:
                 return state;
         }
     }
 
     const defaultState = {
-        currentUser: {
-            id: null,
-            user_name: null,
-            email: null,
-            password_digest: null
-        },
+        user: {},
         errors: [],
-        isLoading: true,
+        isLoading: false,
         isLoggedin: false
     }

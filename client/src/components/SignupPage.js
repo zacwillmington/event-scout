@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import { signupUser } from '../actions/userActions';
+import { signupUser } from '../actions/authActions';
 
 class SignupPage extends Component {
   constructor(props) {
@@ -15,10 +15,6 @@ class SignupPage extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-      if ( !prevProps.isLoggedin && this.props.isLoggedin){
-          //eslint-disable-next-line
-          this.props.history.push("/");
-      }
   }
 
   handleOnChange = event => {
@@ -75,9 +71,9 @@ class SignupPage extends Component {
 
   const mapStateToProps = state => {
     return {
-      isLoggedin: state.usersReducer.isLoggedin,
-      isLoading: state.usersReducer.isLoading,
-      hasErrors: state.usersReducer.hasErrors
+       isAuthenticating: state.authReducer.isAuthenticating,
+        isAuthenticated: state.authReducer.isAuthenticated,
+        errors: state.authReducer.errors
     }
   }
 

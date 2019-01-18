@@ -6,6 +6,7 @@ import './App.css';
 import SigninPage from './components/SigninPage';
 import SignupPage from './components/SignupPage';
 import NavBar from './components/NavBar';
+import LogoutPage from './components/LogoutPage';
 import HomePageContainer from './containers/HomePageContainer';
 import EventsContainer from './containers/EventsContainer';
 import AccountContainer from './containers/AccountContainer';
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path='/account' component={AccountContainer} />
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
+            <Route path='/logout' component={LogoutPage} />
             </Switch>
           </React.Fragment>
         </Router>
