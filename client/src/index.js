@@ -9,20 +9,14 @@ import { Provider } from 'react-redux';
 import { Provider as AlertProvider }  from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/manageReducers';
 
 
-const options = {
-    timeout: 5000,
-    position: "bottom center"
-  };
-
-const store = createStore(rootReducer, applyMiddleware(thunk))
-
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 ReactDOM.render(
     
-    <AlertProvider template={AlertTemplate}>
+    <AlertProvider template={AlertTemplate} store={store}>
             <Provider store={store}>
                 <App />
             </Provider>

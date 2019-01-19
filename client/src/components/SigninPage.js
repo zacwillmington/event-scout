@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCurrentUser } from '../actions/userActions';
+import { authenticate } from '../actions/authActions';
 import { withAlert } from "react-alert";
+import { withRouter } from 'react-router-dom';
+
 
 class SigninContainer extends Component {
   constructor(props) {
@@ -12,32 +14,25 @@ class SigninContainer extends Component {
     }
   }
 
-  componentDidMount() {
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.hasErrors === false && this.props.hasErrors){
-        return this.props.alert.error(this.props.errors)
-    } 
-  }
-
   handleOnChange = event => {
     this.setState({
         [event.target.name]: event.target.value
     })
   }
 
+  componentWillUpdate() {
+      debugger
+  }
+
+  componentDidUpdate() {
+      debugger
+  }
+
+
   handleSubmit = (event) => {
       event.preventDefault();
-      this.setState({
-          email: this.state.email,
-          password: this.state.password
-      })
-      const user = this.state;
-      this.props.addCurrentUser(user);
-      this.setState({ email: '',
-    password: ''});
-  } 
+      this.props.authenticate(this.state);
+    }
 
     render() {
       return (
@@ -55,18 +50,21 @@ class SigninContainer extends Component {
         </div>
       )
     }
-  }
-
+}
   const mapDispatchToProps = dispatch => {
     return { 
-        addCurrentUser: (user) => {
-            dispatch(addCurrentUser(user));
+        authenticate: (user) => {
+            dispatch(authenticate(user));
         } 
     }
 }
 
 const mapStateToProps = state => {
-    return { currentUser: state.usersReducer.currentUser, isLoading: state.usersReducer.isLoading, hasErrors: state.usersReducer.hasErrors, errors: state.usersReducer.errors }
+    return { currentUser: state.authReducer.currentUser,
+             isAuthenticating: state.authReducer.isAuthenticating,
+             isAuthenticated: state.authReducer.isAuthenticated,
+             errors: state.authReducer.errors 
+            }
 }
 
-export default withAlert(connect(mapStateToProps, mapDispatchToProps)(SigninContainer));
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(SigninContainer)));

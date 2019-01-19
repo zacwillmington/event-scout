@@ -1,3 +1,4 @@
+// import fetch from 'isomorphic-fetch';
 
 export const authRequest = () => {
     return {
@@ -37,7 +38,7 @@ export const authenticate = user => {
         .then(response => {
             const token = response.jwt;
             localStorage.setItem('token', token);
-           return dispatch(getUser(user))
+            dispatch(getUser(user))
         }).catch( errors => {
             dispatch(authFailure(errors))
             localStorage.clear()
@@ -58,7 +59,7 @@ export const signupUser = user => {
         })
         .then( resp => resp.json())
         .then( userData => {
-           return dispatch(authenticate({
+           dispatch(authenticate({
                     email: newUser.email,
                     password: newUser.password
                 }))
@@ -79,7 +80,6 @@ export const getUser = user => {
         })
         .then(resp => resp.json())
         .then( receivedUser => {
-            this.props.history.push("/");
             dispatch(authSuccess(receivedUser, localStorage.getItem('token')));    
         })
     }

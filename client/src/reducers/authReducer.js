@@ -1,3 +1,10 @@
+const defaultState = {
+    isAuthenicated: false,
+    isAuthencaiting: false,
+    currentUser: {},
+    token: null,
+    errors: []
+}
 
 export default function authReducer(state = defaultState, action) {
     switch (action.type) {
@@ -41,12 +48,3 @@ export default function authReducer(state = defaultState, action) {
             return state;
     }
 } 
-
-
-const defaultState = {
-    isAuthenicated: false,
-    isAuthencaiting: false,
-    currentUser: {},
-    token: null,
-    errors: []
-}
