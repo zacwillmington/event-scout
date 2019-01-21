@@ -1,36 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// Can this component be stateless?
-class EventComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: this.props.name,
-            description: this.props.description
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>{this.props.name}</h1>
-                <img src={this.props.logo ? this.props.logo : '' }/>
-                <h3>Description</h3>
-                <p>{this.props.description}</p>
-                <ul>
-                    <p>Starts</p>
-                    <li>Timezone: {this.props.timezoneStart}</li>
-                    <li>Time: {this.props.timeStart}</li>
-                    <p>Ends</p>
-                    <li>{this.props.timezoneEnd}</li>
-                    <li>{this.props.timeEnd}</li>
-                    <li></li>
-                </ul>
-            </div>
-        )
-    }
+const EventComponent = props => {
+    return (
+        <div>
+        <h1>{props.name}</h1>
+        <img src={props.logo}/>
+        <p>Add Like widget</p>
+        <h3>Description</h3>
+        <p>{props.description}</p>
+        <ul>
+            <p>Starts</p>
+            <li>Timezone: {props.timezoneStart}</li>
+            <li>Time: {props.timeStart}</li>
+            <p>Ends</p>
+            <li>{props.timezoneEnd}</li>
+            <li>{props.timeEnd}</li>
+        </ul>
+    </div>
+    )
 }
-
 export default EventComponent
 
 //Event date receieved per event

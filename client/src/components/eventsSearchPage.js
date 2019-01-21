@@ -4,7 +4,8 @@ class EventsSearchPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            locationAdress: null
         }
     }
 

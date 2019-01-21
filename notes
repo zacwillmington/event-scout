@@ -1,9 +1,9 @@
 eventScout
 
 TODO 
-    - display fetched events
     - siginin funtionality
     - siginup funtionality
+    - logout functionality
     - add crud actions for users
     - add crud actions for events
 
