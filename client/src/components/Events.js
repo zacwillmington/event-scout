@@ -8,11 +8,22 @@ class Events extends Component {
     }
 
     renderEvents = () => {
-        // debugger
         const events = this.props.events;
-        if ( !this.props.eventsAreLoading && events){        
+        if ( !this.props.eventsAreLoading && events){       
             return  events.map(event => {
-                return <EventComponent key={event.id} event={event}/>
+                let url = event.logo != null ? event.logo.url : ''
+                return <EventComponent 
+                key={event.id} 
+                name={event.name.text} 
+                description={event.description.text}
+                timezoneStart={event.start.timezone} 
+                timeStart={event.start.local}
+                timezoneEnd={event.end.timezone} 
+                timeEnd={event.end.local}
+                logo={url}
+                url={event.url} 
+                shareable={event.shareable} 
+                venueId={event.venueId}/>
             })
         }
 
