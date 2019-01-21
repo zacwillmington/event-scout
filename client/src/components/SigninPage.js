@@ -5,7 +5,7 @@ import { withAlert } from "react-alert";
 import { withRouter } from 'react-router-dom';
 
 
-class SigninContainer extends Component {
+class SigninPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,24 +20,15 @@ class SigninContainer extends Component {
     })
   }
 
-  componentWillUpdate() {
-      debugger
-  }
-
-  componentDidUpdate() {
-      debugger
-  }
-
-
   handleSubmit = (event) => {
-      event.preventDefault();
+    event.preventDefault();
       this.props.authenticate(this.state);
     }
 
     render() {
       return (
         <div>
-            <div className='siginInput'>
+            <div className='signinInput'>
                 <form onSubmit={event => this.handleSubmit(event)} > 
                     <label htmlFor='signin-email'>Email</label><br></br>
                     <input id='sigin-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
@@ -67,4 +58,4 @@ const mapStateToProps = state => {
             }
 }
 
-export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(SigninContainer)));
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(SigninPage)));

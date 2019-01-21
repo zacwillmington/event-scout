@@ -1,7 +1,8 @@
-function eventsHasErrored(bool) {
+function eventsHasErrored(errors) {
     return {
         type: 'EVENTS_HAS_ERRORS',
-        eventsHasErrors: bool
+        eventsHasErrors: true,
+        errors: errors
     };
 }
 function eventsAreLoading(bool) {
@@ -24,7 +25,7 @@ export const getEvents = searchTerm => {
         const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
         const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
-         //fetch events from API eventBright
+         //fetch events from API eventBrite
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
 
         const homePageUrl = "http://localhost:3000/";
@@ -47,7 +48,3 @@ export const getEvents = searchTerm => {
     }
 }
 
-    export const getEvent = searchTerm => {
-        debugger
-        return { searchTerm }
-        }

@@ -1,10 +1,9 @@
 eventScout
 
-TODO
-    - react routing 
-    - Logout steps
+TODO 
+    - display fetched events
     - siginin funtionality
-    - display events from search
+    - siginup funtionality
     - add crud actions for users
     - add crud actions for events
 

@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
-import EventComponent from '../components/EventComponent';
 
 
 
@@ -27,16 +26,15 @@ class EventsContainer extends Component {
 
     render() {
         return(
-            <div className='eventsContainer'>
-                EventsContainer 
+            <div className='eventsContainer'> 
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                <Switch>
+                 {/* <Switch>
                     <Route exact path='/events' component={Events} />
                     <Route path='users/:id/events/:id' component={EventComponent} />
-                    <Route path='users/:id/events' component={Events} /> {/*Exact path maybe ^^*/}
-                     {/*Exact path maybe ^^*/}
+                    <Route path='users/:id/events' component={Events} />
                      <Route path='events/:id' component={EventComponent}/>
-                </Switch>
+                </Switch> */}
+                <Events events={this.props.events} />
             </div>
         )
     }
@@ -60,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventsContainer))

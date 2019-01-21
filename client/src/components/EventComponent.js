@@ -9,7 +9,7 @@ class EventComponent extends Component {
     render() {
         return (
             <div>
-                EventComponent
+                {this.props.event.url}
             </div>
         )
     }
