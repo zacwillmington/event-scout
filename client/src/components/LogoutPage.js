@@ -8,8 +8,8 @@ import { logoutUser } from '../actions/authActions';
 class LogoutPage extends Component {
 
     componentWillMount() {
-        debugger
          this.props.logoutUser(this.props.currentUser)
+         this.props.history.push('/signin');
     }
   
     render() {
@@ -27,9 +27,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.usersReducer.currentUser,
-        isAuthenticating: state.authReducer.isAuthenticating,
-        isAuthenticated: state.authReducer.isAuthenticated
+        currentUser: state.usersReducer.currentUser
     }
 }
 

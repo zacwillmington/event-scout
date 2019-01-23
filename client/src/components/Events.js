@@ -3,9 +3,6 @@ import EventComponent from './EventComponent';
 import { connect } from 'react-redux';
 
 class Events extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     renderEvents = () => {
         const events = this.props.events;

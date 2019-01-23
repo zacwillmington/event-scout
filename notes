@@ -1,9 +1,9 @@
 eventScout
 
 TODO 
-    - siginin funtionality
+    - siginin funtionality(Authenticate use react router)
+      - Make sure the backend is tight. check if session needs to be set in this auth flow.
     - siginup funtionality
-    - logout functionality
     - add crud actions for users
     - add crud actions for events
 

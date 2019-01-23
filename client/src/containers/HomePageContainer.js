@@ -19,7 +19,7 @@ class HomePageContainer extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.isLoggedin && !this.props.isLoading){
+        if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.history.push('/signin');
         }
     }
@@ -28,7 +28,6 @@ class HomePageContainer extends Component {
         return(
             <div className='homePageContainer'>
                 HomePageContainer 
-                
             </div>
         )
     }

@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     namespace :v1 do 
       get '/signin', to: 'sessions#new'
       post '/signin', to: 'sessions#create'
+      post '/logout', to: 'sessions#destroy'
 
       post '/signup', to: 'users#create'
       post '/find_user', to: 'users#find_user'
 
-      resources :users
       resources :events
       resources :venues
       resources :ticket_classes

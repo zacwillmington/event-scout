@@ -23,7 +23,8 @@ class SigninPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
       this.props.authenticate(this.state);
-    }
+      this.props.history.push('/');
+ }
 
     render() {
       return (
@@ -51,10 +52,11 @@ class SigninPage extends Component {
 }
 
 const mapStateToProps = state => {
-    return { currentUser: state.authReducer.currentUser,
-             isAuthenticating: state.authReducer.isAuthenticating,
-             isAuthenticated: state.authReducer.isAuthenticated,
-             errors: state.authReducer.errors 
+    return { 
+            currentUser: state.authReducer.currentUser,
+            isAuthenticating: state.authReducer.isAuthenticating,
+            isAuthenticated: state.authReducer.isAuthenticated,
+            errors: state.authReducer.errors 
             }
 }
 

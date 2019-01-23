@@ -1,6 +1,6 @@
 const defaultState = {
-    isAuthenicated: false,
-    isAuthencaiting: false,
+    isAuthenticated: false,
+    isAuthenticating: false,
     currentUser: {},
     token: null,
     errors: []
@@ -12,25 +12,24 @@ export default function authReducer(state = defaultState, action) {
         case 'AUTHENTICATION_REQUEST':
         return {
             ...state,
-            isAuthencaiting: false
+            isAuthenticating: true
         }
 
-        case 'AUTHENTICATION_SUCCESS':
-        debugger
+        case 'AUTHENTICATION_SUCCESS':    
             return {
                 ...state,
                 currentUser: action.user,
                 token: action.token,
-                isAuthenicated: true,  
-                isAuthencaiting: false
+                isAuthenticated: true,  
+                isAuthenticating: false
             }
 
         case 'AUTHENTICATION_FAILURE':
             return {
                 ...state,
                 currentUser: {},
-                isAuthenicated: false,  
-                isAuthencaiting: false,
+                isAuthenticated: false,  
+                isAuthenticating: false,
                 token: null,
                 errors: action.errors
             }
@@ -39,8 +38,8 @@ export default function authReducer(state = defaultState, action) {
             return { 
                  ...state,
                  currentUser: null,
-                 isAuthenicated: false,
-                 isAuthenicating: false,
+                 isAuthenticated: false,
+                 isAuthenticating: false,
                  token: null
              }     
 

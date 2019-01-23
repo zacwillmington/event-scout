@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
+import EventComponent from '../components/EventComponent';
 
 
 
@@ -28,12 +29,7 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'> 
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                 {/* <Switch>
-                    <Route exact path='/events' component={Events} />
-                    <Route path='users/:id/events/:id' component={EventComponent} />
-                    <Route path='users/:id/events' component={Events} />
-                     <Route path='events/:id' component={EventComponent}/>
-                </Switch> */}
+                Events 
                 <Events events={this.props.events} />
             </div>
         )
@@ -42,7 +38,6 @@ class EventsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedin: state.usersReducer.isLoggedin,
         eventsAreLoading: state.eventsReducer.eventsAreLoading,
         events: state.eventsReducer.events,
         eventsHasErrors: state.eventsReducer.eventsHasErrors

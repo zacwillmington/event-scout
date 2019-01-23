@@ -21,6 +21,12 @@ export const authFailure = (errors) => {
     }
 }
 
+const logoutSuccess = () => {
+    return {
+        type: 'LOGOUT_USER'
+    }
+}
+
 
 export const authenticate = user => {
     return dispatch => {
@@ -48,6 +54,7 @@ export const authenticate = user => {
 
 export const signupUser = user => {
     const newUser = user;
+    debugger
     return dispatch => {
         return fetch('/api/v1/signup', {
             method: 'post',
@@ -60,8 +67,8 @@ export const signupUser = user => {
         .then( resp => resp.json())
         .then( userData => {
            dispatch(authenticate({
-                    email: newUser.email,
-                    password: newUser.password
+                    email: userData.email,
+                    password: userData.password
                 }))
         }).catch( errors => {
             dispatch(authFailure(errors));    
@@ -87,16 +94,21 @@ export const getUser = user => {
 
 export const logoutUser = user => {
     return dispatch => {
-        debugger
-        return fetch('/logout', {
+        return fetch('/api/v1/logout', {
             method:  'POST',
             headers: {
-                
-            }, body: JSON.stringify(user)
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         })
-        .then()
-        .then()
-        .catch()
+        .then( resp =>resp.json())
+        .then( response => {
+            if (response.ok === true){
+                localStorage.clear()
+                dispatch(logoutSuccess());
+            }
+        })
+        .catch(e => console.log(e));
     }
 }
 

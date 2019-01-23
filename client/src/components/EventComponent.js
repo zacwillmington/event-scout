@@ -3,20 +3,25 @@ import React from 'react';
 const EventComponent = props => {
     return (
         <div>
-        <h1>{props.name}</h1>
-        <img src={props.logo}/>
-        <p>Add Like widget</p>
-        <h3>Description</h3>
-        <p>{props.description}</p>
-        <ul>
-            <p>Starts</p>
-            <li>Timezone: {props.timezoneStart}</li>
-            <li>Time: {props.timeStart}</li>
-            <p>Ends</p>
-            <li>{props.timezoneEnd}</li>
-            <li>{props.timeEnd}</li>
-        </ul>
-    </div>
+            <h1>{props.name}</h1>
+            <img src={props.logo} alt='event-logo'/>
+            <p>Add Like widget</p>
+            <h3>Description</h3>
+            <p>{props.description}</p>
+            <ul>
+                <p>Starts</p>
+                <li>Timezone: {props.timezoneStart}</li>
+                <li>Time: {props.timeStart}</li>
+                <p>Ends</p>
+                <li>{props.timezoneEnd}</li>
+                <li>{props.timeEnd}</li>
+
+                {/* <Link to={`${match.url}/exampleTopicId`}>
+                     Example topic
+                </Link>
+                <Route path={`${match.url}/:topicId`} component={Topic}/> */}
+            </ul>
+        </div>
     )
 }
 export default EventComponent

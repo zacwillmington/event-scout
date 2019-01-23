@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
 import SigninPage from './components/SigninPage';
@@ -9,7 +9,10 @@ import NavBar from './components/NavBar';
 import LogoutPage from './components/LogoutPage';
 import HomePageContainer from './containers/HomePageContainer';
 import EventsContainer from './containers/EventsContainer';
+import Events from './components/Events';
 import AccountContainer from './containers/AccountContainer';
+import EventComponent from './components/EventComponent';
+
 
 
 
@@ -24,14 +27,27 @@ class App extends Component {
         <Router>
           <React.Fragment>
           <NavBar />
-          <Switch>
-            <Route exact path='/' component={HomePageContainer} />
-            <Route path='/events' component={EventsContainer} />
+          {/* Protected routes */}
+          <Route exact path='/' component={HomePageContainer} />
+
+          {/* user's events routes */}
+          <Route exact path='users/:id/events' component={EventsContainer} />
+            <Route exact path='users/:id/events/:id' component={EventComponent} />
+
+            {/* events routes */}
+            <Route exact path='/events' component={EventsContainer} />
+            <Route exact path='events/:id' component={EventComponent} />
+
+            
+
+            {/* Account routes */}
             <Route path='/account' component={AccountContainer} />
+
+        {/* NON protected routes */}
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
             <Route path='/logout' component={LogoutPage} />
-            </Switch>
+      
           </React.Fragment>
         </Router>
       </div>
