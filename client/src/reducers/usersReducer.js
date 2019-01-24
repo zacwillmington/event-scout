@@ -1,44 +1,51 @@
+const defaultState = {
+    user: {},
+    errors: [],
+    isLoading: false,
+    isLoggedin: false
+}
 
 export default function usersReducer(state = defaultState, action) {
         switch (action.type) {
 
 
-            case 'SENDING_ADD_USER_REQUEST':
-                return { 
-                    ...state,
-                    currentUser: null,
-                    isLoggedin: false,  
-                    isLoading: true,
-                    hasErrors: false
-                 }
-
-            case 'ADD_CURRENT_USER':
+            case 'SENDING_USER_REQUEST':
                 return { 
                     ...state,
                     currentUser: action.user,
-                    isLoggedin: true,  
+                    isAuthenticated: true,
+                    isLoading: true,
+                    errors: []
+                 }
+
+            case 'UPDATE_CURRENT_USER':
+                return { 
+                    ...state,
+                    currentUser: action.user,
+                    isAuthenticated: true,
                     isLoading: false,
-                    hasErrors: false
+                    errors: []
                  }
        
             case 'USER_HAS_ERRORS':
                 return { 
                     ...state,
                     currentUser: null,
-                    isLoggedin: false,
-                    hasErrors: true,
+                    isAuthenticated: true,                    
                     errors: action.errors,
                     isLoading: false
                  }
 
+            case 'DELETE_USER':
+                return {
+                    ...state,
+                    currentUser: action.user,
+                    isAuthenticated: false,                    
+                    isLoading: false,
+                    errors: []
+                } 
+
             default:
                 return state;
         }
-    }
-
-    const defaultState = {
-        user: {},
-        errors: [],
-        isLoading: false,
-        isLoggedin: false
     }

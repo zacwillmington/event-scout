@@ -3,10 +3,7 @@ module Api
     module V1
         class SessionsController < ApplicationController
             before_action :authenticate_user, only: [:new, :create] 
-            def new 
-                # binding.pry
-            end
-
+            
             def create 
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params['password'])

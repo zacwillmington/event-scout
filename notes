@@ -1,11 +1,14 @@
 eventScout
 
+git commit - "Added connect and withRouter to AccountContainer as well as mapping dispatch and state. Authenticate using componentDidMount(). Refactored userActions to accomodate update and delete actions."
+
 TODO 
-    - siginin funtionality(Authenticate use react router)
-      - Make sure the backend is tight. check if session needs to be set in this auth flow.
-    - siginup funtionality
     - add crud actions for users
     - add crud actions for events
+
+    LAST
+    - siginin funtionality(Authenticate use react router)
+      - Make sure the backend is tight. check if session needs to be set in this auth flow.
 
 
 

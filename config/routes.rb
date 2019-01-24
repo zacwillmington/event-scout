@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   #Trim unnecessary routes after MPV is functioning
   
   namespace :api do 
+    # Knock middleware route
     post '/user_token' => 'user_token#create'
     namespace :v1 do 
-      get '/signin', to: 'sessions#new'
+
       post '/signin', to: 'sessions#create'
       post '/logout', to: 'sessions#destroy'
 
