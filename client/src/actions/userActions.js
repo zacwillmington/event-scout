@@ -32,3 +32,21 @@ export const addCurrentUser = user => {
     }
 }
 
+export const editUser = user => {
+    return dispatch => {
+        fetch(`api/v1/users/${user.id}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(updatedUser => {
+            console.log(updatedUser);
+        })
+        .catch(e => console.log(e))
+    }
+}
+
+

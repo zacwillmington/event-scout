@@ -41,8 +41,8 @@ class SignupPage extends Component {
 
     render() {
       return (
-        <div>
             <div className='signupInput'>
+            <h1>Sign Up</h1>
                 <form onSubmit={event => this.handleSubmit(event)} > 
                     <label htmlFor='signup-user_name'>Username</label><br></br>
                     <input id='signup-user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}/>
@@ -56,7 +56,6 @@ class SignupPage extends Component {
                     <input className='btn btn-primary' type='submit' value='Sign up'/>
                 </form>
             </div>
-        </div>
       )
     }
   }

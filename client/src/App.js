@@ -12,6 +12,7 @@ import EventsContainer from './containers/EventsContainer';
 import Events from './components/Events';
 import AccountContainer from './containers/AccountContainer';
 import EventComponent from './components/EventComponent';
+import UserInput from './components/UserInput';
 
 
 
@@ -41,7 +42,8 @@ class App extends Component {
             
 
             {/* Account routes */}
-            <Route path='/account' component={AccountContainer} />
+            <Route path='/Account' component={AccountContainer} />
+            <Route path='/users/:id' component={UserInput} />
 
         {/* NON protected routes */}
             <Route path='/signup' component={SignupPage} />

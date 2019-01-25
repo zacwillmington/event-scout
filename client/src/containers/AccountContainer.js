@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
+
+import UserInput from '../components/UserInput';
+
 
 class AccountContainer extends Component {
     constructor(props){
@@ -20,6 +24,9 @@ class AccountContainer extends Component {
         return(
             <div className='AccountContainer'>
                 AccountContainer 
+                Edit account info button
+                <Link to={`/users/${this.props.currentUser.id}`}>Edit Account Info</Link> 
+                <a>Delete Account</a>                 
             </div>
         )
     }
@@ -34,10 +41,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    editUser: () => {
-        dispatch()
-    }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountContainer))
+export default withRouter(connect(mapStateToProps)(AccountContainer))

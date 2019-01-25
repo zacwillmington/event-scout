@@ -14,7 +14,6 @@ module Api
 
                 if @user.save
                 binding.pry
-
                     render json: @user, status: 201
                 else
                     render json: @user.errors, status: 400
@@ -22,11 +21,11 @@ module Api
             end
             
             def show
-
+                binding.pry                
             end
 
             def update
-
+                binding.pry
             end
 
             def delete

@@ -1,6 +1,6 @@
 eventScout
 
-git commit - "Added connect and withRouter to AccountContainer as well as mapping dispatch and state. Authenticate using componentDidMount(). Refactored userActions to accomodate update and delete actions."
+"Created UserInput form component and hooked up dispatch for editing user account information."
 
 TODO 
     - add crud actions for users

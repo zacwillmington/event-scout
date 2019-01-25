@@ -28,8 +28,8 @@ class SigninPage extends Component {
 
     render() {
       return (
-        <div>
             <div className='signinInput'>
+            <h1>Sign In</h1>
                 <form onSubmit={event => this.handleSubmit(event)} > 
                     <label htmlFor='signin-email'>Email</label><br></br>
                     <input id='sigin-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
@@ -39,7 +39,6 @@ class SigninPage extends Component {
                     <input className='btn btn-primary' type='submit' value='Sign in'/>
                 </form>
             </div>
-        </div>
       )
     }
 }
