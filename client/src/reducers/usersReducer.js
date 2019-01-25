@@ -31,7 +31,7 @@ export default function usersReducer(state = defaultState, action) {
                 return { 
                     ...state,
                     currentUser: null,
-                    isAuthenticated: true,                    
+                    isAuthenticated: true,  
                     errors: action.errors,
                     isLoading: false
                  }
@@ -40,7 +40,7 @@ export default function usersReducer(state = defaultState, action) {
                 return {
                     ...state,
                     currentUser: action.user,
-                    isAuthenticated: false,                    
+                    isAuthenticated: false, 
                     isLoading: false,
                     errors: []
                 } 

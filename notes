@@ -1,12 +1,14 @@
 eventScout
 
-"Created UserInput form component and hooked up dispatch for editing user account information."
+
 
 TODO 
     - add crud actions for users
     - add crud actions for events
+    - Change LogoutPage to simple component
 
     LAST
+    AUTHENTICATION....
     - siginin funtionality(Authenticate use react router)
       - Make sure the backend is tight. check if session needs to be set in this auth flow.
 
@@ -30,7 +32,7 @@ maybe event on share on social media?
 
 Schema 
     - Users
-        - username
+        - user_name
         - email
         - password
 

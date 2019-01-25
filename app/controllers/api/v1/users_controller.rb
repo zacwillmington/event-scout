@@ -3,17 +3,11 @@ module Api
         class UsersController < ApplicationController
             # before_action :authenticate_user
             # before_action :set_user, only: [:show, :update]
-            def new
-
-            end
 
             def create
-                binding.pry
+                # binding.pry
                 @user = User.new(strong_params)
-                binding.pry
-
-                if @user.save
-                binding.pry
+                if @user.save    
                     render json: @user, status: 201
                 else
                     render json: @user.errors, status: 400
@@ -21,11 +15,19 @@ module Api
             end
             
             def show
-                binding.pry                
+                               
             end
 
             def update
-                binding.pry
+                @user = User.find(params[:id].to_i)
+                # set_user
+                @user.update(strong_params)
+                @user.save
+                if (@user.save)
+                    render json: @user, status: 201
+                else
+                    render json: @user.errors, status: 404
+                end
             end
 
             def delete

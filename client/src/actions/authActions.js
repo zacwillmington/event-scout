@@ -53,8 +53,6 @@ export const authenticate = user => {
 }
 
 export const signupUser = user => {
-    const newUser = user;
-    debugger
     return dispatch => {
         return fetch('/api/v1/signup', {
             method: 'post',

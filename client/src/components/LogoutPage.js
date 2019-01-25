@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { logoutUser } from '../actions/authActions';
 
-
+// Change to simple component
 class LogoutPage extends Component {
 
     componentWillMount() {

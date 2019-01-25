@@ -8,6 +8,7 @@ class UserInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: this.props.currentUser.id,
           user_name: this.props.currentUser.user_name,
             email: this.props.currentUser.email,
             password: this.props.currentUser.password
