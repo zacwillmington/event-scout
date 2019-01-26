@@ -20,13 +20,12 @@ module Api
 
             def update
                 @user = User.find(params[:id].to_i)
-                # set_user
                 @user.update(strong_params)
-                @user.save
-                if (@user.save)
+                if @user.save
                     render json: @user, status: 201
                 else
-                    render json: @user.errors, status: 404
+                    
+                    render json: @user.errors, status: :unprocessable_entity
                 end
             end
 

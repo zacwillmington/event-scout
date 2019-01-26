@@ -4,11 +4,19 @@ eventScout
 
 TODO 
     - add crud actions for users
-    - add crud actions for events
-    - Change LogoutPage to simple component
+        - Error messages on backend for update, create and frontend pop-up
 
-    LAST
+
+    - add crud actions for events
+
+    - Change LogoutPage to simple component
+    
+    - STYLING
+
+
+LAST
     AUTHENTICATION....
+    - on signin and maybe signup the user object is not getting Authenticated using bcrypt. 
     - siginin funtionality(Authenticate use react router)
       - Make sure the backend is tight. check if session needs to be set in this auth flow.
 

@@ -13,6 +13,8 @@ const userErrors = errors => {
 }
 
 export const editUser = user => {
+
+    //Should I authenticate first
     return dispatch => {
         fetch(`/api/v1/users/${user.id}`, {
             method: 'PATCH',
@@ -21,12 +23,21 @@ export const editUser = user => {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(user)
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.ok){
+                res.json()
+            } else {
+                debugger
+                throw new Error('')
+            }
+        })
         .then(updatedUser => {
+            debugger
             dispatch(editSuccess(updatedUser));
         })
-        .catch(e => {
-             dispatch(userErrors(e))
+        .catch( e => {
+            debugger
+            dispatch(userErrors(e));
         })
     }
 }
