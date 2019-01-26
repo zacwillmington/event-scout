@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { withAlert } from "react-alert";
 
 import { editUser } from '../actions/userActions';
 
@@ -15,8 +16,12 @@ class UserInput extends Component {
         }
       }
     
-      componentDidMount() {
-    
+      componentDidUpdate() {
+          debugger
+          if(this.props.hasErrors){
+              debugger
+              this.props.alert.error("error");
+          }
       }
 
       handleOnChange = event => {
@@ -65,7 +70,9 @@ const mapStateToProps = state => {
     return {
         ...state, 
         currentUser: state.authReducer.currentUser,
-        isLoading: state.usersReducer.isLoading
+        isLoading: state.usersReducer.isLoading,
+        errors: state.usersReducer.errors,
+        hasErrors: state.usersReducer.hasErrors
     }
 }
 
@@ -77,4 +84,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserInput));
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(UserInput)));
