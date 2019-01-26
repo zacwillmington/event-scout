@@ -25,7 +25,7 @@ module Api
                     render json: @user, status: 201
                 else
                     
-                    render json: @user.errors, status: :unprocessable_entity
+                    render json: { :errors => @user.errors, ok: false }
                 end
             end
 

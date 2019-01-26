@@ -13,8 +13,7 @@ const userErrors = errors => {
 }
 
 export const editUser = user => {
-
-    //Should I authenticate first
+    //Should I authenticate first?
     return dispatch => {
         fetch(`/api/v1/users/${user.id}`, {
             method: 'PATCH',
@@ -24,25 +23,17 @@ export const editUser = user => {
             }, body: JSON.stringify(user)
         })
         .then(res => {
-            if(res.ok){
-                res.json()
-            } else {
-                debugger
-                throw new Error('')
+            return res.json();
+          })
+          .then( user => {
+            if(!user.ok) {
+                dispatch(userErrors(user.errors))
+            }else {
+                dispatch(editSuccess(user));
             }
-        })
-        .then(updatedUser => {
-            debugger
-            dispatch(editSuccess(updatedUser));
-        })
-        .catch( e => {
-            debugger
-            dispatch(userErrors(e));
-        })
+          })
     }
 }
-
-
 
 // Adds user to eventScout's Rails backend DB
 // export const addCurrentUser = user => {

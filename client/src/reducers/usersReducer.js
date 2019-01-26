@@ -19,6 +19,7 @@ export default function usersReducer(state = defaultState, action) {
                  }
 
             case 'UPDATE_CURRENT_USER':
+            debugger
                 return { 
                     ...state,
                     currentUser: action.user,
@@ -28,6 +29,7 @@ export default function usersReducer(state = defaultState, action) {
                  }
        
             case 'USER_HAS_ERRORS':
+            debugger
                 return { 
                     ...state,
                     currentUser: null,
