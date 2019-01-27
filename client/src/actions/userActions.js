@@ -5,16 +5,25 @@ const editSuccess = user => {
     }
 }
 
-const userErrors = errors => {
+const userErrors = (user,errors) => {
     return {
         type: 'USER_HAS_ERRORS',
+        user: user,
         errors: errors
+    }
+}
+
+const sendingUpdate = user => {
+    return {
+        type: 'SENDING_USER_REQUEST',
+        user: user
     }
 }
 
 export const editUser = user => {
     //Should I authenticate first?
     return dispatch => {
+        dispatch(sendingUpdate(user));
         fetch(`/api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -25,9 +34,9 @@ export const editUser = user => {
         .then(res => {
             return res.json();
           })
-          .then( user => {
-            if(!user.ok) {
-                dispatch(userErrors(user.errors))
+          .then( userData => {
+            if(!userData.ok) {
+                dispatch(userErrors(userData.user, userData.errors))
             }else {
                 dispatch(editSuccess(user));
             }

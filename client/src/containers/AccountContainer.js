@@ -20,9 +20,10 @@ class AccountContainer extends Component {
         return(
             <div className='AccountContainer'>
                 AccountContainer 
-                Edit account info button
-                <Link to={`/users/${this.props.currentUser.id}`}>Edit Account Info</Link> 
-                <a>Delete Account</a>                 
+                <br></br>
+                <Link className='btn btn-primary' to={`/users/${this.props.currentUser.id}`}>Edit Account Info</Link>
+                <br></br> 
+                <a className='btn btn-primary'>Delete Account</a>                 
             </div>
         )
     }

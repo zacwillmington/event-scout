@@ -32,7 +32,7 @@ export default function usersReducer(state = defaultState, action) {
             case 'USER_HAS_ERRORS':
                 return { 
                     ...state,
-                    currentUser: null,
+                    currentUser: action.user,
                     isAuthenticated: true,  
                     errors: action.errors,
                     isLoading: false,

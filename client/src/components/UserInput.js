@@ -16,11 +16,18 @@ class UserInput extends Component {
         }
       }
     
-      componentDidUpdate() {
-          debugger
-          if(this.props.hasErrors){
-              debugger
-              this.props.alert.error("error");
+      componentDidUpdate(prevProps) {
+          if(this.props.hasErrors && prevProps.isLoading){
+                this.renderErrors();
+          }
+      }
+
+      renderErrors = () => {
+        if(Object.keys(this.props.errors).length > 0){
+            Object.keys(this.props.errors).map((key, index) => {
+                    let errorText = `${key}: ${this.props.errors[key]}`
+                    this.props.alert.error(errorText);
+              })
           }
       }
 
@@ -31,19 +38,16 @@ class UserInput extends Component {
       }
     
       handleSubmit = event => {
+          
           event.preventDefault();
           this.setState({
               user_name: this.state.user_name,
               email: this.state.email,
-              password: this.state.password_digest
+              password: this.state.password
           })
           const user = this.state;
+          
           this.props.editUser(user);
-          this.setState({ 
-            user_name: '',
-            email: '',
-            password: ''
-          });
       } 
 
     render() {
@@ -52,9 +56,6 @@ class UserInput extends Component {
                 <form onSubmit={event => this.handleSubmit(event)} > 
                     <label htmlFor='user_name'>Username</label><br></br>
                     <input id='user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}/>
-                    <br></br>
-                    <label htmlFor='email'>Email</label><br></br>
-                    <input id='email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
                     <br></br>
                     <label htmlFor='password'>Password</label><br></br>
                     <input id='password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password}/>
