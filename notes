@@ -5,8 +5,7 @@ eventScout
 TODO 
     - add crud actions for users
         - Error messages on backend for update, create and frontend pop-up
-
-
+        - delete user actions 
     - add crud actions for events
 
     - Change LogoutPage to simple component

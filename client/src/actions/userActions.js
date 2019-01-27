@@ -20,6 +20,13 @@ const sendingUpdate = user => {
     }
 }
 
+const deleteUserSuccess= user => {
+    return {
+        type: 'DELETE_USER',
+        user: user
+    }
+}
+
 export const editUser = user => {
     //Should I authenticate first?
     return dispatch => {
@@ -43,6 +50,32 @@ export const editUser = user => {
           })
     }
 }
+
+
+esxport const deleteUser = user => {
+    return dispatch => {
+        dispatch(sendingUpdate(user))
+        debugger
+        fetch(`/api/v1/users/${user.id}`,{
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/js',
+                'Content-Type': 'application/js',
+            }, body: JSON.stringify(user)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            if(!data.ok) {
+                debugger
+                dispatch(userErrors(data.user, data.errors))
+            }else {
+                debugger
+                dispatch(deleteUserSuccess(user))
+            }
+        })
+    }
+}
+
 
 // Adds user to eventScout's Rails backend DB
 // export const addCurrentUser = user => {

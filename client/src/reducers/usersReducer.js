@@ -40,9 +40,10 @@ export default function usersReducer(state = defaultState, action) {
                  }
 
             case 'DELETE_USER':
+            debugger;
                 return {
                     ...state,
-                    currentUser: action.user,
+                    currentUser: {},
                     isAuthenticated: false, 
                     isLoading: false,
                     errors: []

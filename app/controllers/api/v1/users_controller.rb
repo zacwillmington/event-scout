@@ -28,7 +28,10 @@ module Api
             end
 
             def delete
-
+                binding.pry
+                @user  = set_user
+                @user.delete
+                binding.pry
             end
 
             def find_user

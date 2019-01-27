@@ -10,7 +10,13 @@ class AccountContainer extends Component {
         }
     }
 
-    componentDidMount(){
+    // componentDidMount(){
+    //     if (!this.props.isAuthenticated && !this.props.isAuthenticating) {
+    //         this.props.history.push('/signin');
+    //     }
+    // }
+
+    componentWillMount(){
         if (!this.props.isAuthenticated && !this.props.isAuthenticating) {
             this.props.history.push('/signin');
         }
