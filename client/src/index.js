@@ -13,7 +13,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/manageReducers';
 
 const options = {
-    position: 'middle top',
+    position: 'top left',
     timeout: 5000,
     offset: '30px',
     transition: 'scale'

@@ -26,7 +26,7 @@ class UserInput extends Component {
         if(Object.keys(this.props.errors).length > 0){
             Object.keys(this.props.errors).map((key, index) => {
                     let errorText = `${key}: ${this.props.errors[key]}`
-                    this.props.alert.error(errorText);
+                    return this.props.alert.error(errorText);
               })
           }
       }

@@ -1,6 +1,6 @@
 eventScout
 
-
+"Changed account button to a simple function component. Moved delete user logic to AccountContainer to handle dispatch via a callback onSubmit."
 
 TODO 
     - add crud actions for users

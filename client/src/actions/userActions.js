@@ -52,7 +52,7 @@ export const editUser = user => {
 }
 
 
-esxport const deleteUser = user => {
+export const deleteUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user))
         debugger
