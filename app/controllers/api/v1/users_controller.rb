@@ -23,15 +23,26 @@ module Api
                 if @user.save
                     render json: @user, status: 201
                 else
-                    render json: { :user => @user, :errors => @user.errors, :ok => false }
+                    render json: { 
+                        :user => @user, 
+                        :errors => @user.errors,
+                         :ok => false
+                     }
                 end
             end
 
-            def delete
-                binding.pry
+            def destroy
                 @user  = set_user
-                @user.delete
-                binding.pry
+                if @user.destroy
+                    render json: { 
+                        message: 'Account has been deleted', ok: true 
+                    }
+                else 
+                    render json: { 
+                        message: @user.errors, 
+                        ok: false 
+                    }
+                end
             end
 
             def find_user

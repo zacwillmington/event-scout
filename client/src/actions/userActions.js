@@ -20,7 +20,7 @@ const sendingUpdate = user => {
     }
 }
 
-const deleteUserSuccess= user => {
+const deleteUserSuccess= (user) => {
     return {
         type: 'DELETE_USER',
         user: user
@@ -55,7 +55,6 @@ export const editUser = user => {
 export const deleteUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user))
-        debugger
         fetch(`/api/v1/users/${user.id}`,{
             method: 'DELETE',
             headers: {
@@ -66,10 +65,8 @@ export const deleteUser = user => {
         .then(resp => resp.json())
         .then(data => {
             if(!data.ok) {
-                debugger
                 dispatch(userErrors(data.user, data.errors))
             }else {
-                debugger
                 dispatch(deleteUserSuccess(user))
             }
         })

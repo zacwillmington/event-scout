@@ -5,12 +5,6 @@ import { withRouter } from "react-router-dom";
 
 
 class HomePageContainer extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            
-        }
-    }
 
     componentDidUpdate(prevProps, prevState) {
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){

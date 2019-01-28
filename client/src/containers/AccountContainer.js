@@ -6,13 +6,7 @@ import DeleteAccount from '../components/DeleteAccount';
 import { deleteUser } from '../actions/userActions';
 
 class AccountContainer extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            
-        }
-    }
-
+  
     componentWillMount(){
         if (!this.props.isAuthenticated && !this.props.isAuthenticating) {
             this.props.history.push('/signin');
@@ -21,6 +15,8 @@ class AccountContainer extends Component {
 
     handleDelete = (event) => {
         event.preventDefault();
+        this.props.deleteUser(this.props.currentUser);
+        this.props.history.push('/signup');
 
     }
 
