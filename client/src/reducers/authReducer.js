@@ -15,13 +15,14 @@ export default function authReducer(state = defaultState, action) {
             isAuthenticating: true
         }
 
-        case 'AUTHENTICATION_SUCCESS':    
+        case 'AUTHENTICATION_SUCCESS':   
             return {
                 ...state,
                 currentUser: action.user,
                 token: action.token,
                 isAuthenticated: true,  
-                isAuthenticating: false
+                isAuthenticating: false,
+                hasErrors: false
             }
 
         case 'AUTHENTICATION_FAILURE':
@@ -31,6 +32,7 @@ export default function authReducer(state = defaultState, action) {
                 isAuthenticated: false,  
                 isAuthenticating: false,
                 token: null,
+                hasErrors: true,
                 errors: action.errors
             }
         

@@ -9,7 +9,6 @@ import NavBar from './components/NavBar';
 import LogoutPage from './components/LogoutPage';
 import HomePageContainer from './containers/HomePageContainer';
 import EventsContainer from './containers/EventsContainer';
-import Events from './components/Events';
 import AccountContainer from './containers/AccountContainer';
 import EventComponent from './components/EventComponent';
 import UserInput from './components/UserInput';

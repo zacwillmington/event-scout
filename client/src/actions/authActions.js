@@ -64,12 +64,14 @@ export const signupUser = user => {
         })
         .then( resp => resp.json())
         .then( userData => {
-           dispatch(authenticate({
+            if(!userData.ok){
+                dispatch(authFailure(userData.errors))
+            }else {
+                dispatch(authenticate({
                     email: userData.email,
                     password: userData.password
                 }))
-        }).catch( errors => {
-            dispatch(authFailure(errors));    
+            }
         })
     }
 }

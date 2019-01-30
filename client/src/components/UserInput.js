@@ -69,7 +69,6 @@ class UserInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state, 
         currentUser: state.authReducer.currentUser,
         isLoading: state.usersReducer.isLoading,
         errors: state.usersReducer.errors,

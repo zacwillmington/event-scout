@@ -4,12 +4,14 @@ module Api
           
 
             def create
-                # binding.pry
                 @user = User.new(strong_params)
                 if @user.save    
                     render json: @user, status: 201
                 else
-                    render json: @user.errors, status: 400
+                    render json: {
+                        errors: @user.errors.messages,
+                         ok: false
+                    }
                 end
             end
             

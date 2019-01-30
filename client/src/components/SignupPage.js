@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import { withAlert } from "react-alert";
 import { signupUser } from '../actions/authActions';
+import { displayErrors } from './Errors'
+
 
 class SignupPage extends Component {
   constructor(props) {
@@ -15,6 +18,11 @@ class SignupPage extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
+    if(this.props.hasErrors && !prevProps.hasErrors){
+      //create rendering errors file and function and import it(user Input) component
+      displayErrors(this.props.errors);
+      // this.props.alert.error("errors");
+    }
   }
 
   handleOnChange = event => {
@@ -72,9 +80,10 @@ class SignupPage extends Component {
     return {
        isAuthenticating: state.authReducer.isAuthenticating,
         isAuthenticated: state.authReducer.isAuthenticated,
+        hasErrors: state.authReducer.hasErrors,
         errors: state.authReducer.errors
     }
   }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupPage));
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupPage)));

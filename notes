@@ -1,6 +1,5 @@
 eventScout
 
-"Finished out delete functionality for users."
 TODO 
     - add crud actions for users
         - Error messages on backend for update, create and frontend pop-up

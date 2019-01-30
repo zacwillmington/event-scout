@@ -4,6 +4,8 @@ import { authenticate } from '../actions/authActions';
 import { withAlert } from "react-alert";
 import { withRouter } from 'react-router-dom';
 
+import {Errors} from './Errors'
+
 
 class SigninPage extends Component {
   constructor(props) {
@@ -13,6 +15,14 @@ class SigninPage extends Component {
         password: ""
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.hasErrors && prevProps.isLoading){
+        debugger
+          this.renderErrors();
+    }
+  }
+  
 
   handleOnChange = event => {
     this.setState({
