@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withAlert } from "react-alert";
 
+import { displayErrors } from './Errors';
 import { editUser } from '../actions/userActions';
 
 class UserInput extends Component {
@@ -18,16 +19,7 @@ class UserInput extends Component {
     
       componentDidUpdate(prevProps) {
           if(this.props.hasErrors && prevProps.isLoading){
-                this.renderErrors();
-          }
-      }
-
-      renderErrors = () => {
-        if(Object.keys(this.props.errors).length > 0){
-            Object.keys(this.props.errors).map((key, index) => {
-                    let errorText = `${key}: ${this.props.errors[key]}`
-                    return this.props.alert.error(errorText);
-              })
+              displayErrors(this.props.errors, this.props.alert);        
           }
       }
 

@@ -4,7 +4,7 @@ import { authenticate } from '../actions/authActions';
 import { withAlert } from "react-alert";
 import { withRouter } from 'react-router-dom';
 
-import {Errors} from './Errors'
+import { displayErrors } from './Errors'
 
 
 class SigninPage extends Component {
@@ -16,10 +16,9 @@ class SigninPage extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if(this.props.hasErrors && prevProps.isLoading){
-        debugger
-          this.renderErrors();
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.hasErrors && !prevProps.hasErrors){
+      displayErrors(this.props.errors, this.props.alert);
     }
   }
   

@@ -19,9 +19,7 @@ class SignupPage extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(this.props.hasErrors && !prevProps.hasErrors){
-      //create rendering errors file and function and import it(user Input) component
-      displayErrors(this.props.errors);
-      // this.props.alert.error("errors");
+      displayErrors(this.props.errors, this.props.alert);
     }
   }
 
