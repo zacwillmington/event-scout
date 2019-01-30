@@ -18,8 +18,10 @@ class SignupPage extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.props.hasErrors && !prevProps.hasErrors){
+    if(this.props.hasErrors && prevProps.isAuthenticating){
       displayErrors(this.props.errors, this.props.alert);
+    } else if(this.props.isAuthenticated) { 
+      this.props.history.push('/');
     }
   }
 

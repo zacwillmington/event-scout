@@ -21,6 +21,12 @@ export const authFailure = (errors) => {
     }
 }
 
+const loadingAuthRequest = () => {
+    return {
+        type: 'LOADING_AUTH_REQUEST'
+    }
+}
+
 const logoutSuccess = () => {
     return {
         type: 'LOGOUT_USER'
@@ -31,47 +37,36 @@ const logoutSuccess = () => {
 export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
+        //Added this dispatch so that React object lifecycle method will can use prevProps to know whether to display error in signIn component.
         const userTokenUrl = 'http://localhost:3000/api/user_token';
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*"
-            },
-             body: JSON.stringify({auth: user})
+                'Accept': 'application/json'
+            }, body: JSON.stringify({auth: user})
         })
-        .then( resp => resp.json())
+        .then( resp => {
+            // if (!resp.ok){
+            //     const errorMsg =  {
+            //         "User Name or Email": "Doesn't match our records"
+            //         }
+            //     dispatch(authFailure(errorMsg))
+            //     localStorage.clear()
+            // }
+            // dispatch(loadingAuthRequest());
+           return resp.json()
+        })
         .then(response => {
             const token = response.jwt;
             localStorage.setItem('token', token);
             dispatch(getUser(user))
         }).catch( errors => {
-            dispatch(authFailure(errors))
+          const errorMsg =  {
+                "User Name or Email": "Doesn't match our records"
+                }
+            dispatch(authFailure(errorMsg))
             localStorage.clear()
-        })
-    }
-}
-
-export const signupUser = user => {
-    return dispatch => {
-        return fetch('/api/v1/signup', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user: user })
-        })
-        .then( resp => resp.json())
-        .then( userData => {
-            if(!userData.ok){
-                dispatch(authFailure(userData.errors))
-            }else {
-                dispatch(authenticate({
-                    email: userData.email,
-                    password: userData.password
-                }))
-            }
         })
     }
 }
@@ -88,6 +83,32 @@ export const getUser = user => {
         .then(resp => resp.json())
         .then( receivedUser => {
             dispatch(authSuccess(receivedUser, localStorage.getItem('token')));    
+        })
+    }
+}
+
+export const signupUser = user => {
+    return dispatch => {
+        dispatch(authRequest());
+        return fetch('/api/v1/signup', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: user })
+        })
+        .then( resp => resp.json())
+        .then( userData => {
+            debugger
+            if(!userData.ok){
+                dispatch(authFailure(userData.errors))
+            }else {
+                dispatch(authenticate({
+                    email: userData.email,
+                    password: userData.password
+                }))
+            }
         })
     }
 }

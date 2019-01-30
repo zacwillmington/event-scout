@@ -17,7 +17,7 @@ class SigninPage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.props.hasErrors && !prevProps.hasErrors){
+    if(this.props.hasErrors && prevState.email === "" && prevState.password === ""){
       displayErrors(this.props.errors, this.props.alert);
     }
   }
@@ -64,6 +64,8 @@ const mapStateToProps = state => {
             currentUser: state.authReducer.currentUser,
             isAuthenticating: state.authReducer.isAuthenticating,
             isAuthenticated: state.authReducer.isAuthenticated,
+            isLoading: state.authReducer.isLoading,
+            hasErrors: state.authReducer.hasErrors,
             errors: state.authReducer.errors 
             }
 }

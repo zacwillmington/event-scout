@@ -1,6 +1,8 @@
 const defaultState = {
     isAuthenticated: false,
     isAuthenticating: false,
+    isLoading: false,
+    hasErrors: false,
     currentUser: {},
     token: null,
     errors: []
@@ -9,11 +11,21 @@ const defaultState = {
 export default function authReducer(state = defaultState, action) {
     switch (action.type) {
 
+        case 'LOADING_AUTH_REQUEST':
+        console.log("loading..")
+            return {
+                ...state,
+                isLoading: true,
+                hasErrors: false
+            }
+
         case 'AUTHENTICATION_REQUEST':
-        return {
-            ...state,
-            isAuthenticating: true
-        }
+        console.log("Authenticating");
+            return {
+                ...state,
+                isAuthenticating: true,
+                isLoading: true
+            }
 
         case 'AUTHENTICATION_SUCCESS':   
             return {
@@ -26,11 +38,14 @@ export default function authReducer(state = defaultState, action) {
             }
 
         case 'AUTHENTICATION_FAILURE':
+        
+        console.log("auth fail")
             return {
                 ...state,
                 currentUser: {},
                 isAuthenticated: false,  
                 isAuthenticating: false,
+                isLoading: false,
                 token: null,
                 hasErrors: true,
                 errors: action.errors
