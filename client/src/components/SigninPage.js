@@ -30,7 +30,7 @@ class SigninPage extends Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
+      event.preventDefault();
       this.props.authenticate(this.state);
       this.props.history.push('/');
  }

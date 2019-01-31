@@ -3,13 +3,11 @@ module Api
     module V1
         class SessionsController < ApplicationController
             before_action :authenticate_user, only: [:new, :create] 
-            
+            ##Dont need this knock does auth
             def create 
-                binding.pry
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params['password'])
                     session[:id] = @user.id
-                    # binding.pry
                     render json: @user, status: 201 
                 else
 
@@ -23,7 +21,6 @@ module Api
             end
 
             def destroy
-                # binding.pry
                 session[:id] = nil
                 render json: {ok: true, status: 201, 'message': 'Successfully logged out.'}
             end

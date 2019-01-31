@@ -6,7 +6,11 @@ module Api
             def create
                 @user = User.new(strong_params)
                 if @user.save    
-                    render json: @user, status: 201
+                    render json: { 
+                        user: @user,
+                        status: 201,
+                        ok: true 
+                }
                 else
                     render json: {
                         errors: @user.errors.messages,

@@ -1,4 +1,3 @@
-// import fetch from 'isomorphic-fetch';
 
 export const authRequest = () => {
     return {
@@ -47,14 +46,6 @@ export const authenticate = user => {
             }, body: JSON.stringify({auth: user})
         })
         .then( resp => {
-            // if (!resp.ok){
-            //     const errorMsg =  {
-            //         "User Name or Email": "Doesn't match our records"
-            //         }
-            //     dispatch(authFailure(errorMsg))
-            //     localStorage.clear()
-            // }
-            // dispatch(loadingAuthRequest());
            return resp.json()
         })
         .then(response => {
@@ -88,6 +79,7 @@ export const getUser = user => {
 }
 
 export const signupUser = user => {
+
     return dispatch => {
         dispatch(authRequest());
         return fetch('/api/v1/signup', {
@@ -100,14 +92,10 @@ export const signupUser = user => {
         })
         .then( resp => resp.json())
         .then( userData => {
-            debugger
             if(!userData.ok){
-                dispatch(authFailure(userData.errors))
+                dispatch(authFailure(user))
             }else {
-                dispatch(authenticate({
-                    email: userData.email,
-                    password: userData.password
-                }))
+                dispatch(authenticate(user))
             }
         })
     }

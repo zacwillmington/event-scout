@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import DeleteAccount from '../components/DeleteAccount';
 import { deleteUser } from '../actions/userActions';
+import { logoutUser } from '../actions/authActions';
 
 class AccountContainer extends Component {
   
@@ -15,6 +16,7 @@ class AccountContainer extends Component {
 
     handleDelete = (event) => {
         event.preventDefault();
+        this.props.logoutUser(this.props.currentUser);
         this.props.deleteUser(this.props.currentUser);
         this.props.history.push('/signup');
 
@@ -46,8 +48,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteUser: user => {
+         deleteUser: user => {
             dispatch(deleteUser(user))
+          },
+           
+        logoutUser: user => {
+            dispatch(logoutUser(user))
         }
     }
 }

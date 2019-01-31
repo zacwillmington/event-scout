@@ -39,7 +39,6 @@ export default function usersReducer(state = defaultState, action) {
                  }
 
             case 'DELETE_USER':
-            debugger;
                 return {
                     ...state,
                     currentUser: {},

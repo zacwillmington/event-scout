@@ -12,7 +12,6 @@ export default function authReducer(state = defaultState, action) {
     switch (action.type) {
 
         case 'LOADING_AUTH_REQUEST':
-        console.log("loading..")
             return {
                 ...state,
                 isLoading: true,
@@ -20,7 +19,6 @@ export default function authReducer(state = defaultState, action) {
             }
 
         case 'AUTHENTICATION_REQUEST':
-        console.log("Authenticating");
             return {
                 ...state,
                 isAuthenticating: true,
@@ -38,8 +36,6 @@ export default function authReducer(state = defaultState, action) {
             }
 
         case 'AUTHENTICATION_FAILURE':
-        
-        console.log("auth fail")
             return {
                 ...state,
                 currentUser: {},
