@@ -21,7 +21,6 @@ class SignupPage extends Component {
     if(this.props.hasErrors && prevProps.isAuthenticating){
       displayErrors(this.props.errors, this.props.alert);
     } else if(this.props.isAuthenticated) { 
-      debugger
       this.props.history.push('/');
     }
   }

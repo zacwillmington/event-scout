@@ -1,6 +1,7 @@
 
 export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
+
         case 'EVENTS_HAS_ERRORS':
             return { 
                 ...state,
@@ -22,6 +23,18 @@ export default function eventsReducer(state = defaultState, action) {
                 eventsAreLoading: false,
                 eventsHasErrors: false,
                 events: action.events.events
+            }
+
+        case 'ADD_EVENT': 
+            console.log('Adding event...');
+            return {
+                 ...state
+            }
+
+        case 'ADD_EVENT': 
+            console.log('event added...');
+            return {
+                ...state
             }
 
         default:

@@ -18,6 +18,26 @@ function eventsFetchDataSuccess(events) {
     };
 }
 
+function addEventData(eventData){
+    return {
+        type: 'ADD_EVENT',
+        event: eventData
+    }
+}
+
+function addingEvent(){
+    return {
+        type: 'ADDING_EVENT'
+    }
+}
+
+export const addEvent = eventData => {
+    return dispatch => {
+        dispatch(addingEvent());
+        //then fetch.
+    }
+
+}
 
 export const getEvents = searchTerm => {
     return (dispatch) => {
