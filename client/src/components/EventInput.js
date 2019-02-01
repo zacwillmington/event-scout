@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withAlert } from 'react-alert';
 
+import { addEvent } from '../actions/eventsActions';
+
 class EventInput extends Component {
     constructor(props){
         super(props);
@@ -14,7 +16,8 @@ class EventInput extends Component {
             start: '',
             end: '',
             status: '',
-            currency: ''
+            currency: '',
+            user_id: ''
         }
     }
 
@@ -26,7 +29,7 @@ class EventInput extends Component {
 
       handleOnSubmit = event => {
         event.preventDefault();
-        // Dispatch add event function
+        this.props.addEvent(this.state);
         this.setState({
             name: '',
             venue_id: '',
@@ -35,9 +38,9 @@ class EventInput extends Component {
             start: '',
             end: '',
             status: '',
-            currency: ''
-        })
-        debugger
+            currency: '',
+            user_id: ''
+        })    
         //After Event has been added, either redirect to user's events or display it below form.
       }
 
@@ -51,6 +54,10 @@ class EventInput extends Component {
                      name='name' 
                      value={this.state.name}/>
                     <br></br>
+                    <input id='user_id'
+                     type='hidden' 
+                     name='venue_id' 
+                     value={this.state.currentUser.id}/>
                     <label htmlFor='venue_id'>Change to invisible(venue_id)</label>
                     <input id='venue_id' onChange={event => this.handleOnChange(event)}
                      type='text' 

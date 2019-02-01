@@ -34,7 +34,20 @@ function addingEvent(){
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());
-        //then fetch.
+        debugger
+        const url = `api/v1/users//events`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/js',
+                'Accept': 'application/js',
+            }, body: JSON.stringify(eventData)
+        })
+        .then(resp => resp.json())
+        .then( eventData => {
+            console.log(eventData);
+        })
+        .catch(e => console.log(e))   
     }
 
 }

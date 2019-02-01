@@ -25,7 +25,7 @@ export default function eventsReducer(state = defaultState, action) {
                 events: action.events.events
             }
 
-        case 'ADD_EVENT': 
+        case 'ADDING_EVENT': 
             console.log('Adding event...');
             return {
                  ...state
