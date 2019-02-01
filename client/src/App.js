@@ -12,6 +12,8 @@ import EventsContainer from './containers/EventsContainer';
 import AccountContainer from './containers/AccountContainer';
 import EventComponent from './components/EventComponent';
 import UserInput from './components/UserInput';
+import EventInput from './components/EventInput';
+
 
 
 
@@ -19,28 +21,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header> */}
-        <Router>
           <React.Fragment>
           <NavBar />
           {/* Protected routes */}
           <Route exact path='/' component={HomePageContainer} />
 
           {/* user's events routes */}
-          <Route exact path='users/:id/events' component={EventsContainer} />
-            <Route exact path='users/:id/events/:id' component={EventComponent} />
+            <Route exact path='/users/:id/events/new' component={EventInput} />
+            <Route exact path='/users/:id/events/:event_id/edit' component={EventInput} />
 
             {/* events routes */}
             <Route exact path='/events' component={EventsContainer} />
-            <Route exact path='events/:id' component={EventComponent} />
+            <Route exact path='/events/:id' component={EventComponent} />
 
             
 
             {/* Account routes */}
             <Route path='/Account' component={AccountContainer} />
-            <Route path='/users/:id' component={UserInput} />
+            <Route exact path='/users/:id' component={UserInput} />
 
            {/* NON protected routes */}
             <Route path='/signup' component={SignupPage} />
@@ -48,7 +46,6 @@ class App extends Component {
             <Route path='/logout' component={LogoutPage} />
       
           </React.Fragment>
-        </Router>
       </div>
     );
   }

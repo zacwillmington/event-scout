@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { Provider as AlertProvider }  from "react-alert";
@@ -23,7 +24,9 @@ const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__
 ReactDOM.render(
     <AlertProvider template={AlertTemplate} {...options} store={store}>
             <Provider store={store}>
-                <App />
+                <Router>
+                    <App />
+                </Router>
             </Provider>
         </AlertProvider>, document.getElementById('root')
 );

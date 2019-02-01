@@ -21,6 +21,10 @@ class EventInput extends Component {
         }
     }
 
+    componentWillMount() {
+        debugger
+    }
+
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -29,6 +33,7 @@ class EventInput extends Component {
 
       handleOnSubmit = event => {
         event.preventDefault();
+        debugger
         this.props.addEvent(this.state);
         this.setState({
             name: '',
@@ -56,8 +61,8 @@ class EventInput extends Component {
                     <br></br>
                     <input id='user_id'
                      type='hidden' 
-                     name='venue_id' 
-                     value={this.state.currentUser.id}/>
+                     name='user_id' 
+                     />
                     <label htmlFor='venue_id'>Change to invisible(venue_id)</label>
                     <input id='venue_id' onChange={event => this.handleOnChange(event)}
                      type='text' 

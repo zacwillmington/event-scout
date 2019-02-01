@@ -6,8 +6,6 @@ import { withRouter } from "react-router-dom";
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
-import EventInput from '../components/EventInput';
-
 
 
 class EventsContainer extends Component {
@@ -28,8 +26,7 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'> 
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                <EventInput />
-                Events 
+                    Events
                 <Events events={this.props.events} />
             </div>
         )
