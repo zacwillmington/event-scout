@@ -15,12 +15,12 @@ Rails.application.routes.draw do
       post '/signup', to: 'users#create'
       post '/find_user', to: 'users#find_user'
 
-      resources :users
-      resources :events
-
+      resources :users do 
+        resources :events
+      end
       #users' events
-      post '/users/:id/events', to: 'events#create'
-      post '/users/:id/events/:event_id', to: 'events#update'
+      # post '/users/:id/events', to: 'events#create'
+      # post '/users/:id/events/:event_id', to: 'events#update'
 
       resources :venues
       resources :ticket_classes

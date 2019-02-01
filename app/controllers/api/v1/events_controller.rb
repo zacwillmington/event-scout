@@ -8,6 +8,7 @@ module Api
             end
 
             def create
+                binding.pry
                 @event = Event.new(strong_params)
                 binding.pry
                 if @event.save
@@ -45,7 +46,8 @@ module Api
                     :start,
                     :end,
                     :status,
-                    :currency
+                    :currency,
+                    :user_id
                 )
             end
         end

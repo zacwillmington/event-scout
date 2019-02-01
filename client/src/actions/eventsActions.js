@@ -34,13 +34,11 @@ function addingEvent(){
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());
-        debugger
-        // const url = `api/v1/users/${eventData.user_id}/events`;
         fetch(`/api/v1/users/${eventData.user_id}/events`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/js',
-                'Accept': 'application/js',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }, body: JSON.stringify(eventData)
         })
         .then(resp => resp.json())

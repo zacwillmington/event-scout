@@ -1,7 +1,5 @@
 eventScout
 
-"Mapped state to props in EventInput component. Added authentication to Event create and event edit component(EventInput). Custom Rails route for nested models e.g. '/users/:id/events/:event_id'. "
-
 TODO 
     - remove account logout and home when use not logged in
     - add crud actions for events
@@ -11,8 +9,7 @@ TODO
 
 
 LAST
-    AUTHENTICATION....
-    - on signin and maybe signup the user object is not getting Authenticated using bcrypt. 
+    AUTHENTICATION.... 
     - siginin funtionality(Authenticate use react router)
       - Make sure the backend is tight. check if session needs to be set in this auth flow.
 

@@ -36,7 +36,6 @@ class EventInput extends Component {
 
       handleOnSubmit = event => {
         event.preventDefault();
-        debugger
         this.props.addEvent(this.state);
         this.setState({
             name: '',
