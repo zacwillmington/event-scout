@@ -20,9 +20,9 @@ class NavBar extends Component {
             )
        } else{
             return (
-                <li><button onClick={() => this.handleCreateEventForNontLoggedinUser()}>
+                <li><NavLink to={''} onClick={() => this.handleCreateEventForNontLoggedinUser()}>
                     Create Event
-                </button></li>
+                </NavLink></li>
             )
        }
     }

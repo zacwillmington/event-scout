@@ -17,12 +17,15 @@ class EventInput extends Component {
             end: '',
             status: '',
             currency: '',
-            user_id: ''
+            user_id: this.props.currentUser.id
         }
     }
 
     componentWillMount() {
-        debugger
+        if (!this.props.isAuthenticated && !this.props.isAuthenticating){
+            this.props.alert.info("Please Signin to create or edit an event.")
+            this.props.history.push('/signin');
+        }
     }
 
     handleOnChange = event => {
@@ -112,6 +115,13 @@ class EventInput extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        currentUser: state.authReducer.currentUser,
+        isAuthenticated: state.authReducer.isAuthenticated,
+        isAuthenticating: state.authReducer.isAuthenticating
+    }
+}
 const mapDispatchToProps = dispatch => {
     return {
         addEvent: eventData => {
@@ -120,4 +130,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withAlert(withRouter(connect(null, mapDispatchToProps)(EventInput)))
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(EventInput)))

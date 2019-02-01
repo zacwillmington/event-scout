@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
       resources :users
       resources :events
+
+      #users' events
+      post '/users/:id/events', to: 'events#create'
+      post '/users/:id/events/:event_id', to: 'events#update'
+
       resources :venues
       resources :ticket_classes
     end
