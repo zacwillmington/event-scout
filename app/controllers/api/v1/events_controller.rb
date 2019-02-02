@@ -8,18 +8,15 @@ module Api
             end
 
             def create
-                @event = Event.new(strong_params)
                 @user = User.find(params['user_id'].to_i)
-                # binding.pry
-                @event.users << @user
+               @event = @user.events.create(strong_params)
                 if @event.save
                     render json: {
-                        event: @event,
-                        status: 201
+                        eventData: @event, 
+                        ok: true
                     }
                 else
                     render json: {
-                        event: @event,
                         errors: @event.errors.messages,
                         ok: false
                     }

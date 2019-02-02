@@ -1,9 +1,14 @@
+const defaultState = {
+    events: [],
+    eventsHasErrors: false,
+    eventsAreLoading: true,
+    currentEvent: {}
+}
 
 export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
 
-        case 'EVENTS_HAS_ERRORS':
-        console.log("event has errors");
+      case 'EVENTS_HAS_ERRORS':
             return { 
                 ...state,
                 eventsHasErrors: true,
@@ -27,7 +32,6 @@ export default function eventsReducer(state = defaultState, action) {
             }
 
         case 'ADDING_EVENT': 
-            console.log('Adding event...');
             return {
                  ...state,
                  eventsAreLoading: true,
@@ -35,19 +39,15 @@ export default function eventsReducer(state = defaultState, action) {
             }
 
         case 'ADD_EVENT': 
-            console.log('event added...');
             return {
-                ...state
+                ...state,
+                eventSuccess: true,
+                currentEvent: action.eventData,
+                events: [...state.events, action.eventData]
             }
 
         default:
             return state;
     }
 }
-
-
-const defaultState = {
-    events: [],
-    eventsHasErrors: false,
-    eventsAreLoading: true
-} 
+ 

@@ -15,8 +15,8 @@ class EventInput extends Component {
             venue_id: '',
             description: '',
             url: '',
-            start: '',
-            end: '',
+            start: new Date(),
+            end: new Date(),
             status: '',
             currency: '',
             user_id: this.props.currentUser.id,
@@ -35,12 +35,30 @@ class EventInput extends Component {
         if(this.props.eventsHasErrors && !this.state.alerted) {
             displayErrors(this.props.eventErrors, this.props.alert)
             this.setState({ alerted: true})
+        } else if(this.props.eventSuccess) {
+            debugger
+            this.props.alert.success("Event Added!");
+            const userId = this.props.currentUser.id;
+            const eventId = this.props.currentEvent.id;
+            this.props.history.push(`/users/${userId}/events/${eventId}`)
         }
     }
 
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
+        })
+      }
+
+      handleOnChangeDateTimeStart = event => {
+        this.setState({
+            start: event._d
+        })
+      }
+
+      handleOnChangeDateTimeEnd = event => {
+        this.setState({
+            end: event._d
         })
       }
 
@@ -52,14 +70,13 @@ class EventInput extends Component {
             venue_id: '',
             description: '',
             url: '',
-            start: '',
-            end: '',
+            start: new Date(),
+            end: new Date(),
             status: '',
             currency: '',
             user_id: this.props.currentUser.id,
             alerted: false
         })    
-        //After Event has been added, either redirect to user's events or display it below form.
       }
 
     render() {
@@ -94,19 +111,8 @@ class EventInput extends Component {
                      name='url' 
                      value={this.state.url}/>
                     <br></br>
-                    <DateTime />
-                    {/* <label htmlFor='start'>Start Time</label>
-                    <input id='start' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='start' 
-                     value={this.state.start} />
-                    <br></br>
-                    <label htmlFor='end'>End Time</label>
-                    <input id='end' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='end' 
-                     value={this.state.end}/>
-                    <br></br> */}
+                    <DateTime onChange={event => this.handleOnChangeDateTimeStart(event)}/>
+                    <DateTime onChange={event => this.handleOnChangeDateTimeEnd(event)}/>
                     <label htmlFor='status'>Event Status</label>
                     <input id='status' onChange={event => this.handleOnChange(event)}
                      type='text' 
@@ -131,9 +137,11 @@ const mapStateToProps = state => {
         currentUser: state.authReducer.currentUser,
         isAuthenticated: state.authReducer.isAuthenticated,
         isAuthenticating: state.authReducer.isAuthenticating,
+
         eventsHasErrors: state.eventsReducer.eventsHasErrors,
         eventErrors: state.eventsReducer.errors,
-        requestSuccess: state.eventsReducer.requestSuccess
+        eventSuccess: state.eventsReducer.eventSuccess,
+        currentEvent: state.eventsReducer.currentEvent
     }
 }
 const mapDispatchToProps = dispatch => {

@@ -20,7 +20,7 @@ function eventsFetchDataSuccess(events) {
 function addEventData(eventData){
     return {
         type: 'ADD_EVENT',
-        event: eventData
+        eventData: eventData
     }
 }
 
@@ -33,7 +33,6 @@ function addingEvent(){
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());
-        debugger
         fetch(`/api/v1/users/${eventData.user_id}/events`, {
             method: 'POST',
             headers: {
@@ -46,8 +45,7 @@ export const addEvent = eventData => {
             if(!eventData.ok){
                 dispatch(eventsHasErrored(eventData.errors))
             } else{
-                console.log(eventData);
-                dispatch(addEventData(eventData))
+                dispatch(addEventData(eventData.eventData))
             }
         })
         .catch(e => console.log(e))   
