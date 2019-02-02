@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 
 class EventComponent extends Component {
     constructor(props) {
-        super(props);
-        debugger
-        this.state = this.props;
+        super(props)
+        this.state = {
+            name: this.props.name,
+            venue_id: this.props.venue_id,
+            logo: this.props.logo,
+            description: this.props.description,
+            url: this.props.url,
+            start: this.props.timeStart,
+            end: this.props.timeEnd,
+            status: this.props.status,
+            currency: this.props.currency
+        }
     }
 
     componentWillMount() {
-
+        // debugger
+        //fetch event on loading from store? or API if props doesn't have currentEvent.
     }
 
     render() {
@@ -21,11 +31,9 @@ class EventComponent extends Component {
                 <p>{this.state.description}</p>
                 <ul>
                     <p>Starts</p>
-                    <li>Timezone: {this.state.timezoneStart}</li>
-                    <li>Time: {this.state.timeStart}</li>
+                    <li>Time: {this.state.start}</li>
                     <p>Ends</p>
-                    <li>{this.state.timezoneEnd}</li>
-                    <li>{this.state.timeEnd}</li>
+                    <li>{this.state.end}</li>
 
                     {/* <Link to={`${match.url}/exampleTopicId`}>
                         Example topic
