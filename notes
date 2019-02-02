@@ -1,10 +1,12 @@
 eventScout
 
-"Change EventComponent to react component in order to use state."
 
-TODO 
-    - remove account logout and home when use not logged in
+
+TODO
+    - add logo columns to db and add eventInput
+    - delete old users and event
     - add crud actions for events
+    - remove account logout and home when use not logged in
     - Change LogoutPage to simple component
     
     - STYLING

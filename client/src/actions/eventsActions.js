@@ -30,6 +30,14 @@ function addingEvent(){
     }
 }
 
+function getUsersEventsFromEventScout(events, user){
+    return {
+        type: 'USERS_EVENTS_FETCH_SUCCESS',
+        usersEvents: events,
+        user: user
+    }
+}
+
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());
@@ -51,6 +59,10 @@ export const addEvent = eventData => {
         .catch(e => console.log(e))   
     }
 
+}
+
+export const getUsersEvents = user => {
+    debugger
 }
 
 export const getEvents = searchTerm => {

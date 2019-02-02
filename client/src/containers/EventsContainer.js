@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
+import { getUsersEvents } from '../actions/eventsActions';
 
 
 class EventsContainer extends Component {
@@ -19,6 +20,13 @@ class EventsContainer extends Component {
 
     getSearchTerm = (searchTerm) => {
         this.props.getEvents(searchTerm);
+    }
+
+    componentWillMount(){
+        if(this.props.isAuthenticated){
+            debugger
+            this.props.dispatch(getUsersEvents(this.props.currentUser))
+        }  
     }
 
 
@@ -35,6 +43,7 @@ class EventsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.authReducer.isAuthenticated,
         eventsAreLoading: state.eventsReducer.eventsAreLoading,
         events: state.eventsReducer.events,
         eventsHasErrors: state.eventsReducer.eventsHasErrors
@@ -46,7 +55,10 @@ const mapDispatchToProps = dispatch => {
     return {
         getEvents: (searchTerm) => {
             return dispatch(getEvents(searchTerm))
-        }
+        },
+        getUsersEvents: (user) => {
+            return dispatch(getUsersEvents(user))
+        } 
     }
 }
 

@@ -14,9 +14,9 @@ class Events extends Component {
                 name={event.name.text} 
                 description={event.description.text}
                 timezoneStart={event.start.timezone} 
-                timeStart={event.start.local}
+                start={event.start.local}
                 timezoneEnd={event.end.timezone} 
-                timeEnd={event.end.local}
+                end={event.end.local}
                 logo={url}
                 url={event.url} 
                 shareable={event.shareable} 

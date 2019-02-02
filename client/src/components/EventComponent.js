@@ -9,15 +9,19 @@ class EventComponent extends Component {
             logo: this.props.logo,
             description: this.props.description,
             url: this.props.url,
-            start: this.props.timeStart,
-            end: this.props.timeEnd,
+            start: this.props.start,
+            end: this.props.end,
             status: this.props.status,
             currency: this.props.currency
         }
     }
 
     componentWillMount() {
-        // debugger
+        //Component is not rendered by react-router therefore fetch component
+        if (this.props.name === undefined){
+            //fetch
+        debugger
+        }
         //fetch event on loading from store? or API if props doesn't have currentEvent.
     }
 
