@@ -1,7 +1,6 @@
 function eventsHasErrored(errors) {
     return {
         type: 'EVENTS_HAS_ERRORS',
-        eventsHasErrors: true,
         errors: errors
     };
 }
@@ -34,6 +33,7 @@ function addingEvent(){
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());
+        debugger
         fetch(`/api/v1/users/${eventData.user_id}/events`, {
             method: 'POST',
             headers: {
@@ -43,7 +43,12 @@ export const addEvent = eventData => {
         })
         .then(resp => resp.json())
         .then( eventData => {
-            console.log(eventData);
+            if(!eventData.ok){
+                dispatch(eventsHasErrored(eventData.errors))
+            } else{
+                console.log(eventData);
+                dispatch(addEventData(eventData))
+            }
         })
         .catch(e => console.log(e))   
     }

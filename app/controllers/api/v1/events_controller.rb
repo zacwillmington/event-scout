@@ -8,11 +8,11 @@ module Api
             end
 
             def create
-                binding.pry
                 @event = Event.new(strong_params)
-                binding.pry
+                @user = User.find(params['user_id'].to_i)
+                # binding.pry
+                @event.users << @user
                 if @event.save
-
                     render json: {
                         event: @event,
                         status: 201
@@ -46,8 +46,7 @@ module Api
                     :start,
                     :end,
                     :status,
-                    :currency,
-                    :user_id
+                    :currency
                 )
             end
         end

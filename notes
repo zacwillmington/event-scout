@@ -7,7 +7,7 @@ TODO
     
     - STYLING
 
-
+  - remove events' users db and AMS
 LAST
     AUTHENTICATION.... 
     - siginin funtionality(Authenticate use react router)

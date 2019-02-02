@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withAlert } from 'react-alert';
+import DateTime from 'react-datetime';
 
 import { addEvent } from '../actions/eventsActions';
+import { displayErrors } from './Errors';
 
 class EventInput extends Component {
     constructor(props){
@@ -17,7 +19,8 @@ class EventInput extends Component {
             end: '',
             status: '',
             currency: '',
-            user_id: this.props.currentUser.id
+            user_id: this.props.currentUser.id,
+            alerted: false
         }
     }
 
@@ -25,6 +28,13 @@ class EventInput extends Component {
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.alert.info("Please Signin to create or edit an event.")
             this.props.history.push('/signin');
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.eventsHasErrors && !this.state.alerted) {
+            displayErrors(this.props.eventErrors, this.props.alert)
+            this.setState({ alerted: true})
         }
     }
 
@@ -46,7 +56,8 @@ class EventInput extends Component {
             end: '',
             status: '',
             currency: '',
-            user_id: ''
+            user_id: this.props.currentUser.id,
+            alerted: false
         })    
         //After Event has been added, either redirect to user's events or display it below form.
       }
@@ -83,7 +94,8 @@ class EventInput extends Component {
                      name='url' 
                      value={this.state.url}/>
                     <br></br>
-                    <label htmlFor='start'>Start Time</label>
+                    <DateTime />
+                    {/* <label htmlFor='start'>Start Time</label>
                     <input id='start' onChange={event => this.handleOnChange(event)}
                      type='text' 
                      name='start' 
@@ -94,7 +106,7 @@ class EventInput extends Component {
                      type='text' 
                      name='end' 
                      value={this.state.end}/>
-                    <br></br>
+                    <br></br> */}
                     <label htmlFor='status'>Event Status</label>
                     <input id='status' onChange={event => this.handleOnChange(event)}
                      type='text' 
@@ -118,7 +130,10 @@ const mapStateToProps = state => {
     return {
         currentUser: state.authReducer.currentUser,
         isAuthenticated: state.authReducer.isAuthenticated,
-        isAuthenticating: state.authReducer.isAuthenticating
+        isAuthenticating: state.authReducer.isAuthenticating,
+        eventsHasErrors: state.eventsReducer.eventsHasErrors,
+        eventErrors: state.eventsReducer.errors,
+        requestSuccess: state.eventsReducer.requestSuccess
     }
 }
 const mapDispatchToProps = dispatch => {
