@@ -3,11 +3,13 @@ module Api
         class EventsController < ApplicationController
 
             def index
+                binding.pry
                 @events = Event.all
                 render json: @events
             end
 
             def create
+                debugger
                 @user = User.find(params['user_id'].to_i)
                @event = @user.events.create(strong_params)
                 if @event.save

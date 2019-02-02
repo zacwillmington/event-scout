@@ -13,7 +13,7 @@ function eventsAreLoading(bool) {
 function eventsFetchDataSuccess(events) {
     return {
         type: 'EVENTS_FETCH_DATA_SUCCESS',
-        events
+        events: events
     };
 }
 
@@ -62,7 +62,27 @@ export const addEvent = eventData => {
 }
 
 export const getUsersEvents = user => {
-    debugger
+    return dispatch => {
+        dispatch(eventsAreLoading(true));
+        const url = `/api/v1/users/${user.id}/events`
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(eventData => {
+            if(!eventData.ok) {
+                debugger
+                dispatch(eventsHasErrored(eventData.errors))
+            }else {
+                debugger
+                dispatch(getUsersEventsFromEventScout(eventData.events, user))
+            }
+        })
+    }
 }
 
 export const getEvents = searchTerm => {

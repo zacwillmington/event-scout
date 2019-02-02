@@ -43,11 +43,13 @@ class EventsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        currentUser: state.authReducer.currentUser,
         isAuthenticated: state.authReducer.isAuthenticated,
+
         eventsAreLoading: state.eventsReducer.eventsAreLoading,
         events: state.eventsReducer.events,
+        usersEvents: state.eventsReducer.usersEvents,
         eventsHasErrors: state.eventsReducer.eventsHasErrors
-
     }
 }
 
