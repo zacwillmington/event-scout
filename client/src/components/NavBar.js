@@ -13,7 +13,7 @@ class NavBar extends Component {
     }
 
     renderCreateEventLink = () =>{
-       if (this.props.currentUser.id !== undefined){
+       if (this.props.isAuthenticated){
             return (
                 <li><NavLink to={`/users/${this.props.currentUser.id}/events/new`}>Create Event
              </NavLink></li>
@@ -43,7 +43,8 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.authReducer.currentUser
+        currentUser: state.authReducer.currentUser,
+        isAuthenticated: state.authReducer.isAuthenticated
     }
 }
 export default withAlert(withRouter(connect(mapStateToProps)(NavBar)))

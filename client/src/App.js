@@ -28,6 +28,8 @@ class App extends Component {
           {/* user's events routes */}
             <Route exact path='/users/:id/events/new' component={EventInput} />
             <Route exact path='/users/:id/events/:event_id/edit' component={EventInput} />
+            <Route exact path='/users/:id/events/:event_id' component={EventComponent} />
+
 
             {/* events routes */}
             <Route exact path='/events' component={EventsContainer} />

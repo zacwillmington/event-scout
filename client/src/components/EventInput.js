@@ -35,12 +35,16 @@ class EventInput extends Component {
         if(this.props.eventsHasErrors && !this.state.alerted) {
             displayErrors(this.props.eventErrors, this.props.alert)
             this.setState({ alerted: true})
-        } else if(this.props.eventSuccess) {
-            debugger
-            this.props.alert.success("Event Added!");
+        } else if(this.props.eventSuccess && !this.state.alerted) {
             const userId = this.props.currentUser.id;
             const eventId = this.props.currentEvent.id;
-            this.props.history.push(`/users/${userId}/events/${eventId}`)
+            this.setState({ alerted: true })
+            debugger
+            this.props.history.push({
+                pathname: `/users/${userId}/events/${eventId}`,
+                state: this.props.currentEvent
+            })
+            this.props.alert.success("Event Added!");
         }
     }
 

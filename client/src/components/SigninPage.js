@@ -12,13 +12,17 @@ class SigninPage extends Component {
     super(props);
     this.state = {
         email: "",
-        password: ""
+        password: "",
+        alerted: false
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.props.hasErrors && prevState.email === "" && prevState.password === ""){
+    if(this.props.hasErrors && !this.state.alerted){
+        this.setState({ alerted: true })
       displayErrors(this.props.errors, this.props.alert);
+    } else if(this.props.isAuthenticated){
+        this.props.history.push('/');
     }
   }
   
@@ -32,7 +36,11 @@ class SigninPage extends Component {
   handleSubmit = (event) => {
       event.preventDefault();
       this.props.authenticate(this.state);
-      this.props.history.push('/');
+      this.setState({
+        email: "",
+        password: "",
+        alerted: false
+      })
  }
 
     render() {
