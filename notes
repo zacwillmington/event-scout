@@ -1,5 +1,7 @@
 eventScout
 
+"Change EventComponent to react component in order to use state."
+
 TODO 
     - remove account logout and home when use not logged in
     - add crud actions for events

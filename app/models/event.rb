@@ -7,5 +7,6 @@ class Event < ApplicationRecord
     validates :end,  presence: true
     validates :status,  presence: true
     validates :currency,  presence: true
+
     has_and_belongs_to_many :users
 end

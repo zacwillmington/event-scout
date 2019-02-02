@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withAlert } from 'react-alert';
 import DateTime from 'react-datetime';
+import ImageUploader from 'react-images-upload';
 
 import { addEvent } from '../actions/eventsActions';
 import { displayErrors } from './Errors';
@@ -12,6 +13,7 @@ class EventInput extends Component {
         super(props);
         this.state = {
             name: '',
+            logo: '',
             venue_id: '',
             description: '',
             url: '',
@@ -66,12 +68,18 @@ class EventInput extends Component {
         })
       }
 
+      onDrop = picture => {
+          this.setState({ logo: picture[0].name })
+      }
+
       handleOnSubmit = event => {
         event.preventDefault();
+        debugger
         this.props.addEvent(this.state);
         this.setState({
             name: '',
             venue_id: '',
+            logo: '',
             description: '',
             url: '',
             start: new Date(),
@@ -92,6 +100,13 @@ class EventInput extends Component {
                      type='text' 
                      name='name' 
                      value={this.state.name}/>
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText='Choose images'
+                        onChange={event => this.onDrop(event)}
+                        imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
+                    />
+
                     <br></br>
                     <input id='user_id'
                      type='hidden' 

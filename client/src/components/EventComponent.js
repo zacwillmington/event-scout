@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const EventComponent = props => {
-    return (
-        <div>
-            <h1>{props.name}</h1>
-            <img src={props.logo} alt='event-logo'/>
-            <p>Add Like widget</p>
-            <h3>Description</h3>
-            <p>{props.description}</p>
-            <ul>
-                <p>Starts</p>
-                <li>Timezone: {props.timezoneStart}</li>
-                <li>Time: {props.timeStart}</li>
-                <p>Ends</p>
-                <li>{props.timezoneEnd}</li>
-                <li>{props.timeEnd}</li>
+class EventComponent extends Component {
+    constructor(props) {
+        super(props);
+        debugger
+        this.state = this.props;
+    }
 
-                {/* <Link to={`${match.url}/exampleTopicId`}>
-                     Example topic
-                </Link>
-                <Route path={`${match.url}/:topicId`} component={Topic}/> */}
-            </ul>
-        </div>
-    )
+    componentWillMount() {
+
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.state.name}</h1>
+                <img src={this.state.logo} alt='event-logo'/>
+                <p>Add Like widget</p>
+                <h3>Description</h3>
+                <p>{this.state.description}</p>
+                <ul>
+                    <p>Starts</p>
+                    <li>Timezone: {this.state.timezoneStart}</li>
+                    <li>Time: {this.state.timeStart}</li>
+                    <p>Ends</p>
+                    <li>{this.state.timezoneEnd}</li>
+                    <li>{this.state.timeEnd}</li>
+
+                    {/* <Link to={`${match.url}/exampleTopicId`}>
+                        Example topic
+                    </Link>
+                    <Route path={`${match.url}/:topicId`} component={Topic}/> */}
+                </ul>
+            </div>
+        )
+    }   
 }
+
+
 export default EventComponent
 
 //Event date receieved per event
