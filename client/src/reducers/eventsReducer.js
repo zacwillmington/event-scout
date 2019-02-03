@@ -9,7 +9,6 @@ export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
 
       case 'EVENTS_HAS_ERRORS':
-      console.log("Events has errors...")
             return { 
                 ...state,
                 eventsHasErrors: true,
@@ -18,7 +17,6 @@ export default function eventsReducer(state = defaultState, action) {
             }
 
         case 'EVENTS_ARE_LOADING':
-        console.log('Events Are Loading...')
             return {
                 ...state,
                 eventsAreLoading: true,
@@ -40,8 +38,8 @@ export default function eventsReducer(state = defaultState, action) {
                  eventsHasErrors: false
             }
         
-        case 'USERS_EVENTS_ADDED':
-        console.log("User's Events added.,,")
+        case 'USERS_EVENTS_FETCH_SUCCESS':
+    
             return {
                 ...state,
                 eventsAreLoading: false,

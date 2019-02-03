@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 
 class Events extends Component {
 
+
     renderEvents = () => {
+        debugger
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
+                debugger
                 let url = event.logo != null ? event.logo.url : ''
                 return <EventComponent 
                 key={event.id} 
@@ -38,11 +41,11 @@ class Events extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        events: state.eventsReducer.events
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         events: state.eventsReducer.events
+//     }
+// }
 
 
-export default connect(mapStateToProps)(Events)
+export default connect(null)(Events)

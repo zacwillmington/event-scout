@@ -51,6 +51,7 @@ export const authenticate = user => {
         .then(response => {
             const token = response.jwt;
             localStorage.setItem('token', token);
+            localStorage.setItem('user', user);
             dispatch(getUser(user))
         }).catch( errors => {
           const errorMsg =  {

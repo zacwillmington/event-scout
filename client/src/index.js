@@ -12,6 +12,7 @@ import AlertTemplate from "react-alert-template-basic";
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/manageReducers';
+import { authenticate } from './actions/authActions';
 
 const options = {
     position: 'top left',
@@ -21,6 +22,16 @@ const options = {
   }
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+
+const token = localStorage.getItem('token');
+const user = localStorage.getItem('user');
+if (token && user) {
+  debugger
+  store.dispatch(authenticate(user));
+}
+
+
 ReactDOM.render(
     <AlertProvider template={AlertTemplate} {...options} store={store}>
             <Provider store={store}>

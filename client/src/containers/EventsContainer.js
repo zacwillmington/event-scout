@@ -19,23 +19,39 @@ class EventsContainer extends Component {
 
 
     getSearchTerm = (searchTerm) => {
+        //Fetches events from eventBrite API based on search term
         this.props.getEvents(searchTerm);
     }
 
     componentWillMount(){
         if(this.props.isAuthenticated){
-            debugger
-            this.props.dispatch(getUsersEvents(this.props.currentUser))
+            //Fetches user's events from event scout api if user is logged in. 
+            this.props.getUsersEvents(this.props.currentUser)
         }  
     }
 
+    handleViewEventsClick = event => {
+        event.preventDefault();
+        this.setState({ 
+            events: this.props.usersEvents
+        })  
+    }
+
+    renderViewYourEventsBtn = () => {
+        if(this.props.isAuthenticated) {
+            return (
+                <button onClick={event => this.handleViewEventsClick(event)}>View Your Events</button>
+            )
+        }
+    }
 
     render() {
         return(
             <div className='eventsContainer'> 
+                {this.renderViewYourEventsBtn()}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
                     Events
-                <Events events={this.props.events} />
+                <Events events={this.state.events} />
             </div>
         )
     }

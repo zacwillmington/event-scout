@@ -75,10 +75,8 @@ export const getUsersEvents = user => {
         .then(resp => resp.json())
         .then(eventData => {
             if(!eventData.ok) {
-                debugger
                 dispatch(eventsHasErrored(eventData.errors))
             }else {
-                debugger
                 dispatch(getUsersEventsFromEventScout(eventData.events, user))
             }
         })
