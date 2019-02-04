@@ -3,11 +3,19 @@ import { setUsersLocation } from '../actions/userActions';
 import { connect } from 'react-redux';
 
 class Geolocate extends Component {
-
-  componentDidUpdate(){
+  constructor(){
+    super();
+    this.state = {
+      countryName: '',
+      regionName: ''
+    }
+  }
+  componentWillMount(){
     //Save user's coordinates to state to search for event near them.
-    if(this.props.coords && !this.props.locationSet){
+    if(this.props.coords !== null){
       this.props.setUsersLocation(this.props.coords);
+    } else {
+      // debugger
     }
   }
 
@@ -18,6 +26,10 @@ class Geolocate extends Component {
    )
   }
 }
+
+const mapStateToProps = state => {
+  return { usersLocation: state.usersReducer.usersLocation }
+}
  
 const mapDispatchToProps = dispatch => {
   return {
@@ -27,4 +39,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Geolocate);
+export default connect(mapStateToProps, mapDispatchToProps)(Geolocate);

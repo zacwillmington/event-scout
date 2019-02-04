@@ -17,7 +17,6 @@ class EventComponent extends Component {
     }
 
     componentWillMount() {
-        debugger
         //Component is not rendered by react-router therefore fetch component
         // if (this.props.name === undefined){
         //     //fetch

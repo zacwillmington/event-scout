@@ -29,6 +29,7 @@ const deleteUserSuccess = user => {
 
 
 export const setUsersLocation = coords => {
+    debugger
     return dispatch => { dispatch({ type: 'SET_LOCATION', coords: coords})}
 
 }

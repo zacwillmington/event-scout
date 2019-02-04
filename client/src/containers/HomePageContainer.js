@@ -13,19 +13,24 @@ class HomePageContainer extends Component {
     constructor(){
         super();
         this.state = {
-            // musicEvents: this.props.preLoadedEventCategories.musicEvents,
-            // foodAndDrinkEvents: this.props.preLoadedEventCategories.foodAndDrinkEvents,
-            // businessEvents: this.props.preLoadedEventCategories.businessEvents
+            musicEvents: [],
+            foodAndDrinkEvents: [],
+            businessEvents: []
         }
     }
 
     componentWillMount() {
         //fetch events categories 
-        if(this.props.locationSet){
-            const location = this.props.usersLocation;
-            this.props.getPreLoadedEvents('Music', location)
-            this.props.getPreLoadedEvents('Food and Drink', location)
-            this.props.getPreLoadedEvents('Business', location)            
+        if(!this.props.preLoadedEventsDone){
+            // const usersLocation = this.props.usersLocation;
+            // const geoLocation = {
+            //     longitude: '32.7157',
+            //     latitude: '117.1611'
+            // }
+            const geoLocation = 'San Diego'
+            this.props.getPreLoadedEvents('Music', geoLocation)
+            this.props.getPreLoadedEvents('Food and Drink', geoLocation)
+            this.props.getPreLoadedEvents('Business', geoLocation)            
         }
     }
 
@@ -36,8 +41,17 @@ class HomePageContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        debugger
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.history.push('/signin');
+        } else if(this.props.preLoadedEventsDone && !prevProps.preLoadedEventsDone){
+            this.setState({
+                musicEvents: this.props.preLoadedEventCategories.musicEvents.events,
+                foodAndDrinkEvents: this.props.preLoadedEventCategories.foodAndDrinkEvents.events,
+                businessEvents: this.props.preLoadedEventCategories.musicEvents.events
+            })
+            debugger
+            //give props to geo to setGeolocation
         }
     }
 
@@ -56,18 +70,16 @@ const mapStateToProps = state => {
         currentUser: state.authReducer.currentUser,
         isAuthenticating: state.authReducer.isAuthenticating,
         isAuthenticated: state.authReducer.isAuthenticated,
-        locationSet: state.usersReducer.locationSet,
         usersLocation: state.usersReducer.usersLocation,
 
+        preLoadedEventsDone: state.eventsReducer.preLoadedEventsDone,
         preLoadedEventCategories: state.eventsReducer.preLoadedEventCategories
     }
 }
 
 const mapDispatchToprops = dispatch => {
     return {
-        getPreLoadedEvents: location => {
-            return dispatch(getPreLoadedEvents(location))
-        }
+        getPreLoadedEvents: (searchTerm, geoLocation) => dispatch(getPreLoadedEvents(searchTerm, geoLocation))
     }
 }
 

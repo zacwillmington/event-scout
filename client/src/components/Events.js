@@ -6,11 +6,9 @@ class Events extends Component {
 
 
     renderEvents = () => {
-        debugger
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
-                debugger
                 let url = event.logo != null ? event.logo.url : ''
                 return <EventComponent 
                 key={event.id} 

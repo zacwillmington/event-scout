@@ -38,15 +38,26 @@ function getUsersEventsFromEventScout(events, user){
     }
 }
 
-export const getPreLoadedEvents = (searchTerm, location) => {
+function preLoadingevents(events, cat){
+    return {
+        type: 'PRE_LOADING_EVENTS',
+        events: events,
+        cat: cat
+    }
+}
+
+export const getPreLoadedEvents = (searchTerm, geoLocation) => {
     return dispatch => {
         dispatch(eventsAreLoading(true))
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+        // const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
+        const loc = `location.address=San%20Diego`
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${loc}&expand=venue`;
+
+        // $search_url?token=$token&q=&date_created.keyword=today&page=$repeat&sort_by=$date&expand=venue
+
         const homePageUrl = "http://localhost:3000/";
         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
-        debugger
 
         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
             method: "GET",
@@ -57,9 +68,24 @@ export const getPreLoadedEvents = (searchTerm, location) => {
             }
         )
         .then(resp => resp.json())
-        .then( events => console.log(events))
-    }
+        .then( events => {
+            console.log(searchTerm);
+            switch (searchTerm) {
+                case 'Music':
+                     dispatch(preLoadingevents(events, 'musicEvents'))
 
+                case 'Food and Drinks':
+                     dispatch(preLoadingevents(events, 'foodAndDrinkEvents'))
+
+                case 'Business':
+                     dispatch(preLoadingevents(events, 'businessEvents'))
+                    dispatch({type: 'PRE_LOADED_EVENTS_DONE'})
+                default:
+                    break;
+                }
+            }
+        )
+    }
 }
 
 export const addEvent = eventData => {
