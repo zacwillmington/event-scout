@@ -38,6 +38,30 @@ function getUsersEventsFromEventScout(events, user){
     }
 }
 
+export const getPreLoadedEvents = (searchTerm, location) => {
+    return dispatch => {
+        dispatch(eventsAreLoading(true))
+        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
+        
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+        const homePageUrl = "http://localhost:3000/";
+        const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
+        debugger
+
+        return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
+            method: "GET",
+            headers: {
+                    "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
+                    "Origin": homePageUrl
+                }
+            }
+        )
+        .then(resp => resp.json())
+        .then( events => console.log(events))
+    }
+
+}
+
 export const addEvent = eventData => {
     return dispatch => {
         dispatch(addingEvent());

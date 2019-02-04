@@ -9,10 +9,9 @@ const defaultState = {
 }
 
 export default function usersReducer(state = defaultState, action) {
-        console.log(action)
+    
         switch (action.type) {
             case 'SET_LOCATION':
-            debugger
             return {
                 ...state,
                 locationSet: true,

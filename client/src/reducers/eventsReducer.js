@@ -2,12 +2,18 @@ const defaultState = {
     events: [],
     eventsHasErrors: false,
     eventsAreLoading: true,
-    currentEvent: {}
+    currentEvent: {},
+    preLoadedEventCategories: {
+        musicEvents: [],
+        foodAndDrinkEvents: [],
+        businessEvents: []
+    } 
 }
 
 export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
 
+        
       case 'EVENTS_HAS_ERRORS':
             return { 
                 ...state,
