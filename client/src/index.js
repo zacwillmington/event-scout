@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import thunk from 'redux-thunk';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { Provider as AlertProvider }  from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './reducers/manageReducers';
-import { authenticate } from './actions/authActions';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const options = {
     position: 'top left',
@@ -21,23 +19,18 @@ const options = {
     transition: 'scale'
   }
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
-
-const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
-if (token && user) {
-  debugger
-  store.dispatch(authenticate(user));
-}
-
+//Create loading bar component for redux persist loading time.
+// change logger to dev only //https://github.com/LogRocket/redux-logger
 
 ReactDOM.render(
     <AlertProvider template={AlertTemplate} {...options} store={store}>
             <Provider store={store}>
-                <Router>
-                    <App />
-                </Router>
+                <PersistGate loading={null} persistor={persistor}>
+                    <Router>
+                        <App />
+                    </Router>
+                </PersistGate>
             </Provider>
         </AlertProvider>, document.getElementById('root')
 );

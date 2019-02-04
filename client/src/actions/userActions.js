@@ -20,11 +20,17 @@ const sendingUpdate = user => {
     }
 }
 
-const deleteUserSuccess= (user) => {
+const deleteUserSuccess = user => {
     return {
         type: 'DELETE_USER',
         user: user
     }
+}
+
+
+export const setUsersLocation = coords => {
+    return dispatch => { dispatch({ type: 'SET_LOCATION', coords: coords})}
+
 }
 
 export const editUser = user => {

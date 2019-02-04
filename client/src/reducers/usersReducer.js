@@ -3,11 +3,21 @@ const defaultState = {
     errors: [],
     hasErrors: false,
     isLoading: false,
-    isLoggedin: false
+    isLoggedin: false,
+    usersLocation: {},
+    locationSet: false,
 }
 
 export default function usersReducer(state = defaultState, action) {
+        console.log(action)
         switch (action.type) {
+            case 'SET_LOCATION':
+            debugger
+            return {
+                ...state,
+                locationSet: true,
+                usersLocation: action.coords
+            }
 
             case 'SENDING_USER_REQUEST':
                 return { 
