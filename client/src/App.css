@@ -127,6 +127,51 @@ input.form-control {
   font-weight: bold;
 }
 
+ /* Signin Form */
+
+ #signup-title, #signin-title, #user-edit-title {
+  position: relative; 
+  top: -40px; 
+  left: 15px;
+  font-weight: bolder;
+  background-color: white;
+  width: 200px;
+}
+
+#signup-form, #signin-form, #user-edit-form {
+  margin: 10% auto;
+  border: 1px solid black;
+  min-height: 300px;
+  width: 600px;
+  padding: 0 0 25px 0;
+}
+
+#signup-form-div, #signin-form-div, #user-edit-form-div {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 25px; 
+}  
+
+
+#signup-user_name, #signup-email, #signup-password, #signin-email, #signin-password, #user-edit-email,#user-edit-password {
+  margin-bottom: 20px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  height: 40px;
+  width: 60%;
+  margin: auto;
+
+}
+
+.signup-user-btn, .signin-user-btn, .user-edit-btn {
+  width: 60%;
+  border-radius: 25px;
+  height: 40px;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
 
 /* DateTime  Styling*/
 /*!

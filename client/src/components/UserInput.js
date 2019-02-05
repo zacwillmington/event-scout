@@ -45,13 +45,14 @@ class UserInput extends Component {
     render() {
         return (
             <div className='userInput'>
-                <form onSubmit={event => this.handleSubmit(event)} > 
-                    <label htmlFor='user_name'>Username</label><br></br>
-                    <input id='user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}/>
-                    <br></br>
-                    <label htmlFor='password'>Password</label><br></br>
-                    <input id='password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password}/>
-                    <input className='btn btn-primary' type='submit' value='Submit'/>
+               <form id='user-edit-form' onSubmit={event => this.handleSubmit(event)} > 
+                <div id='user-edit-title'><h1>EDIT ACCOUNT</h1></div>
+                  <div id='user-edit-form-div'>
+                     <input id='user-edit-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email} placeholder='New Email'/>
+                      
+                    <input id='user-edit-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password} placeholder='New Password' />
+                  </div>
+                    <input className='user-edit-btn' type='submit' value='SUBMIT'/>
                 </form>
             </div>
         )

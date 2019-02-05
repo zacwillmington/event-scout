@@ -46,14 +46,15 @@ class SigninPage extends Component {
     render() {
       return (
             <div className='signinInput'>
-            <h1>Sign In</h1>
-                <form onSubmit={event => this.handleSubmit(event)} > 
-                    <label htmlFor='signin-email'>Email</label><br></br>
-                    <input id='sigin-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
-                    <br></br>
-                    <label htmlFor='signin-password'>Password</label><br></br>
-                    <input id='signin-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password}/>
-                    <input className='btn btn-primary' type='submit' value='Sign in'/>
+             <form id='signin-form' onSubmit={event => this.handleSubmit(event)} > 
+                <div id='signin-title'><h1>SIGN IN</h1></div>
+                  <div id='signin-form-div'>
+                     <input id='signin-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email} placeholder='Email'/>
+                      
+                  
+                      <input id='signin-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password} placeholder='Password' />
+                  </div>
+                    <input className='signin-user-btn' type='submit' value='SUBMIT'/>
                 </form>
             </div>
       )

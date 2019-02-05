@@ -50,18 +50,20 @@ class SignupPage extends Component {
     render() {
       return (
             <div className='signupInput'>
-            <h1>Sign Up</h1>
-                <form onSubmit={event => this.handleSubmit(event)} > 
-                    <label htmlFor='signup-user_name'>Username</label><br></br>
-                    <input id='signup-user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}/>
-                    <br></br>
+            
+                <form id='signup-form' onSubmit={event => this.handleSubmit(event)} > 
+                <div id='signup-title'><h1>SIGN UP</h1></div>
+                  <div id='signup-form-div'>
+                      <input id='signup-user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name}
+                      placeholder='User Name'/>
+                      
 
-                    <label htmlFor='signup-email'>Email</label><br></br>
-                    <input id='sigup-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email}/>
-                    <br></br>
-                    <label htmlFor='signup-password'>Password</label><br></br>
-                    <input id='signup-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password}/>
-                    <input className='btn btn-primary' type='submit' value='Sign up'/>
+                      <input id='signup-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email} placeholder='Email'/>
+                      
+                  
+                      <input id='signup-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password} placeholder='Password' />
+                  </div>
+                    <input className='signup-user-btn' type='submit' value='SUBMIT'/>
                 </form>
             </div>
       )

@@ -135,7 +135,6 @@ class EventInput extends Component {
                         onChange={event => this.onDrop(event)}
                         imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
                     />
-
                     <br></br>
                     <input id='user_id'
                      type='hidden' 
