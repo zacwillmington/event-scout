@@ -4,15 +4,16 @@ eventScout
 
 TODO
     - Categories container display 
+        - functions e.g. on click displays preloaded events
+        - removes EventsCategoriesContainer
     = uploaded images not displayed
     - add crud actions for events
-    - delete old users and event
+    - delete old event
     - remove account logout and home when use not logged in
-    - Change LogoutPage to simple component
-    
+    - Moviehome page component
+
     - STYLING
 
-  - remove events' users db and AMS
 LAST
     AUTHENTICATION.... 
     - siginin funtionality(Authenticate use react router)

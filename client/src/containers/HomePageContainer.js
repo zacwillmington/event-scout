@@ -75,7 +75,7 @@ class HomePageContainer extends Component {
             <div className='homePageContainer'>
                 <EventsSearchPage />
                 <MovieComponent />
-                <EventCategoriesContainer />
+                <EventCategoriesContainer musicEvents={this.props.musicEvents} foodAndDrinkEvents={this.props.foodAndDrinkEvents} businessEvents={this.state.businessEvents}/>
                 <Events events={this.displayedEvents()}/>
             </div>
         )

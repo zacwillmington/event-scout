@@ -7,6 +7,7 @@ import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
 import { getUsersEvents } from '../actions/eventsActions';
+import EventCategoriesContainer from './EventCategoriesContainer';
 
 
 class EventsContainer extends Component {
@@ -50,7 +51,7 @@ class EventsContainer extends Component {
             <div className='eventsContainer'> 
                 {this.renderViewYourEventsBtn()}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                    Events
+                <EventCategoriesContainer />    
                 <Events events={this.state.events} />
             </div>
         )

@@ -42,6 +42,9 @@
   margin: 0 15% 0 15%;
 }
 
+.categories-events-container {
+  margin-bottom: 15%;
+}
 .events-components {
   display: flex;
 }
@@ -53,9 +56,6 @@
      border: 1px solid grey;
       margin: auto;
 }
-/* .music-events-container h2, .food-and-drinks-events-container h2, .business-events-container h2 {
-    
-} */
 
 /* Form Styling */
 
@@ -174,12 +174,20 @@ input.form-control {
 }
  
 /* Searh Events Input Component*/
+
+.eventsInputPage {
+  position: fixed;
+  top: 50px;
+  right: 25%;
+}
+
 #search-events-btn {
-  width: 250px;
+  width: 150px;
   border-radius: 25px;
   height: 40px;
   font-weight: bolder;
   margin-left: 25px;
+  margin-top: 10px;
 
 }
 
@@ -201,7 +209,7 @@ input.form-control {
   width: 90%;
   height: 600px;
   border: 1px solid grey;
-  margin: 60px auto;
+  margin: 150px auto;
 }
 
 
