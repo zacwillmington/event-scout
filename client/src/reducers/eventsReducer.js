@@ -12,7 +12,6 @@ const defaultState = {
 }
 
 export default function eventsReducer(state = defaultState, action) {
-    console.log(action.type)
     switch (action.type) {
       case 'PRE_LOADED_EVENTS_DONE': 
         return {

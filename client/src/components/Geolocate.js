@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { setUsersLocation } from '../actions/userActions';
 import { connect } from 'react-redux';
-
+//REmove Component
 class Geolocate extends Component {
   constructor(){
     super();

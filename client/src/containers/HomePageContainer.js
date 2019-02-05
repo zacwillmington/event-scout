@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { geolocated } from 'react-geolocated';
-import Geolocate  from '../components/Geolocate'
+import { setUsersLocation } from '../actions/userActions';
 
 import { getPreLoadedEvents } from '../actions/eventsActions';
-
+import Events from '../components/Events'
 
 
 
@@ -21,16 +21,7 @@ class HomePageContainer extends Component {
 
     componentWillMount() {
         //fetch events categories 
-        if(!this.props.preLoadedEventsDone){
-            // const usersLocation = this.props.usersLocation;
-            // const geoLocation = {
-            //     longitude: '32.7157',
-            //     latitude: '117.1611'
-            // }
-            const geoLocation = 'San Diego'
-            this.props.getPreLoadedEvents('Music', geoLocation)
-            this.props.getPreLoadedEvents('Food and Drink', geoLocation)
-            this.props.getPreLoadedEvents('Business', geoLocation)            
+        if(!this.props.preLoadedEventsDone){            
         }
     }
 
@@ -41,25 +32,45 @@ class HomePageContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        debugger
+        //Auth redirect
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.history.push('/signin');
-        } else if(this.props.preLoadedEventsDone && !prevProps.preLoadedEventsDone){
+        } 
+        //Set Geolocation
+        if (!this.props.locationSet) {
+            debugger
+            this.props.setUsersLocation(this.props.coords);
+        }
+        //Pre-load events
+        if (this.props.coords !== null && this.props.locationSet && !this.props.preLoadedEventsDone){
+            const usersGeoLocation = {
+                latitude: this.props.coords.latitude,
+                longitude: this.props.coords.longitude
+            }
+            this.props.getPreLoadedEvents('Music', usersGeoLocation)
+            this.props.getPreLoadedEvents('Food and Drink', usersGeoLocation)
+            this.props.getPreLoadedEvents('Business', usersGeoLocation)
+        } 
+        
+        if(this.props.preLoadedEventsDone && this.state.musicEvents.length <= 0){
             this.setState({
                 musicEvents: this.props.preLoadedEventCategories.musicEvents.events,
                 foodAndDrinkEvents: this.props.preLoadedEventCategories.foodAndDrinkEvents.events,
                 businessEvents: this.props.preLoadedEventCategories.musicEvents.events
             })
-            debugger
-            //give props to geo to setGeolocation
         }
+    }
+
+    displayedEvents = () => {
+        // debugger
+        console.log("displayed events func")
     }
 
     render() {
         return(
             <div className='homePageContainer'>
-                <Geolocate {...this.props}/>
                 HomePageContainer 
+                <Events events={this.displayedEvents()}/>
             </div>
         )
     }
@@ -67,6 +78,8 @@ class HomePageContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        usersLocation: state.usersReducer.usersLocation,
+        locationSet: state.usersReducer.locationSet,
         currentUser: state.authReducer.currentUser,
         isAuthenticating: state.authReducer.isAuthenticating,
         isAuthenticated: state.authReducer.isAuthenticated,
@@ -79,7 +92,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToprops = dispatch => {
     return {
-        getPreLoadedEvents: (searchTerm, geoLocation) => dispatch(getPreLoadedEvents(searchTerm, geoLocation))
+        getPreLoadedEvents: (searchTerm, geoLocation) => {
+         dispatch(getPreLoadedEvents(searchTerm, geoLocation))
+        },
+        setUsersLocation: (coords) => {
+            dispatch(setUsersLocation(coords))
+          }
     }
 }
 
