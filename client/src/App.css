@@ -30,12 +30,113 @@
     transform: rotate(360deg);
   }
 }
+/* Events */
 
-/* DateTime  */
+/* Event */
+
+/* Event Categories Container Home page */
+
+.categories-events-container h1 {
+  font-size: 4em;
+  padding: 50px 100px;
+  margin: 0 15% 0 15%;
+}
+
+.events-components {
+  display: flex;
+}
+
+.music-events-container, .food-and-drinks-events-container, .business-events-container {
+  /* background() */
+    min-width: 400px;
+    height: 250px; 
+     border: 1px solid grey;
+      margin: auto;
+}
+/* .music-events-container h2, .food-and-drinks-events-container h2, .business-events-container h2 {
+    
+} */
+
+/* Form Styling */
+
+#create-event-input-title-div {
+  position: relative;
+  top: -40px; 
+  font-weight: bolder;
+  font-size: 3em;
+  background-color: white;
+  width: auto;
+}
+
+.event-input {
+  width: 600px;
+  margin: 100px auto;
+  padding: 0 60px 60px 60px;
+  
+  border: 1px solid black;
+}
+
+#event-input-name, #event-input-url, #event-input-currency, #event-input-status{
+  margin-bottom: 5px;
+  display: block;
+  width: 245px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+
+#event-input-description  {
+  display: block;
+  width: 200px;
+}
+
+input#event-input-name, input#event-input-currency {
+  margin-right: 5px;
+}
+
+
+label{
+  float: left;
+}
+
+.event-input-section-1, .event-input-section-2 {
+  display: flex;
+}
+
+#event-input-description {
+  width: 100%;
+  height: 250px;
+}
+
+.event-dateTime {
+  display: flex;
+}
+
+input.form-control {
+  margin: 25px;
+}
+
+#create-event-btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+#create-event-btn input[type='button'] {
+  font-weight: bold;
+}
+
+
+/* DateTime  Styling*/
 /*!
  * https://github.com/YouCanBookMe/react-datetime
  */
 
+ .form-control {
+   width: auto;
+   margin: auto;
+ }
  .rdt {
   position: relative;
 }

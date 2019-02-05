@@ -32,7 +32,8 @@ export default function authReducer(state = defaultState, action) {
                 token: action.token,
                 isAuthenticated: true,  
                 isAuthenticating: false,
-                hasErrors: false
+                hasErrors: false,
+                errors: []
             }
 
         case 'AUTHENTICATION_FAILURE':
@@ -48,6 +49,7 @@ export default function authReducer(state = defaultState, action) {
             }
         
          case 'LOGOUT_USER':
+
             return { 
                  ...state,
                  currentUser: {

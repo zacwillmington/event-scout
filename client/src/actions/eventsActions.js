@@ -50,9 +50,10 @@ export const getPreLoadedEvents = (searchTerm, geoLocation) => {
     return dispatch => {
         dispatch(eventsAreLoading(true))
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        // const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
-        const loc = `location.address=San%20Diego`
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${loc}&expand=venue`;
+        const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
+        debugger
+        // const loc = `location.address=San%20Diego`
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
 
         // $search_url?token=$token&q=&date_created.keyword=today&page=$repeat&sort_by=$date&expand=venue
 

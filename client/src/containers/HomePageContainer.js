@@ -5,6 +5,8 @@ import { geolocated } from 'react-geolocated';
 import { setUsersLocation } from '../actions/userActions';
 
 import { getPreLoadedEvents } from '../actions/eventsActions';
+
+import EventCategoriesContainer from './EventCategoriesContainer';
 import Events from '../components/Events'
 
 
@@ -38,7 +40,6 @@ class HomePageContainer extends Component {
         } 
         //Set Geolocation
         if (!this.props.locationSet) {
-            debugger
             this.props.setUsersLocation(this.props.coords);
         }
         //Pre-load events
@@ -51,7 +52,7 @@ class HomePageContainer extends Component {
             this.props.getPreLoadedEvents('Food and Drink', usersGeoLocation)
             this.props.getPreLoadedEvents('Business', usersGeoLocation)
         } 
-        
+        //Once events are loaded, save to state.
         if(this.props.preLoadedEventsDone && this.state.musicEvents.length <= 0){
             this.setState({
                 musicEvents: this.props.preLoadedEventCategories.musicEvents.events,
@@ -69,7 +70,7 @@ class HomePageContainer extends Component {
     render() {
         return(
             <div className='homePageContainer'>
-                HomePageContainer 
+                <EventCategoriesContainer />
                 <Events events={this.displayedEvents()}/>
             </div>
         )
@@ -83,7 +84,6 @@ const mapStateToProps = state => {
         currentUser: state.authReducer.currentUser,
         isAuthenticating: state.authReducer.isAuthenticating,
         isAuthenticated: state.authReducer.isAuthenticated,
-        usersLocation: state.usersReducer.usersLocation,
 
         preLoadedEventsDone: state.eventsReducer.preLoadedEventsDone,
         preLoadedEventCategories: state.eventsReducer.preLoadedEventCategories

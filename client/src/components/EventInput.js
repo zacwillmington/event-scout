@@ -41,7 +41,6 @@ class EventInput extends Component {
             const userId = this.props.currentUser.id;
             const eventId = this.props.currentEvent.id;
             this.setState({ alerted: true })
-            debugger
             this.props.history.push({
                 pathname: `/users/${userId}/events/${eventId}`,
                 state: this.props.currentEvent
@@ -69,6 +68,7 @@ class EventInput extends Component {
       }
 
       onDrop = picture => {
+          debugger
           this.setState({ logo: picture[0].name })
       }
 
@@ -92,13 +92,43 @@ class EventInput extends Component {
 
     render() {
         return (
-            <div className='EventInput'>
+            <div className='event-input'>
+            <div id='create-event-input-title-div'><h1>CREATE YOUR EVENT</h1></div>
                 <form onSubmit={event => this.handleOnSubmit(event)}>
-                    <label htmlFor='name'>Event Name</label>
-                    <input id='name' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='name' 
-                     value={this.state.name}/>
+                    <section className='event-input-section-1'>
+                        <div className='event-input-form-section' id='event-name'>
+                            <label htmlFor='event-input-name'>Event Name</label>
+                            <input id='event-input-name' onChange={event => this.handleOnChange(event)}
+                            type='text' 
+                            name='name' 
+                            value={this.state.name}/>
+                        </div>
+                        <div className='event-input-form-section'>
+                            <label htmlFor='event-input-status'>Event Status</label>
+                            <input id='event-input-status' onChange={event => this.handleOnChange(event)}
+                            type='text' 
+                            name='status' 
+                            value={this.state.status}/>
+                        </div>   
+                 </section>
+
+                    <section className='event-input-section-2'>
+                        <div className='event-input-form-section'>
+                            <label htmlFor='event-input-currency'>Currency</label>
+                            <input id='event-input-currency' onChange={event => this.handleOnChange(event)}
+                            type='text' 
+                            name='currency' 
+                            value={this.state.currency}/>
+                        </div>
+                        <div className='event-input-form-section'>
+                            <label htmlFor='event-input-url'>Event URL</label>
+                            <input id='event-input-url' onChange={event => this.handleOnChange(event)}
+                            type='text' 
+                            name='url' 
+                            value={this.state.url}/>
+                        </div>
+                    </section>
+
                     <ImageUploader
                         withIcon={true}
                         buttonText='Choose images'
@@ -111,39 +141,17 @@ class EventInput extends Component {
                      type='hidden' 
                      name='user_id' 
                      />
-                    <label htmlFor='venue_id'>Change to invisible(venue_id)</label>
-                    <input id='venue_id' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='venue_id' 
-                     value={this.state.venue_id}/>
-                    <br></br>
-                    <label htmlFor='description'>Description</label>
-                    <input id='description' onChange={event => this.handleOnChange(event)}
-                     type='text' 
+                    <label htmlFor='event-input-description'>Description</label>
+                    <textarea id='event-input-description' onChange={event => this.handleOnChange(event)}
+                     type='text-area' 
                      name='description' 
                      value={this.state.description}/>
                     <br></br>
-                    <label htmlFor='url'>Event URL</label>
-                    <input id='url' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='url' 
-                     value={this.state.url}/>
-                    <br></br>
-                    <DateTime onChange={event => this.handleOnChangeDateTimeStart(event)}/>
-                    <DateTime onChange={event => this.handleOnChangeDateTimeEnd(event)}/>
-                    <label htmlFor='status'>Event Status</label>
-                    <input id='status' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='status' 
-                     value={this.state.status}/>
-                    <br></br>
-                    <label htmlFor='currency'>Currency</label>
-                    <input id='currency' onChange={event => this.handleOnChange(event)}
-                     type='text' 
-                     name='currency' 
-                     value={this.state.currency}/>
-                    <br></br>
-                    <input type='submit' value='Create Event'/>
+                    <div className='event-dateTime'>
+                        <DateTime value={this.props.start} onChange={event => this.handleOnChangeDateTimeStart(event)}/>
+                        <DateTime value={this.props.end} onChange={event => this.handleOnChangeDateTimeEnd(event)}/>
+                    </div>
+                    <input id='create-event-btn' type='submit' value='Create Event'/>
                 </form>
             </div>
         )
