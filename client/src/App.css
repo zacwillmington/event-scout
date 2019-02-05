@@ -172,6 +172,38 @@ input.form-control {
   font-size: 1.5em;
   font-weight: bolder;
 }
+ 
+/* Searh Events Input Component*/
+#search-events-btn {
+  width: 250px;
+  border-radius: 25px;
+  height: 40px;
+  font-weight: bolder;
+  margin-left: 25px;
+
+}
+
+
+#location-searchTerm, #searchTerm, #date-searchTerm {
+  height: 40px;
+  margin-top: 20px;
+  margin-right: 5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+
+
+/* Movie Component Styling */
+
+.movie-component {
+  width: 90%;
+  height: 600px;
+  border: 1px solid grey;
+  margin: 60px auto;
+}
+
 
 /* DateTime  Styling*/
 /*!

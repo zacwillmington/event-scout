@@ -27,9 +27,13 @@ class EventsSearchPage extends Component {
         return (
             <div className='eventsInputPage'>
                 <form onSubmit={event => this.handleOnSubmit(event)}>
-                    <label htmlFor='searchTerm'>Search Events</label>
-                    <input id='searchTerm' onChange={event => this.handleOnChange(event)}type='text' name='searchTerm' value={this.state.searchTerm}/>
-                    <input className='btn btn-primary' type='submit'/>
+                    <input id='searchTerm' onChange={event => this.handleOnChange(event)}type='text' name='searchTerm' value={this.state.searchTerm} placeholder='Event Type'/>
+
+                    <input id='location-searchTerm' onChange={event => this.handleOnChange(event)}type='text' name='searchTerm' value={this.state.searchTerm} placeholder='Location'/>
+                    
+                    <input id='date-searchTerm' onChange={event => this.handleOnChange(event)}type='text' name='searchTerm' value={this.state.searchTerm} placeholder='Date'/>
+
+                    <input id='search-events-btn' type='submit' value='SEARCH'/>
                 </form>
             </div>
         )

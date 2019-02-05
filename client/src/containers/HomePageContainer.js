@@ -8,6 +8,9 @@ import { getPreLoadedEvents } from '../actions/eventsActions';
 
 import EventCategoriesContainer from './EventCategoriesContainer';
 import Events from '../components/Events'
+import EventsSearchPage from '../components/EventsSearchPage';
+import MovieComponent from '../components/MovieComponent';
+
 
 
 
@@ -70,6 +73,8 @@ class HomePageContainer extends Component {
     render() {
         return(
             <div className='homePageContainer'>
+                <EventsSearchPage />
+                <MovieComponent />
                 <EventCategoriesContainer />
                 <Events events={this.displayedEvents()}/>
             </div>
