@@ -2,31 +2,11 @@ const defaultState = {
     events: [],
     eventsHasErrors: false,
     eventsAreLoading: true,
-    currentEvent: {},
-    preLoadedEventsDone: false,
-    preLoadedEventCategories: {
-        musicEvents: [],
-        foodAndDrinkEvents: [],
-        businessEvents: []
-    } 
+    currentEvent: {}
 }
 
 export default function eventsReducer(state = defaultState, action) {
     switch (action.type) {
-      case 'PRE_LOADED_EVENTS_DONE': 
-        return {
-            ...state,
-            preLoadedEventsDone: true
-        }
-         
-      case 'PRE_LOADING_EVENTS':
-            return {
-                ...state,
-                preLoadedEventCategories: { 
-                    ...state.preLoadedEventCategories,
-                    [action.cat]: action.events
-                }
-            }
 
       case 'EVENTS_HAS_ERRORS':
             return { 
@@ -71,7 +51,7 @@ export default function eventsReducer(state = defaultState, action) {
                 ...state,
                 eventSuccess: true,
                 currentEvent: action.eventData,
-                events: [...state.events, action.eventData]
+                events: action.eventData
             }
 
         default:

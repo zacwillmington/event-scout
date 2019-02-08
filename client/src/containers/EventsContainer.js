@@ -8,6 +8,8 @@ import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
 import { getUsersEvents } from '../actions/eventsActions';
 import EventCategoriesContainer from './EventCategoriesContainer';
+import { setUsersLocation } from '../actions/userActions';
+import usersReducer from '../reducers/usersReducer';
 
 
 class EventsContainer extends Component {
@@ -21,13 +23,18 @@ class EventsContainer extends Component {
 
     getSearchTerm = (searchTerm) => {
         //Fetches events from eventBrite API based on search term
-        this.props.getEvents(searchTerm);
+        this.props.getEvents(searchTerm, this.props.usersLocation);
     }
 
     componentWillMount(){
         if(this.props.isAuthenticated){
             //Fetches user's events from event scout api if user is logged in. 
             this.props.getUsersEvents(this.props.currentUser)
+        }
+        if(this.props.events.length > 0){
+            this.setState({
+                events: this.props.events
+            })
         }  
     }
 
@@ -66,6 +73,7 @@ const mapStateToProps = state => {
         eventsAreLoading: state.eventsReducer.eventsAreLoading,
         events: state.eventsReducer.events,
         usersEvents: state.eventsReducer.usersEvents,
+        usersLocation: state.usersReducer.usersLocation,
         eventsHasErrors: state.eventsReducer.eventsHasErrors
     }
 }

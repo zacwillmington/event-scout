@@ -46,18 +46,22 @@ function preLoadingevents(events, cat){
     }
 }
 
-export const getPreLoadedEvents = (searchTerm, geoLocation) => {
+export const getEvents = (searchTerm, geoLocation) => {
     return dispatch => {
         dispatch(eventsAreLoading(true))
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
-        debugger
-        // const loc = `location.address=San%20Diego`
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
+        let eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+         //Check if user's location has coordinates.
+        if(Object.entries(geoLocation).length !== 0 && geoLocation.constructor === Object){
+            const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
+            
+            eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
+        }
 
         // $search_url?token=$token&q=&date_created.keyword=today&page=$repeat&sort_by=$date&expand=venue
 
         const homePageUrl = "http://localhost:3000/";
+        //Coors issue perhaps because I'm developing on two different ports e.g. 3000 frontend and 3001 on backend.
         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
@@ -70,20 +74,7 @@ export const getPreLoadedEvents = (searchTerm, geoLocation) => {
         )
         .then(resp => resp.json())
         .then( events => {
-            console.log(searchTerm);
-            switch (searchTerm) {
-                case 'Music':
-                     dispatch(preLoadingevents(events, 'musicEvents'))
-
-                case 'Food and Drinks':
-                     dispatch(preLoadingevents(events, 'foodAndDrinkEvents'))
-
-                case 'Business':
-                     dispatch(preLoadingevents(events, 'businessEvents'))
-                    dispatch({type: 'PRE_LOADED_EVENTS_DONE'})
-                default:
-                    break;
-                }
+                dispatch(eventsFetchDataSuccess(events))
             }
         )
     }
@@ -134,32 +125,32 @@ export const getUsersEvents = user => {
     }
 }
 
-export const getEvents = searchTerm => {
-    return (dispatch) => {
-        dispatch(eventsAreLoading(true));
-        const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
-        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
-         //fetch events from API eventBrite
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+// export const getEvents = (searchTerm, loc) => {
+//     return (dispatch) => {
+//         dispatch(eventsAreLoading(true));
+//         const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
+//         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
+//         const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
+//          //fetch events from API eventBrite
+//         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
 
-        const homePageUrl = "http://localhost:3000/";
+//         const homePageUrl = "http://localhost:3000/";
 
-        const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
+//         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
-        return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
-            method: "GET",
-            headers: {
-                    "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
-                    "Origin": homePageUrl
-                }
-            }
-        )
-        .then( response => response.json())
-        .then( eventsData => {
-            dispatch(eventsFetchDataSuccess(eventsData));
-        })
-        .catch( error => dispatch(eventsHasErrored(error)));
-    }
-}
+//         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
+//             method: "GET",
+//             headers: {
+//                     "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
+//                     "Origin": homePageUrl
+//                 }
+//             }
+//         )
+//         .then( response => response.json())
+//         .then( eventsData => {
+//             dispatch(eventsFetchDataSuccess(eventsData));
+//         })
+//         .catch( error => dispatch(eventsHasErrored(error)));
+//     }
+// }
 

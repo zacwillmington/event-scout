@@ -5,37 +5,30 @@ import MusicEvents from '../components/MusicEvents';
 import BusinessEvents from '../components/BusinessEvents';
 import FoodAndDrinksEvents from '../components/FoodAndDrinksEvents';
 import { register } from '../serviceWorker';
+import { getEvents } from '../actions/eventsActions';
+import { withRouter } from 'react-router-dom';
+
 
 
 class EventCategoriesContainer extends Component {
     constructor() {
         super();
         this.state = {
-            musicEvents:  [],
-            foodAndDrinkEvents:  [],
-            businessEvents:  []
+            events: []
         }
     }
 
-    componentDidMount(){
-        this.setState({
-            musicEvents:  this.props.preLoadedEventCategories.musicEvents.events,
-            foodAndDrinkEvents:  this.props.preLoadedEventCategories.foodAndDrinkEvents.events,
-            businessEvents:  this.props.preLoadedEventCategories.businessEvents.events
-        })
+    componentDidUpdate(){
+        if(this.state.events.length > 0){
+            this.props.history.push('/events');
+        }
     }
 
     handleDisplayEvents = event => {
-        switch (event.target.innerText) {
-            case "Music":
-                
-            case "Food And Drink":
-
-            case "Business":
-
-            default:
-                break;
-        }
+        this.props.getEvents(event.target.innerText, this.props.usersLocation)
+        this.setState({
+            events: this.props.events
+        })
     }
 
     render() {
@@ -44,17 +37,14 @@ class EventCategoriesContainer extends Component {
                 <h1>Categories</h1>
                 <div className='events-components'>
                     <MusicEvents
-                     event={this.state.musicEvents}
                      handleDisplayEvents={this.handleDisplayEvents}
                      />
 
                     <FoodAndDrinksEvents 
-                    events={this.state.foodAndDrinkEvents}
                     handleDisplayEvents={this.handleDisplayEvents}
                     />
                     
                     <BusinessEvents 
-                    events={this.state.businessEvents}
                     handleDisplayEvents={this.handleDisplayEvents}
                     />
                 </div>
@@ -65,8 +55,18 @@ class EventCategoriesContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        preLoadedEventCategories: state.eventsReducer.preLoadedEventCategories
+        events: state.eventsReducer.events,
+        usersLocation: state.usersReducer.usersLocation,
+        locationSet: state.usersReducer.locationSet
     }
 }
 
-export default connect(mapStateToProps)(EventCategoriesContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        getEvents: (searchTerm, loc) => {
+            dispatch(getEvents(searchTerm, loc))
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventCategoriesContainer));
