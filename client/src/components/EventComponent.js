@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import HeartCheckbox from 'react-heart-checkbox';
+import { removeEvent, addEvent } from '../actions/eventsActions';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import authReducer from '../reducers/authReducer';
+
 
 
 class EventComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            id: this.props.id,
             name: this.props.name,
             venue_id: this.props.venue_id,
             logo: this.props.logo,
@@ -20,11 +26,17 @@ class EventComponent extends Component {
     }
 
     onClick = () => {
-        //Dispatch to this.props.dispatch(addEvent())
-        this.setState({
-            checked: !this.state.checked 
-        })
-        
+        //User can save an liked event if loggedin.
+        if(this.props.isAuthenticated){
+            if(this.props.checked){
+                this.props.removeEvent(this.state)
+            } else{
+                this.props.addEvent(this.state, this.props.currentUser.id)
+            }
+            this.setState({
+                checked: !this.state.checked 
+            })
+        }
     }
 
 
@@ -36,26 +48,40 @@ class EventComponent extends Component {
                 <p>Add Like widget</p>
                 <h1>{this.state.checked ? 'checked' : 'unchecked'}</h1>
                 <HeartCheckbox checked={this.state.checked} onClick={this.onClick} />
-                <h3>Description</h3>
+                <h3>Description(Need to Truncate)</h3>
                 <p>{this.state.description}</p>
-                <ul>
+            
+                {/* <ul>
                     <p>Starts</p>
                     <li>Time: {this.state.start}</li>
                     <p>Ends</p>
                     <li>{this.state.end}</li>
-
-                    {/* <Link to={`${match.url}/exampleTopicId`}>
-                        Example topic
-                    </Link>
-                    <Route path={`${match.url}/:topicId`} component={Topic}/> */}
-                </ul>
+                </ul> */}
             </div>
         )
     }   
 }
 
 
-export default EventComponent
+const mapDispatchToProps = dispatch => {
+    return {
+        removeEvent: (eventData) => {
+            dispatch(removeEvent(eventData))
+        },
+        addEvent: (eventData, userId) => {
+            dispatch(addEvent(eventData, userId))
+        }
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        currentUser: state.authReducer.currentUser,
+        isAuthenticated: state.authReducer.isAuthenticated
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventComponent))
 
 //Event date receieved per event
 // capacity: null

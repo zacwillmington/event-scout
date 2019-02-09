@@ -191,10 +191,11 @@ input.form-control {
 
 /* HeartCheckbox Styling */
 
-
 button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::before  {
   background-color: #d9edf7
 }
+
+
 /* Searh Events Input Component*/
 
 #events-search-bar {

@@ -39,19 +39,18 @@ export default function eventsReducer(state = defaultState, action) {
             }
         
         case 'USERS_EVENTS_FETCH_SUCCESS':
-    
             return {
                 ...state,
                 eventsAreLoading: false,
                 usersEvents: action.usersEvents
             }
 
-        case 'ADD_EVENT': 
+        case 'ADD_TO_USERS_EVENTS': 
             return {
                 ...state,
                 eventSuccess: true,
                 currentEvent: action.eventData,
-                events: action.eventData
+                usersEvents: [...state.usersEvents, action.usersEvents]
             }
 
         default:

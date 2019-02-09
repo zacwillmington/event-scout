@@ -19,7 +19,7 @@ function eventsFetchDataSuccess(events) {
 
 function addEventData(eventData){
     return {
-        type: 'ADD_EVENT',
+        type: 'ADD_TO_USERS_EVENTS',
         eventData: eventData
     }
 }
@@ -35,14 +35,6 @@ function getUsersEventsFromEventScout(events, user){
         type: 'USERS_EVENTS_FETCH_SUCCESS',
         usersEvents: events,
         user: user
-    }
-}
-
-function preLoadingevents(events, cat){
-    return {
-        type: 'PRE_LOADING_EVENTS',
-        events: events,
-        cat: cat
     }
 }
 
@@ -80,10 +72,10 @@ export const getEvents = (searchTerm, geoLocation) => {
     }
 }
 
-export const addEvent = eventData => {
+export const addEvent = (eventData, userId) => {
     return dispatch => {
         dispatch(addingEvent());
-        fetch(`/api/v1/users/${eventData.user_id}/events`, {
+        fetch(`/api/v1/users/${userId}/events`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -152,6 +144,25 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
             dispatch(eventsFetchDataSuccess(eventsData));
         })
         .catch( error => dispatch(eventsHasErrored(error)));
+    }
+}
+
+export const removeEvent = eventData => {
+    return dispatch => {
+        debugger 
+        const url = `/api/v1/events/${eventData.id}` 
+        fetch(url,{
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then( data => {
+            debugger
+
+        })
     }
 }
 

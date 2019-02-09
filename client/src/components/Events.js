@@ -21,7 +21,8 @@ class Events extends Component {
                 logo={url}
                 url={event.url} 
                 shareable={event.shareable} 
-                venueId={event.venueId}/>
+                venueId={event.venueId}
+                checked={false} />
             })
         }
 
