@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DateTime  from 'react-datetime';
+import { withAlert } from 'react-alert';
+import moment from 'moment/moment.js';
 
 class EventsSearchPage extends Component {
     constructor(props) {
@@ -23,9 +25,24 @@ class EventsSearchPage extends Component {
         })
     } 
 
+    validateInputs = inputData => {
+       if(inputData.eventDate !== 'Date' && inputData.searchTerm !== '' && inputData.locationAddress !== null){
+            return true
+        }else {
+            return false
+        }
+    }
+
     handleOnSubmit = event => {
         event.preventDefault();
-        // this.props.getSearchTerm(this.state.searchTerm);
+        if(this.validateInputs(this.state)) {
+            //Parsed to suit Eventbrite API
+            const dateTimeParsed = moment(this.state.eventDate).format("YYYY-MM-DDThh:mm:ss");
+            debugger
+            this.props.getSearchTerm(this.state.locationAddress, this.state.searchTerm, dateTimeParsed);
+        } else{
+            this.props.alert.error("Please fill in all search options.")
+        }
         this.setState({
             searchTerm: '',
             locationAddress: null,
@@ -44,7 +61,6 @@ class EventsSearchPage extends Component {
 
                     <input id='locationAddress' onChange={event => this.handleOnChange(event)}type='text' name='locationAddress' value={this.state.locationAddress} placeholder='Location'/>
             
-                    {/* <br></br> */}
                     <input id='search-events-btn' type='submit' value='SEARCH'/>
                 </form>
             </div>
@@ -52,4 +68,4 @@ class EventsSearchPage extends Component {
     }
 }
 
-export default EventsSearchPage
+export default withAlert(EventsSearchPage)

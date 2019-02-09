@@ -4,12 +4,11 @@ import { withRouter } from "react-router-dom";
 import { geolocated } from 'react-geolocated';
 import { setUsersLocation } from '../actions/userActions';
 
-import { getPreLoadedEvents } from '../actions/eventsActions';
-
 import EventCategoriesContainer from './EventCategoriesContainer';
-import Events from '../components/Events'
+import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import MovieComponent from '../components/MovieComponent';
+
 
 
 
@@ -18,16 +17,10 @@ class HomePageContainer extends Component {
     constructor(){
         super();
         this.state = {
-            musicEvents: [],
-            foodAndDrinkEvents: [],
-            businessEvents: []
         }
     }
 
     componentWillMount() {
-        //fetch events categories 
-        if(!this.props.preLoadedEventsDone){            
-        }
     }
 
     componentDidMount() {
@@ -47,10 +40,17 @@ class HomePageContainer extends Component {
         }
     }
 
+    getSearchTerm = (loc, searchTerm, eventDate) => {
+        //Fetches events from eventBrite API based on search term
+        debugger
+        this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
+        this.props.history.push('/events');
+    }
+
     render() {
         return(
             <div className='homePageContainer'>
-                <EventsSearchPage />
+                <EventsSearchPage getSearchTerm={this.getSearchTerm}/>
                 <MovieComponent />
                 <EventCategoriesContainer musicEvents={this.props.musicEvents} foodAndDrinkEvents={this.props.foodAndDrinkEvents} businessEvents={this.state.businessEvents}/>
             </div>
@@ -65,17 +65,15 @@ const mapStateToProps = state => {
         currentUser: state.authReducer.currentUser,
         isAuthenticating: state.authReducer.isAuthenticating,
         isAuthenticated: state.authReducer.isAuthenticated
-
-        // preLoadedEventsDone: state.eventsReducer.preLoadedEventsDone,
-        // preLoadedEventCategories: state.eventsReducer.preLoadedEventCategories
     }
 }
 
 const mapDispatchToprops = dispatch => {
     return {
-        // getPreLoadedEvents: (searchTerm, geoLocation) => {
-        //  dispatch(getPreLoadedEvents(searchTerm, geoLocation))
-        // },
+        getEventsBySearchBar: (loc, searchTerm, eventDate) => {
+            dispatch(getEventsBySearchBar(loc, searchTerm, eventDate))
+        },
+
         setUsersLocation: (coords) => {
             dispatch(setUsersLocation(coords))
           }

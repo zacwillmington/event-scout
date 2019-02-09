@@ -125,32 +125,33 @@ export const getUsersEvents = user => {
     }
 }
 
-// export const getEvents = (searchTerm, loc) => {
-//     return (dispatch) => {
-//         dispatch(eventsAreLoading(true));
-//         const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
-//         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-//         const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
-//          //fetch events from API eventBrite
-//         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
+    return (dispatch) => {
+        dispatch(eventsAreLoading(true));
+        const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
+        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
+        const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
+        debugger
+         //fetch events from API eventBrite
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
 
-//         const homePageUrl = "http://localhost:3000/";
+        const homePageUrl = "http://localhost:3000/";
 
-//         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
+        const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
-//         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
-//             method: "GET",
-//             headers: {
-//                     "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
-//                     "Origin": homePageUrl
-//                 }
-//             }
-//         )
-//         .then( response => response.json())
-//         .then( eventsData => {
-//             dispatch(eventsFetchDataSuccess(eventsData));
-//         })
-//         .catch( error => dispatch(eventsHasErrored(error)));
-//     }
-// }
+        return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
+            method: "GET",
+            headers: {
+                    "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
+                    "Origin": homePageUrl
+                }
+            }
+        )
+        .then( response => response.json())
+        .then( eventsData => {
+            dispatch(eventsFetchDataSuccess(eventsData));
+        })
+        .catch( error => dispatch(eventsHasErrored(error)));
+    }
+}
 

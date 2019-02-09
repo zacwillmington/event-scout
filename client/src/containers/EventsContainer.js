@@ -6,10 +6,10 @@ import { withRouter } from "react-router-dom";
 import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
-import { getUsersEvents } from '../actions/eventsActions';
-import EventCategoriesContainer from './EventCategoriesContainer';
-import { setUsersLocation } from '../actions/userActions';
-import usersReducer from '../reducers/usersReducer';
+import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
+
+
+
 
 
 class EventsContainer extends Component {
@@ -21,9 +21,9 @@ class EventsContainer extends Component {
     }
 
 
-    getSearchTerm = (searchTerm) => {
+    getSearchTerm = (loc, searchTerm, eventDate) => {
         //Fetches events from eventBrite API based on search term
-        this.props.getEvents(searchTerm, this.props.usersLocation);
+        this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
     }
 
     componentWillMount(){
@@ -58,7 +58,6 @@ class EventsContainer extends Component {
             <div className='eventsContainer'> 
                 {this.renderViewYourEventsBtn()}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                {/* <EventCategoriesContainer />     */}
                 <Events events={this.state.events} />
             </div>
         )
@@ -80,8 +79,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getEvents: (searchTerm) => {
-            return dispatch(getEvents(searchTerm))
+        getEventsBySearchBar: (loc, searchTerm, eventDate) => {
+            return dispatch(getEventsBySearchBar(loc, searchTerm, eventDate))
         },
         getUsersEvents: (user) => {
             return dispatch(getUsersEvents(user))
