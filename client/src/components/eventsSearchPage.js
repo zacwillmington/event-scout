@@ -8,7 +8,7 @@ class EventsSearchPage extends Component {
         super(props);
         this.state = {
             searchTerm: '',
-            locationAddress: null,
+            locationAddress: '',
             eventDate: 'Date'
         }
     }
@@ -26,7 +26,7 @@ class EventsSearchPage extends Component {
     } 
 
     validateInputs = inputData => {
-       if(inputData.eventDate !== 'Date' && inputData.searchTerm !== '' && inputData.locationAddress !== null){
+       if(inputData.eventDate !== 'Date' && inputData.searchTerm !== '' && inputData.locationAddress !== ''){
             return true
         }else {
             return false
@@ -45,7 +45,7 @@ class EventsSearchPage extends Component {
         }
         this.setState({
             searchTerm: '',
-            locationAddress: null,
+            locationAddress: '',
             eventDate: ''           
         })
     }

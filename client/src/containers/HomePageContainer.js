@@ -42,7 +42,6 @@ class HomePageContainer extends Component {
 
     getSearchTerm = (loc, searchTerm, eventDate) => {
         //Fetches events from eventBrite API based on search term
-        debugger
         this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
         this.props.history.push('/events');
     }
@@ -52,7 +51,7 @@ class HomePageContainer extends Component {
             <div className='homePageContainer'>
                 <EventsSearchPage getSearchTerm={this.getSearchTerm}/>
                 <MovieComponent />
-                <EventCategoriesContainer musicEvents={this.props.musicEvents} foodAndDrinkEvents={this.props.foodAndDrinkEvents} businessEvents={this.state.businessEvents}/>
+                <EventCategoriesContainer />
             </div>
         )
     }

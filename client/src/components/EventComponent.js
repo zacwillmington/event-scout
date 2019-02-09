@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import HeartCheckbox from 'react-heart-checkbox';
+
 
 class EventComponent extends Component {
     constructor(props) {
@@ -12,18 +14,19 @@ class EventComponent extends Component {
             start: this.props.start,
             end: this.props.end,
             status: this.props.status,
-            currency: this.props.currency
+            currency: this.props.currency,
+            checked: false
         }
     }
 
-    componentWillMount() {
-        //Component is not rendered by react-router therefore fetch component
-        // if (this.props.name === undefined){
-        //     //fetch
-        // debugger
-        // }
-        //fetch event on loading from store? or API if props doesn't have currentEvent.
+    onClick = () => {
+        //Dispatch to this.props.dispatch(addEvent())
+        this.setState({
+            checked: !this.state.checked 
+        })
+        
     }
+
 
     render() {
         return (
@@ -31,6 +34,8 @@ class EventComponent extends Component {
                 <h1>{this.state.name}</h1>
                 <img src={this.state.logo} alt='event-logo'/>
                 <p>Add Like widget</p>
+                <h1>{this.state.checked ? 'checked' : 'unchecked'}</h1>
+                <HeartCheckbox checked={this.state.checked} onClick={this.onClick} />
                 <h3>Description</h3>
                 <p>{this.state.description}</p>
                 <ul>
@@ -92,4 +97,4 @@ export default EventComponent
 // tx_time_limit: 1200
 // url: "https://www.eventbrite.co.uk/e/music-and-autism-tickets-46973208130?aff=ebapi"
 // venue_id: "25201755"
-// version: "3.0.0"
+// version: "3.0.0

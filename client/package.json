@@ -15,6 +15,7 @@
     "react-datetime": "^2.16.3",
     "react-dom": "^16.7.0",
     "react-geolocated": "^2.4.1",
+    "react-heart-checkbox": "0.0.4",
     "react-images-upload": "^1.2.6",
     "react-moment": "^0.8.4",
     "react-popup": "^0.9.3",

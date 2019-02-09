@@ -18,6 +18,10 @@ class EventCategoriesContainer extends Component {
         }
     }
 
+    componentDidMount() {
+        // debugger
+    }
+
     componentDidUpdate(){
         if(this.state.events.length > 0){
             this.props.history.push('/events');
