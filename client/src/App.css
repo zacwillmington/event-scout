@@ -30,9 +30,20 @@
     transform: rotate(360deg);
   }
 }
+
 /* Events */
 
+.eventsContainer {
+  margin: 15% auto;
+}
+
 /* Event */
+
+.event {
+  border: 1px solid black;
+  margin: 10% auto;
+  width: 60%;
+}
 
 /* Event Categories Container Home page */
 
@@ -43,18 +54,22 @@
 }
 
 .categories-events-container {
-  margin-bottom: 15%;
+  padding: 5%;
+  text-align: center;
 }
 .events-components {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 5% auto;
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
   /* background() */
-    min-width: 400px;
-    height: 250px; 
+    width: 400px;
+    height: 300px; 
      border: 1px solid grey;
-      margin: auto;
+      margin: 5px;
 }
 
 /* Form Styling */
@@ -175,10 +190,14 @@ input.form-control {
  
 /* Searh Events Input Component*/
 
+#events-search-bar {
+  width: 100%;
+}
+
 .eventsInputPage {
   position: fixed;
   top: 50px;
-  right: 25%;
+  width: 100%;
 }
 
 #search-events-btn {
@@ -188,11 +207,10 @@ input.form-control {
   font-weight: bolder;
   margin-left: 25px;
   margin-top: 10px;
-
 }
 
 
-#location-searchTerm, #searchTerm, #date-searchTerm {
+#searchTerm, #locationAddress {
   height: 40px;
   margin-top: 20px;
   margin-right: 5px;
@@ -202,6 +220,24 @@ input.form-control {
   border-bottom: 1px solid black;
 }
 
+.eventDate {
+  width: 50px;
+  margin: 0px;
+  display: inline;
+  /* position: relative; */
+}
+
+.eventDate input{
+  display: inline;
+  margin: 0px;
+  height: 40px;
+  margin-top: 20px;
+  margin-right: 5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
 
 /* Movie Component Styling */
 
@@ -222,6 +258,17 @@ input.form-control {
    width: auto;
    margin: auto;
  }
+
+  /* #eventDate {
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 5px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+  } */
+
  .rdt {
   position: relative;
 }

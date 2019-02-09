@@ -45,24 +45,6 @@ class HomePageContainer extends Component {
         if (!this.props.locationSet) {
             this.props.setUsersLocation(this.props.coords);
         }
-        //Pre-load events
-        // if (this.props.coords !== null && this.props.locationSet && !this.props.preLoadedEventsDone){
-        //     const usersGeoLocation = {
-        //         latitude: this.props.coords.latitude,
-        //         longitude: this.props.coords.longitude
-        //     }
-        //     this.props.getPreLoadedEvents('Music', usersGeoLocation)
-        //     this.props.getPreLoadedEvents('Food and Drink', usersGeoLocation)
-        //     this.props.getPreLoadedEvents('Business', usersGeoLocation)
-        // } 
-        // //Once events are loaded, save to state.
-        // if(this.props.preLoadedEventsDone && this.state.musicEvents.length <= 0){
-        //     this.setState({
-        //         musicEvents: this.props.preLoadedEventCategories.musicEvents.events,
-        //         foodAndDrinkEvents: this.props.preLoadedEventCategories.foodAndDrinkEvents.events,
-        //         businessEvents: this.props.preLoadedEventCategories.musicEvents.events
-        //     })
-        // }
     }
 
     render() {

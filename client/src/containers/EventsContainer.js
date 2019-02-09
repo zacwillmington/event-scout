@@ -58,7 +58,7 @@ class EventsContainer extends Component {
             <div className='eventsContainer'> 
                 {this.renderViewYourEventsBtn()}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                <EventCategoriesContainer />    
+                {/* <EventCategoriesContainer />     */}
                 <Events events={this.state.events} />
             </div>
         )

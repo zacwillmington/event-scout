@@ -35,18 +35,18 @@ class EventCategoriesContainer extends Component {
         return (
             <div className='categories-events-container'>
                 <h1>Categories</h1>
-                <div className='events-components'>
-                    <MusicEvents
-                     handleDisplayEvents={this.handleDisplayEvents}
-                     />
+                    <div className='events-components'>
+                        <MusicEvents
+                        handleDisplayEvents={this.handleDisplayEvents}
+                        />
 
-                    <FoodAndDrinksEvents 
-                    handleDisplayEvents={this.handleDisplayEvents}
-                    />
-                    
-                    <BusinessEvents 
-                    handleDisplayEvents={this.handleDisplayEvents}
-                    />
+                        <FoodAndDrinksEvents 
+                        handleDisplayEvents={this.handleDisplayEvents}
+                        />
+                        
+                        <BusinessEvents 
+                        handleDisplayEvents={this.handleDisplayEvents}
+                        />
                 </div>
             </div>
         );

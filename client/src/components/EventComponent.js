@@ -27,7 +27,7 @@ class EventComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className='event'>
                 <h1>{this.state.name}</h1>
                 <img src={this.state.logo} alt='event-logo'/>
                 <p>Add Like widget</p>
