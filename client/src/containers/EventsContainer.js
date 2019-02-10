@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-
-import { getEvents } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import Events from '../components/Events';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
@@ -25,23 +23,27 @@ class EventsContainer extends Component {
         if(this.props.isAuthenticated){
             //Fetches user's events from event scout api if user is logged in. 
             this.props.getUsersEvents(this.props.currentUser)
-        }
-        if(this.props.events.length > 0){
-            this.setState({
-                events: this.props.events
-            })
         }  
+        this.setState({
+            events: this.props.events
+        })
+    }
+
+    componentWillReceiveProps(prevProps){
+        this.setState({
+            events: this.props.events
+        })
     }
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
-
-        if(prevProps.usersEvents.length > this.props.usersEvents.length){
+        if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 
             })
         }else {
-            debugger
+            // debugger
+            //Need to update events if user searches for events
         }
     }
     

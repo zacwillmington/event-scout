@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import EventComponent from './EventComponent';
 import { connect } from 'react-redux';
+import EventIndexView from './EventIndexView';
 
 class Events extends Component {
 
-    renderEventsFromEventBrite = () => {
+    renderEventsFromEventBrite = () => { 
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
                 let url = event.logo != null ? event.logo.url : ''
-                return <EventComponent 
-                key={event.id} 
+                return <EventIndexView
                 name={event.name.text} 
                 description={event.description.text}
                 timezoneStart={event.start.timezone} 
@@ -20,7 +19,6 @@ class Events extends Component {
                 logo={url}
                 url={event.url} 
                 shareable={event.shareable} 
-                venueId={event.venueId}
                 checked={false} />
             })
         }
@@ -32,7 +30,7 @@ class Events extends Component {
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
                 let url = event.logo !== null ? event.logo.url : ''
-                return <EventComponent 
+                return <EventIndexView 
                 id={event.id}
                 key={event.id} 
                 name={event.name} 
@@ -58,11 +56,4 @@ class Events extends Component {
 }
 
 
-// const mapStateToProps = state => {
-//     return {
-//         events: state.eventsReducer.events
-//     }
-// }
-
-
-export default connect(null)(Events)
+export default Events;

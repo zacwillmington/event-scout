@@ -3,8 +3,6 @@ import HeartCheckbox from 'react-heart-checkbox';
 import { removeEvent, addEvent } from '../actions/eventsActions';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import authReducer from '../reducers/authReducer';
-
 
 
 class EventComponent extends Component {
@@ -38,23 +36,21 @@ class EventComponent extends Component {
             })
         }
     }
-
-
     render() {
         return (
             <div id={this.state.id} className='event'>
                 <h1>{this.state.name}</h1>
                 <img src={this.state.logo} alt='event-logo'/>
                 <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
-                <h3>Description(Need to Truncate)</h3>
-                <p>{this.state.description}</p>
-            
-                {/* <ul>
+                <h3>Description</h3>
+                <p>{this.props.description}</p>
+
+                <ul>
                     <p>Starts</p>
                     <li>Time: {this.state.start}</li>
                     <p>Ends</p>
                     <li>{this.state.end}</li>
-                </ul> */}
+                </ul>
             </div>
         )
     }   

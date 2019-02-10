@@ -50,6 +50,14 @@
   margin: 15% auto;
 }
 
+
+/* EVENT INDEX VIEW */
+.event-index {
+  border: 1px solid black;
+  margin: 5%;
+  height: 500px;
+}
+
 /* Event */
 
 .event {

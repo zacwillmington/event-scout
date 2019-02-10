@@ -3,13 +3,13 @@ eventScout
 
 
 TODO
-    - add crud actions for events
     - Categories container display 
-        - functions e.g. on click displays preloaded events
         - Reset past events on redirect. Previous events are showing
-    = uploaded images not displayed
+    - Truncate description for event.
     - remove account logout and home when use not logged in
     - Moviehome page component
+    - Logo url for images
+    
 
     - STYLING
 

@@ -38,7 +38,6 @@ class EventsSearchPage extends Component {
         if(this.validateInputs(this.state)) {
             //Parsed to suit Eventbrite API
             const dateTimeParsed = moment(this.state.eventDate).format("YYYY-MM-DDThh:mm:ss");
-            debugger
             this.props.getSearchTerm(this.state.locationAddress, this.state.searchTerm, dateTimeParsed);
         } else{
             this.props.alert.error("Please fill in all search options.")
