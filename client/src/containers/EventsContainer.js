@@ -33,9 +33,16 @@ class EventsContainer extends Component {
         }  
     }
 
-    componentDidUpdate(){
-        debugger
-        
+    componentDidUpdate(prevProps){
+        //If a user's event has been deleted then update state with new array.
+
+        if(prevProps.usersEvents.length > this.props.usersEvents.length){
+            this.setState({
+                events: this.props.usersEvents 
+            })
+        }else {
+            debugger
+        }
     }
     
 
@@ -54,7 +61,7 @@ class EventsContainer extends Component {
     renderViewYourEventsBtn = () => {
         if(this.props.isAuthenticated) {
             return (
-                <button onClick={event => this.handleViewEventsClick(event)}>View Your Events</button>
+                <button id='view-users-events' onClick={event => this.handleViewEventsClick(event)}>View Your Events</button>
             )
         }
     }

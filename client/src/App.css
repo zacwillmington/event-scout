@@ -31,6 +31,19 @@
   }
 }
 
+/* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
+
+#view-users-events {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
+
+
 /* Events */
 
 .eventsContainer {

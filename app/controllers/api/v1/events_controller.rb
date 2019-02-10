@@ -11,7 +11,6 @@ module Api
                             ok: true
                         }
                 else
-                    binding.pry
                     @events = Event.all
                     render json: {
                             event: @events,
@@ -43,6 +42,7 @@ module Api
             def destroy
                 @event = Event.find(params[:id]
                 )
+                @event.destroy
                 render json: {
                     status: 201                    
                 }

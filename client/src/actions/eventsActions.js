@@ -87,6 +87,7 @@ export const addEvent = (eventData, userId) => {
             if(!eventData.ok){
                 dispatch(eventsHasErrored(eventData.errors))
             } else{
+                debugger
                 dispatch(addEventData(eventData.eventData))
             }
         })

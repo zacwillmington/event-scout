@@ -50,7 +50,7 @@ export default function eventsReducer(state = defaultState, action) {
                 ...state,
                 eventSuccess: true,
                 currentEvent: action.eventData,
-                usersEvents: [...state.usersEvents, action.usersEvents]
+                usersEvents: [...state.usersEvents, action.eventData]
             }
 
         case 'REMOVE_EVENT': 
