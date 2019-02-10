@@ -53,6 +53,12 @@ export default function eventsReducer(state = defaultState, action) {
                 usersEvents: [...state.usersEvents, action.usersEvents]
             }
 
+        case 'REMOVE_EVENT': 
+            return {
+                ...state,
+                usersEvents: state.usersEvents.filter( ({ id }) => id !== action.eventId)
+            }
+
         default:
             return state;
     }

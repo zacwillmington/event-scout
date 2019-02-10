@@ -122,9 +122,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         dispatch(eventsAreLoading(true));
         const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";
-        debugger
-         
+        const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";         
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
 
         const homePageUrl = "http://localhost:3000/";
@@ -147,10 +145,9 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     }
 }
 
-export const removeEvent = eventData => {
+export const removeEvent = (eventData, userId) => {
     return dispatch => {
-        debugger 
-        const url = `/api/v1/events/${eventData.id}` 
+        const url = `/api/v1/users/${userId}/events/${eventData.id}` 
         fetch(url,{
             method: "DELETE",
             headers: {
@@ -160,8 +157,10 @@ export const removeEvent = eventData => {
         })
         .then(resp => resp.json())
         .then( data => {
-            debugger
-
+            dispatch({ 
+                type: 'REMOVE_EVENT',
+                eventId: eventData.id
+            })
         })
     }
 }

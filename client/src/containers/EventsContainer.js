@@ -21,11 +21,6 @@ class EventsContainer extends Component {
     }
 
 
-    getSearchTerm = (loc, searchTerm, eventDate) => {
-        //Fetches events from eventBrite API based on search term
-        this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
-    }
-
     componentWillMount(){
         if(this.props.isAuthenticated){
             //Fetches user's events from event scout api if user is logged in. 
@@ -36,6 +31,17 @@ class EventsContainer extends Component {
                 events: this.props.events
             })
         }  
+    }
+
+    componentDidUpdate(){
+        debugger
+        
+    }
+    
+
+    getSearchTerm = (loc, searchTerm, eventDate) => {
+        //Fetches events from eventBrite API based on search term
+        this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
     }
 
     handleViewEventsClick = event => {

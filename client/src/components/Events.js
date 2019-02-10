@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 class Events extends Component {
 
-
-    renderEvents = () => {
+    renderEventsFromEventBrite = () => {
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
@@ -28,11 +27,30 @@ class Events extends Component {
 
     }
 
+    renderEventsFromEventScoutAPI() {
+        const events = this.props.events;
+        if ( !this.props.eventsAreLoading && events){  
+            return  events.map(event => {
+                let url = event.logo !== null ? event.logo.url : ''
+                return <EventComponent 
+                id={event.id}
+                key={event.id} 
+                name={event.name} 
+                description={event.description}
+                start={event.start}
+                end={event.end}
+                logo={event.logo}
+                url={event.url} 
+                checked={true} />
+            })
+        }
+    }
+
     render() {
         return (
             <div>
                 <React.Fragment>
-                    {this.renderEvents()}
+                    {this.props.events[0].name.text === undefined ? this.renderEventsFromEventScoutAPI() : this.renderEventsFromEventBrite()}
                 </React.Fragment>
             </div>
         )

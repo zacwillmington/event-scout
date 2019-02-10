@@ -24,7 +24,6 @@ module Api
                 @user = User.find(params['user_id'].to_i)
                @event = @user.events.create(strong_params)
                 if @event.save
-                    binding.pry
                     render json: {
                         eventData: @event, 
                         ok: true
@@ -41,8 +40,12 @@ module Api
 
             end
 
-            def delete
-
+            def destroy
+                @event = Event.find(params[:id]
+                )
+                render json: {
+                    status: 201                    
+                }
             end
 
             private

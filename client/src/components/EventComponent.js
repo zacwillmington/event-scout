@@ -21,15 +21,15 @@ class EventComponent extends Component {
             end: this.props.end,
             status: this.props.status,
             currency: this.props.currency,
-            checked: false
+            checked: this.props.checked
         }
     }
 
-    onClick = () => {
+    handleOnClick = (event) => {
         //User can save an liked event if loggedin.
         if(this.props.isAuthenticated){
-            if(this.props.checked){
-                this.props.removeEvent(this.state)
+            if(this.state.checked){
+                this.props.removeEvent(this.state, this.props.currentUser.id)
             } else{
                 this.props.addEvent(this.state, this.props.currentUser.id)
             }
@@ -42,12 +42,10 @@ class EventComponent extends Component {
 
     render() {
         return (
-            <div className='event'>
+            <div id={this.state.id} className='event'>
                 <h1>{this.state.name}</h1>
                 <img src={this.state.logo} alt='event-logo'/>
-                <p>Add Like widget</p>
-                <h1>{this.state.checked ? 'checked' : 'unchecked'}</h1>
-                <HeartCheckbox checked={this.state.checked} onClick={this.onClick} />
+                <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
                 <h3>Description(Need to Truncate)</h3>
                 <p>{this.state.description}</p>
             
@@ -65,8 +63,8 @@ class EventComponent extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeEvent: (eventData) => {
-            dispatch(removeEvent(eventData))
+        removeEvent: (eventData, userId) => {
+            dispatch(removeEvent(eventData, userId))
         },
         addEvent: (eventData, userId) => {
             dispatch(addEvent(eventData, userId))
