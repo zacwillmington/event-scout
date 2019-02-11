@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HeartCheckbox from 'react-heart-checkbox';
 import { removeEvent, addEvent } from '../actions/eventsActions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 
 class EventIndexView extends Component {
@@ -49,6 +49,12 @@ class EventIndexView extends Component {
         }
     }
 
+    viewEvent = () => {
+        this.props.history.push({
+            pathname: `/events/${this.props.id}`,
+            state: { currentEvent: this.state }
+        })
+    } 
 
     render() {
         return (
@@ -58,6 +64,7 @@ class EventIndexView extends Component {
                 <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
                 <h3>Description</h3>
                 <p>{this.truncate(this.props.description)}</p>
+                <button onClick={event => this.viewEvent()}>View Event</button>
             </div>
         )
     }

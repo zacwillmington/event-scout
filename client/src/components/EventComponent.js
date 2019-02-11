@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeartCheckbox from 'react-heart-checkbox';
-import { removeEvent, addEvent } from '../actions/eventsActions';
+import { removeEvent, addEvent, getEvents } from '../actions/eventsActions';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -8,23 +8,15 @@ import { Link, withRouter } from 'react-router-dom';
 class EventComponent extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            id: this.props.id,
-            name: this.props.name,
-            venue_id: this.props.venue_id,
-            logo: this.props.logo,
-            description: this.props.description,
-            url: this.props.url,
-            start: this.props.start,
-            end: this.props.end,
-            status: this.props.status,
-            currency: this.props.currency,
-            checked: this.props.checked
-        }
+        this.state = this.props.location.state.currentEvent
+    }
+
+    componentWillMount(){
+        debugger
     }
 
     handleOnClick = (event) => {
-        //User can save an liked event if loggedin.
+        //User can save a liked event if loggedin.
         if(this.props.isAuthenticated){
             if(this.state.checked){
                 this.props.removeEvent(this.state, this.props.currentUser.id)
@@ -36,6 +28,7 @@ class EventComponent extends Component {
             })
         }
     }
+
     render() {
         return (
             <div id={this.state.id} className='event'>
@@ -43,14 +36,14 @@ class EventComponent extends Component {
                 <img src={this.state.logo} alt='event-logo'/>
                 <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
                 <h3>Description</h3>
-                <p>{this.props.description}</p>
-
+                <p>{this.state.description}</p>
                 <ul>
                     <p>Starts</p>
                     <li>Time: {this.state.start}</li>
                     <p>Ends</p>
                     <li>{this.state.end}</li>
                 </ul>
+                <a href={this.state.url}>Event Link</a>
             </div>
         )
     }   
@@ -117,4 +110,4 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventComp
 // tx_time_limit: 1200
 // url: "https://www.eventbrite.co.uk/e/music-and-autism-tickets-46973208130?aff=ebapi"
 // venue_id: "25201755"
-// version: "3.0.0
+// version: "3.0.

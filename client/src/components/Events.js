@@ -8,8 +8,10 @@ class Events extends Component {
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
-                let url = event.logo != null ? event.logo.url : ''
+                let url = event.logo !== null ? event.logo.url : ''
                 return <EventIndexView
+                key={event.id}
+                id={event.id}
                 name={event.name.text} 
                 description={event.description.text}
                 timezoneStart={event.start.timezone} 

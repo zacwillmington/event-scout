@@ -121,8 +121,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     return (dispatch) => {
         dispatch(eventsAreLoading(true));
         const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
-        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";
-        const clientSecret = "SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK";         
+        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
 
         const homePageUrl = "http://localhost:3000/";
@@ -144,6 +143,32 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         .catch( error => dispatch(eventsHasErrored(error)));
     }
 }
+
+// export const getEvent = eventId =>{
+//     return dispatch => {
+//         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
+//         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+
+//         const homePageUrl = "http://localhost:3000/";
+
+//         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
+
+//         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
+//             method: "GET",
+//             headers: {
+//                     "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
+//                     "Origin": homePageUrl
+//                 }
+//             }
+//         )
+//         .then( response => response.json())
+//         .then( eventsData => {
+//             dispatch(eventsFetchDataSuccess(eventsData));
+//         })
+//         .catch( error => dispatch(eventsHasErrored(error)));
+
+//     }
+// } 
 
 export const removeEvent = (eventData, userId) => {
     return dispatch => {
