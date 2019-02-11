@@ -31,6 +31,28 @@
   }
 }
 
+body{
+  /* background-color:rgb(0,0,0); */
+}
+
+/* MAIN IMAGE COMPONENT */
+
+.main-image-component {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549853716/main-image_cd4hqi.jpg');
+
+  height: 600px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  width: 100%;  
+}
+
+.main-image-component h1 {
+  padding-top: 10%;
+  color: white;
+  font-weight: bold;
+  font-size: 10em;
+}
 /* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
 
 #view-users-events {
@@ -86,11 +108,35 @@
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
-  /* background() */
     width: 400px;
     height: 300px; 
      border: 1px solid grey;
       margin: 5px;
+}
+
+.music-events-container a, .food-and-drinks-events-container a, .business-events-container a{
+  color: white;
+}
+
+.music-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.business-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855789/adult-brainstorming-business-1437908_zn9r09.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.food-and-drinks-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549856215/matthieu-joannon-294645-unsplash_ojfdcn.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 /* Form Styling */
@@ -221,6 +267,7 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 
 #events-search-bar {
   width: 100%;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) )
 }
 
 .eventsInputPage {

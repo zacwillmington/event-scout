@@ -12,7 +12,7 @@ export default function eventsReducer(state = defaultState, action) {
             return { 
                 ...state,
                 eventsHasErrors: true,
-                eventsAreLoading: false,
+                eventsAreLoading: false,            
                 errors: action.errors
             }
 
@@ -20,8 +20,8 @@ export default function eventsReducer(state = defaultState, action) {
             return {
                 ...state,
                 eventsAreLoading: true,
-                eventsHasErrors: false
-            }
+                eventsHasErrors: false,
+                }
 
         case 'EVENTS_FETCH_DATA_SUCCESS':
             return {
@@ -35,20 +35,20 @@ export default function eventsReducer(state = defaultState, action) {
             return {
                  ...state,
                  eventsAreLoading: true,
-                 eventsHasErrors: false
+                 eventsHasErrors: false,
+                 currentEvent: action.currentEvent 
             }
         
         case 'USERS_EVENTS_FETCH_SUCCESS':
             return {
                 ...state,
                 eventsAreLoading: false,
-                usersEvents: action.usersEvents
+                usersEvents: action.usersEvents,
             }
 
         case 'ADD_TO_USERS_EVENTS': 
             return {
                 ...state,
-                eventSuccess: true,
                 currentEvent: action.eventData,
                 usersEvents: [...state.usersEvents, action.eventData]
             }

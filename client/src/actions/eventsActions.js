@@ -144,32 +144,6 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     }
 }
 
-// export const getEvent = eventId =>{
-//     return dispatch => {
-//         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
-//         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
-
-//         const homePageUrl = "http://localhost:3000/";
-
-//         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
-
-//         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
-//             method: "GET",
-//             headers: {
-//                     "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
-//                     "Origin": homePageUrl
-//                 }
-//             }
-//         )
-//         .then( response => response.json())
-//         .then( eventsData => {
-//             dispatch(eventsFetchDataSuccess(eventsData));
-//         })
-//         .catch( error => dispatch(eventsHasErrored(error)));
-
-//     }
-// } 
-
 export const removeEvent = (eventData, userId) => {
     return dispatch => {
         const url = `/api/v1/users/${userId}/events/${eventData.id}` 
@@ -189,4 +163,3 @@ export const removeEvent = (eventData, userId) => {
         })
     }
 }
-

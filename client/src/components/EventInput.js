@@ -14,7 +14,6 @@ class EventInput extends Component {
         this.state = {
             name: '',
             logo: '',
-            venue_id: '',
             description: '',
             url: '',
             start: new Date(),
@@ -37,15 +36,16 @@ class EventInput extends Component {
         if(this.props.eventsHasErrors && !this.state.alerted) {
             displayErrors(this.props.eventErrors, this.props.alert)
             this.setState({ alerted: true})
-        } else if(this.props.eventSuccess && !this.state.alerted) {
-            const userId = this.props.currentUser.id;
-            const eventId = this.props.currentEvent.id;
-            this.setState({ alerted: true })
-            this.props.history.push({
-                pathname: `/users/${userId}/events/${eventId}`,
-                state: this.props.currentEvent
-            })
-            this.props.alert.success("Event Added!");
+    } else if(this.props.eventSuccess) {
+            debugger
+            // const userId = this.props.currentUser.id;
+            // const eventId = this.props.currentEvent.id;
+            // this.setState({ alerted: true })
+            // this.props.history.push({
+            //     pathname: `/users/${userId}/events/${eventId}`,
+            //     state: this.props.currentEvent
+            // })
+            // this.props.alert.success("Event Added!");
         }
     }
 
@@ -68,13 +68,12 @@ class EventInput extends Component {
       }
 
       onDrop = picture => {
-          debugger
           this.setState({ logo: picture[0].name })
       }
 
       handleOnSubmit = event => {
         event.preventDefault();
-        this.props.addEvent(this.state);
+        this.props.addEvent(this.state, this.state.user_id);
         this.setState({
             name: '',
             venue_id: '',
@@ -163,16 +162,17 @@ const mapStateToProps = state => {
         isAuthenticated: state.authReducer.isAuthenticated,
         isAuthenticating: state.authReducer.isAuthenticating,
 
+        eventSuccess: state.eventsReducer.eventSuccess,
         eventsHasErrors: state.eventsReducer.eventsHasErrors,
         eventErrors: state.eventsReducer.errors,
-        eventSuccess: state.eventsReducer.eventSuccess,
-        currentEvent: state.eventsReducer.currentEvent
+        usersEvents: state.eventsReducer.usersEvents,
+        currentEvent: state.eventsReducer.currentEvent  
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        addEvent: eventData => {
-            dispatch(addEvent(eventData))
+        addEvent: (eventData, userId)=> {
+            dispatch(addEvent(eventData, userId))
         }
     }
 }

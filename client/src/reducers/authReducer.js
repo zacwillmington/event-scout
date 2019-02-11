@@ -49,17 +49,7 @@ export default function authReducer(state = defaultState, action) {
             }
         
          case 'LOGOUT_USER':
-
-            return { 
-                 ...state,
-                 currentUser: {
-                     id: ''
-                 },
-                 isAuthenticated: false,
-                 isAuthenticating: false,
-                 token: null
-             }     
-
+            return defaultState  
         default:
             return state;
     }

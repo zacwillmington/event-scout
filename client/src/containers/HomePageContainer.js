@@ -7,7 +7,7 @@ import { setUsersLocation } from '../actions/userActions';
 import EventCategoriesContainer from './EventCategoriesContainer';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
-import MovieComponent from '../components/MovieComponent';
+import MainImageComponent from '../components/MainImageComponent';
 
 
 
@@ -50,7 +50,7 @@ class HomePageContainer extends Component {
         return(
             <div className='homePageContainer'>
                 <EventsSearchPage getSearchTerm={this.getSearchTerm}/>
-                <MovieComponent />
+                <MainImageComponent />
                 <EventCategoriesContainer />
             </div>
         )

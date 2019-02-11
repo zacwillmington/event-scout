@@ -11,12 +11,9 @@ class EventComponent extends Component {
         this.state = this.props.location.state.currentEvent
     }
 
-    componentWillMount(){
-        debugger
-    }
 
-    handleOnClick = (event) => {
-        //User can save a liked event if loggedin.
+    handleOnClickAddAndDelete = (event) => {
+        //User can save an liked event if loggedin.
         if(this.props.isAuthenticated){
             if(this.state.checked){
                 this.props.removeEvent(this.state, this.props.currentUser.id)
@@ -34,7 +31,7 @@ class EventComponent extends Component {
             <div id={this.state.id} className='event'>
                 <h1>{this.state.name}</h1>
                 <img src={this.state.logo} alt='event-logo'/>
-                <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
+                <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClickAddAndDelete(event)} />
                 <h3>Description</h3>
                 <p>{this.state.description}</p>
                 <ul>
