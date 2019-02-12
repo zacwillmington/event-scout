@@ -1,10 +1,13 @@
 import React from 'react';
+import DeleteAccount from './DeleteAccount';
 
 const DeleteAccount = (props) => { 
     return (
-        <form onSubmit={(event) => props.handleDelete(event)}>
-            <input className='btn btn-primary' type='submit' value='Delete'/>
-        </form>
+        <div id='delete-account-btn'>
+            <button onClick={(event) => props.handleDelete(event)}>
+            Delete
+            </button>
+        </div>
     )
 }
 

@@ -30,7 +30,7 @@ class EventIndexView extends Component {
     truncate = (description) => {
         if (description){
             return (
-                description.slice(0, 100) + '...'
+                description.slice(0, 200) + '...'
             )
         }
     }
@@ -59,12 +59,13 @@ class EventIndexView extends Component {
     render() {
         return (
             <div id={this.state.id} className='event-index'>
-                <h1>{this.state.name}</h1> 
-                <img src={this.state.logo} alt='event-logo'/>
-                <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
-                <h3>Description</h3>
-                <p>{this.truncate(this.props.description)}</p>
-                <button onClick={event => this.viewEvent()}>View Event</button>
+                <h1>{this.state.name}</h1>
+                <div className='event-index-main-content'>
+                    <img src={this.state.logo} alt='event-logo'/>
+                    <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
+                    <div className='index-view-description'><p>{this.truncate(this.props.description)}</p></div>
+                    <button className='event-index-view-event-btn' onClick={event => this.viewEvent()}>View Event</button>
+                </div> 
             </div>
         )
     }

@@ -12,6 +12,7 @@ import AccountContainer from './containers/AccountContainer';
 import EventComponent from './components/EventComponent';
 import UserInput from './components/UserInput';
 import EventInput from './components/EventInput';
+import Footer from './components/Footer';
 
 
 
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path='/logout' component={LogoutPage} />
       
           </React.Fragment>
+          <Footer />
       </div>
     );
   }

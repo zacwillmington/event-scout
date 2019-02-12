@@ -40,7 +40,7 @@ body{
 .main-image-component {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549853716/main-image_cd4hqi.jpg');
 
-  height: 600px; /* You must set a specified height */
+  height: 750px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -48,10 +48,11 @@ body{
 }
 
 .main-image-component h1 {
-  padding-top: 10%;
+  padding-top: 14%;
   color: white;
   font-weight: bold;
   font-size: 10em;
+  top: 0;
 }
 /* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
 
@@ -63,8 +64,27 @@ body{
   font-size: 1.2em;
 }
 
+/* ACCOUNT */
+
+.account-container {
+  display: flex;
+  flex-direction: row;
+  margin: 10% 20%;
+}
+
+#delete-account-btn{
+  border: 1px solid black;
+  height: 400px;
+  width: 400px;
+}
 
 
+  #edit-account-btn {
+    width: 400px; 
+    border: 1px solid black;
+    height: 400px;
+
+  }
 
 /* Events */
 
@@ -74,10 +94,25 @@ body{
 
 
 /* EVENT INDEX VIEW */
+.event-index-main-content {
+  display: flex;
+}
+
+.event-index h1 {
+  margin-bottom: 40px;
+}
 .event-index {
   border: 1px solid black;
   margin: 5%;
-  height: 500px;
+  height: 400px;
+}
+
+.event-index-view-event-btn {
+  width: 100px;
+}
+
+.index-view-description {
+  margin: 25px;
 }
 
 /* Event */
@@ -99,12 +134,15 @@ body{
 .categories-events-container {
   padding: 5%;
   text-align: center;
+  background-color: black;
 }
 .events-components {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin: 5% auto;
+  position: relative;
+  bottom: -300px;
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
@@ -267,7 +305,7 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 
 #events-search-bar {
   width: 100%;
-  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) )
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) );
 }
 
 .eventsInputPage {
@@ -278,22 +316,26 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 
 #search-events-btn {
   width: 150px;
-  border-radius: 25px;
-  height: 40px;
+  height: 60px;
   font-weight: bolder;
-  margin-left: 25px;
-  margin-top: 10px;
+  font-size: 1.5em;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) );
+  background: transparent;  
+  color: white;  
+  border-color: transparent;
 }
 
 
+
 #searchTerm, #locationAddress {
-  height: 40px;
-  margin-top: 20px;
+  height: 60px;
   margin-right: 5px;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid black;
+  font-size: 1.5em;
+  color: white;
+
 }
 
 .eventDate {
@@ -306,13 +348,15 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 .eventDate input{
   display: inline;
   margin: 0px;
-  height: 40px;
-  margin-top: 20px;
+  height: 60px;
+  /* margin-top: 20px; */
   margin-right: 5px;
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
+  font-size: 1.5em;
+  color: white;
 }
 
 /* Movie Component Styling */
@@ -558,4 +602,19 @@ td.rdtYear:hover {
 
 .rdtTime td {
   cursor: default;
+}
+
+
+/* FOOTER */
+
+.footer {
+  height: 65px;
+  padding: 15px;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
+}
+
+.footer p {
+  color: white;
+  font-style: bold;
+  font-size: 1.5em;
 }

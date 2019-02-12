@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 
-import DeleteAccount from '../components/DeleteAccount';
 import { deleteUser } from '../actions/userActions';
 import { logoutUser } from '../actions/authActions';
 
@@ -15,24 +14,23 @@ class AccountContainer extends Component {
     }
 
     handleDelete = (event) => {
-        event.preventDefault();
         this.props.logoutUser(this.props.currentUser);
         this.props.deleteUser(this.props.currentUser);
         this.props.history.push('/signup');
 
     }
 
+    handleEditEventLink = () => {
+        this.props.history.push(`/users/${this.props.currentUser.id}`);
+    }
+
     render() {
         return(
-            <div className='AccountContainer'>
-                AccountContainer 
-                <React.Fragment>
-                    <DeleteAccount handleDelete={this.handleDelete} />               
-                    <Link className='btn btn-primary' 
-                    to={`/users/${this.props.currentUser.id}`}>
-                        Edit Account Info
-                    </Link>
-                </React.Fragment>
+            <div className='account-container'>
+                    <button id='delete-account-btn' onClick={(event) => this.handleDelete(event)}>
+                        Delete
+                    </button>
+                    <button id='edit-account-btn' onClick={event => this.handleEditEventLink()}>Edit Account Info</button>
             </div>
         )
     }

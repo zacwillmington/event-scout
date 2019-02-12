@@ -9,10 +9,6 @@ import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
 import EventsSearchPage from '../components/EventsSearchPage';
 import MainImageComponent from '../components/MainImageComponent';
 
-
-
-
-
 class HomePageContainer extends Component {
     constructor(){
         super();
