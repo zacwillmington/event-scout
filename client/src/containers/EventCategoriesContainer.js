@@ -38,7 +38,6 @@ class EventCategoriesContainer extends Component {
     render() {
         return (
             <div className='categories-events-container'>
-                <h1>Categories</h1>
                     <div className='events-components'>
                         <MusicEvents
                         handleDisplayEvents={this.handleDisplayEvents}

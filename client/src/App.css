@@ -40,7 +40,7 @@ body{
 .main-image-component {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549853716/main-image_cd4hqi.jpg');
 
-  height: 750px; /* You must set a specified height */
+  height: 700px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -53,6 +53,7 @@ body{
   font-weight: bold;
   font-size: 10em;
   top: 0;
+  margin: 0;
 }
 /* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
 
@@ -131,10 +132,26 @@ body{
   margin: 0 15% 0 15%;
 }
 
+
+#categories-title{
+  height: 450px;
+ margin-top: 0;
+ background-color: black;
+}
+
+#categories-title h1 {
+  margin: 0;
+  font-size: 6em;
+  padding-top: 100px;
+  color: white;
+}
+
+
 .categories-events-container {
   padding: 5%;
-  text-align: center;
-  background-color: black;
+  text-align: center; 
+  height: 300px; 
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
 }
 .events-components {
   display: flex;
@@ -142,14 +159,13 @@ body{
   flex-direction: row;
   margin: 5% auto;
   position: relative;
-  bottom: -300px;
+  top: -300px;
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
     width: 400px;
-    height: 300px; 
-     border: 1px solid grey;
-      margin: 5px;
+    border: 1px solid grey;
+    margin: 5px;
 }
 
 .music-events-container a, .food-and-drinks-events-container a, .business-events-container a{
@@ -310,7 +326,7 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 
 .eventsInputPage {
   position: fixed;
-  top: 50px;
+  top: 43px;
   width: 100%;
 }
 

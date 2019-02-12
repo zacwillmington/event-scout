@@ -47,6 +47,7 @@ class HomePageContainer extends Component {
             <div className='homePageContainer'>
                 <EventsSearchPage getSearchTerm={this.getSearchTerm}/>
                 <MainImageComponent />
+                <div id='categories-title'><h1>Categories</h1></div>
                 <EventCategoriesContainer />
             </div>
         )
