@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import EventIndexView from './EventIndexView';
 
 class Events extends Component {
+    constructor(props){
+        super(props);
+    }
 
     renderEventsFromEventBrite = () => { 
         const events = this.props.events;
@@ -46,11 +49,23 @@ class Events extends Component {
         }
     }
 
+    checkPropsEventsEmpty(){
+        if(this.props.events.length > 0){
+            // debugger
+            if(this.props.events[0].name.text === undefined ){
+               return this.renderEventsFromEventScoutAPI()
+            } else {    
+               return this.renderEventsFromEventBrite()
+            }
+        }
+    }
+
+
     render() {
         return (
             <div>
                 <React.Fragment>
-                    {this.props.events[0].name.text === undefined ? this.renderEventsFromEventScoutAPI() : this.renderEventsFromEventBrite()}
+                   { this.checkPropsEventsEmpty() }
                 </React.Fragment>
             </div>
         )

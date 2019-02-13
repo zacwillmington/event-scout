@@ -4,14 +4,12 @@ eventScout
 
 TODO
     - Categories container display 
-        - Reset past events on redirect. Previous events are showing
-    - Truncate description for event.
+        - events are loading slowly speed up the auth process
     - remove account logout and home when use not logged in
-    - Moviehome page component
+    - Edit Event. Delete event if user created event.(Should I delete event create? insted add from eventbrite)
+    - Events search location incorrect
     - Logo url for images
-    
-
-    - STYLING
+    - finish basic styling
 
 LAST
     AUTHENTICATION.... 

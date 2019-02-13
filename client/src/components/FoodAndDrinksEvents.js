@@ -6,7 +6,7 @@ class FoodAndDrinksEvents extends Component {
         return (
             <div className='food-and-drinks-events-container'>
                 <a onClick={event => this.props.handleDisplayEvents(event)}>
-                    <h1>Food And Drink</h1>
+                    <h1>Food and Drink</h1>
                 </a>
             </div>
         );

@@ -46,7 +46,7 @@ export const getEvents = (searchTerm, geoLocation) => {
          //Check if user's location has coordinates.
         if(Object.entries(geoLocation).length !== 0 && geoLocation.constructor === Object){
             const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
-            
+            debugger
             eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
         }
 

@@ -22,11 +22,15 @@ class EventsContainer extends Component {
     componentWillMount(){
         if(this.props.isAuthenticated){
             //Fetches user's events from event scout api if user is logged in. 
-            this.props.getUsersEvents(this.props.currentUser)
+            // this.props.getUsersEvents(this.props.currentUser)
         }  
-        this.setState({
-            events: this.props.events
-        })
+        // this.setState({
+            // events: this.props.events
+        // })
+    }
+
+    componentDidMount(){
+        window.scrollTo(0, 0)
     }
 
     componentWillReceiveProps(prevProps){
@@ -35,15 +39,17 @@ class EventsContainer extends Component {
         })
     }
 
+
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
         if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 
             })
-        }else {
-            // debugger
-            //Need to update events if user searches for events
+        }else if (prevProps.events[0].name.text !== this.props.events[0].name.text){
+                this.setState({
+                    events: this.props.events
+                })
         }
     }
     
@@ -55,6 +61,7 @@ class EventsContainer extends Component {
 
     handleViewEventsClick = event => {
         event.preventDefault();
+        
         this.setState({ 
             events: this.props.usersEvents
         })  
