@@ -46,7 +46,6 @@ export const getEvents = (searchTerm, geoLocation) => {
          //Check if user's location has coordinates.
         if(Object.entries(geoLocation).length !== 0 && geoLocation.constructor === Object){
             const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
-            debugger
             eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
         }
 
@@ -122,7 +121,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         dispatch(eventsAreLoading(true));
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
         
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
 
         const homePageUrl = "http://localhost:3000/";
 
@@ -131,7 +130,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {
             method: "GET",
             headers: {
-                    "Authorization": `Bearer ${anonymousAccessOAuthToken}`,
+                    "Authorization": 'Bearer 77ZSPVIUQPRNZ7ZLZN5O',
                     "Origin": homePageUrl
                 }
             }

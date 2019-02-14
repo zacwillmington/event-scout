@@ -6,14 +6,14 @@ import { setUsersLocation } from '../actions/userActions';
 
 import EventCategoriesContainer from './EventCategoriesContainer';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
-import EventsSearchPage from '../components/EventsSearchPage';
+import EventsSearchPage from '../components/eventsSearchPage';
 import MainImageComponent from '../components/MainImageComponent';
 
 class HomePageContainer extends Component {
     constructor(){
         super();
         this.state = {
-        }
+        } 
     }
 
     componentDidMount() {

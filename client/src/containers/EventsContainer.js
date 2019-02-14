@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import EventsSearchPage from '../components/EventsSearchPage';
+import EventsSearchPage from '../components/eventsSearchPage';
 import Events from '../components/Events';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
 
@@ -11,7 +11,7 @@ class EventsContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            events: []
+               events: this.props.events
         }
     }
 
@@ -21,7 +21,7 @@ class EventsContainer extends Component {
 
     componentDidMount(){
         window.scrollTo(0, 0)
-    }
+    } 
 
     componentWillReceiveProps(prevProps){
         this.setState({
@@ -31,11 +31,12 @@ class EventsContainer extends Component {
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
+        // debugger
         if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 
             })
-        }else if (prevProps.events[0].name.text !== this.props.events[0].name.text){
+        }else if(prevProps.events[0].name.text !== this.props.events[0].name.text) {
                 this.setState({
                     events: this.props.events
                 })
@@ -44,7 +45,6 @@ class EventsContainer extends Component {
     
     getSearchTerm = (loc, searchTerm, eventDate) => {
         //Fetches events from eventBrite API based on search term
-        debugger
         this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
     }
 

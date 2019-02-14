@@ -2,7 +2,8 @@ const defaultState = {
     events: [],
     eventsHasErrors: false,
     eventsAreLoading: true,
-    currentEvent: {}
+    currentEvent: {},
+    usersEvents: []
 }
 
 export default function eventsReducer(state = defaultState, action) {
