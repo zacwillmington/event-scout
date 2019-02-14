@@ -13,6 +13,9 @@ class EventsSearchPage extends Component {
         }
     }
 
+    componentDidMount(){
+    }
+
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value

@@ -7,9 +7,6 @@ import Events from '../components/Events';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
 
 
-
-
-
 class EventsContainer extends Component {
     constructor(props){
         super(props);
@@ -18,15 +15,8 @@ class EventsContainer extends Component {
         }
     }
 
-
     componentWillMount(){
-        if(this.props.isAuthenticated){
-            //Fetches user's events from event scout api if user is logged in. 
-            // this.props.getUsersEvents(this.props.currentUser)
-        }  
-        // this.setState({
-            // events: this.props.events
-        // })
+
     }
 
     componentDidMount(){
@@ -38,7 +28,6 @@ class EventsContainer extends Component {
             events: this.props.events
         })
     }
-
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
@@ -53,15 +42,14 @@ class EventsContainer extends Component {
         }
     }
     
-
     getSearchTerm = (loc, searchTerm, eventDate) => {
         //Fetches events from eventBrite API based on search term
+        debugger
         this.props.getEventsBySearchBar(loc, searchTerm, eventDate);
     }
 
     handleViewEventsClick = event => {
         event.preventDefault();
-        
         this.setState({ 
             events: this.props.usersEvents
         })  

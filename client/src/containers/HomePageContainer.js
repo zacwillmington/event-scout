@@ -16,9 +16,6 @@ class HomePageContainer extends Component {
         }
     }
 
-    componentWillMount() {
-    }
-
     componentDidMount() {
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){
             this.props.history.push('/signin');

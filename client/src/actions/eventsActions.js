@@ -120,9 +120,9 @@ export const getUsersEvents = user => {
 export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     return (dispatch) => {
         dispatch(eventsAreLoading(true));
-        const personalOAuthToken = "OOQWOVIVAWJOL4PMDYPZ";
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
-        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}`;
+        
+        const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
 
         const homePageUrl = "http://localhost:3000/";
 
