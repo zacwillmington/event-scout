@@ -90,7 +90,21 @@ body{
 /* Events */
 
 .eventsContainer {
-  margin: 15% auto;
+  margin: 10% auto;
+}
+
+#spinner-div {
+    margin: 50px 5%;
+}
+
+#spinner-div span {
+  color: blue;
+  font-size: 2em;
+}
+.sk-spinner {
+  position: absolute;
+  top: 22px;
+  left: 40%;
 }
 
 

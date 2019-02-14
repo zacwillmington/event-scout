@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import EventsSearchPage from '../components/eventsSearchPage';
 import Events from '../components/Events';
 import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
+var Spinner = require('react-spinkit');
 
 
 class EventsContainer extends Component {
@@ -66,8 +67,11 @@ class EventsContainer extends Component {
         return(
             <div className='eventsContainer'> 
                 {this.renderViewYourEventsBtn()}
+                {this.props.eventsAreLoading ? 
+                <div id='spinner-div'>
+                    <Spinner  name="ball-scale-ripple-multiple" color="blue"/><span>LOADING</span>
+                </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                <Events events={this.state.events} />
             </div>
         )
     }

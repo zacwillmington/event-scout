@@ -3,11 +3,10 @@ eventScout
 
 
 TODO
-    - remove account logout and home when use not logged in
+      - Categories container display 
+        - events are loading slowly speed up the auth process add Loading spinner.
     - Edit Event. Delete event if user created event.(Should I delete event create? insted add from eventbrite)
     - Logo url for images(delete option to edit event.)
-     - Categories container display 
-        - events are loading slowly speed up the auth process add Loading spinner.
     - finish basic styling
 
 LAST

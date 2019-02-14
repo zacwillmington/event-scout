@@ -36,12 +36,20 @@ class EventsSearchPage extends Component {
         }
     }
 
+    formatString = (string) => {
+        return string.replace(/\s/g, '');
+    }
+
     handleOnSubmit = event => {
         event.preventDefault();
         if(this.validateInputs(this.state)) {
             //Parsed to suit Eventbrite API
             const dateTimeParsed = moment(this.state.eventDate).format("YYYY-MM-DDThh:mm:ss");
-            this.props.getSearchTerm(this.state.locationAddress, this.state.searchTerm, dateTimeParsed);
+            const searchTermFormatted = this.formatString(this.state.searchTerm);
+
+            const locationAddressFormatted = this.formatString(this.state.locationAddress);
+
+            this.props.getSearchTerm(locationAddressFormatted, searchTermFormatted, dateTimeParsed);
         } else{
             this.props.alert.error("Please fill in all search options.")
         }
