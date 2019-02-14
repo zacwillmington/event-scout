@@ -3,8 +3,7 @@ eventScout
 
 
 TODO
-      - Categories container display 
-        - events are loading slowly speed up the auth process add Loading spinner.
+    - alert to user viewing event if not Authenticated
     - Edit Event. Delete event if user created event.(Should I delete event create? insted add from eventbrite)
     - Logo url for images(delete option to edit event.)
     - finish basic styling

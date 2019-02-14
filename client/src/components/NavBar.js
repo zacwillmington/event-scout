@@ -41,6 +41,17 @@ class NavBar extends Component {
             )
         }
     }
+
+    renderSigninSignupLinks = () => {
+        if(!this.props.isAuthenticated && !this.props.isAuthenticating){
+            return (
+                <React.Fragment>
+                    <li><NavLink to='/signin'>Sign In</NavLink></li>
+                    <li><NavLink to='/signup'>Sign Up</NavLink></li>
+                </React.Fragment>
+            )
+        } 
+    }
     render(){
         return (
             <div className='navBar'>
@@ -50,6 +61,7 @@ class NavBar extends Component {
                     { this.renderAccountLink() }
                     { this.renderCreateEventLink() }
                     { this.renderLogoutLink() }
+                    { this.renderSigninSignupLinks() }
                 </ul>
             </div>
         )

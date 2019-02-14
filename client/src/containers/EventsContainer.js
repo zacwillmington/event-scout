@@ -69,7 +69,7 @@ class EventsContainer extends Component {
                 {this.renderViewYourEventsBtn()}
                 {this.props.eventsAreLoading ? 
                 <div id='spinner-div'>
-                    <Spinner  name="ball-scale-ripple-multiple" color="blue"/><span>LOADING</span>
+                    <Spinner  name="ball-scale-ripple-multiple" color="#4e1187"/><span>LOADING</span>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
             </div>

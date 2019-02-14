@@ -3,6 +3,7 @@ import HeartCheckbox from 'react-heart-checkbox';
 import { removeEvent, addEvent } from '../actions/eventsActions';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 
 
 class EventIndexView extends Component {
@@ -46,6 +47,8 @@ class EventIndexView extends Component {
             this.setState({
                 checked: !this.state.checked 
             })
+        } else{
+            this.props.alert.info("Create an account to save events.");
         }
     }
 
@@ -89,4 +92,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventIndexView))
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(EventIndexView)));

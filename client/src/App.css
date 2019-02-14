@@ -35,6 +35,29 @@ body{
   /* background-color:rgb(0,0,0); */
 }
 
+.navBar {
+  background-color:  black;
+}
+
+.navBar a {
+  color: white;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.nav-tabs a:hover {
+  color: black;  
+}
+
+.nav-tabs a:active {
+  color: black;
+}
+
+
+
+
 /* MAIN IMAGE COMPONENT */
 
 .main-image-component {
@@ -58,25 +81,35 @@ body{
 /* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
 
 #view-users-events {
-  width: 200px;
-  height: 50px;
-  border-radius: 25px;
-  font-weight: bold;
+  width: 60px;
+  height: 200px;
+  position: fixed;
   font-size: 1.2em;
+  left: 0px;
+  top: 104px;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
+  color: white;
 }
 
+#view-users-events:hover {
+  background-color: #4e1187;
+}
 /* ACCOUNT */
 
 .account-container {
   display: flex;
   flex-direction: row;
-  margin: 10% 20%;
+  /* margin: 10% 20%; */
+  min-height: 600px;
+  background: linear-gradient(120deg, #00ced1, #8a2be2); 
 }
 
 #delete-account-btn{
   border: 1px solid black;
   height: 400px;
   width: 400px;
+  background: transparent;
+
 }
 
 
@@ -84,13 +117,15 @@ body{
     width: 400px; 
     border: 1px solid black;
     height: 400px;
-
+    background: transparent;
   }
 
 /* Events */
 
 .eventsContainer {
   margin: 10% auto;
+  min-height: 320px;
+  /* background: linear-gradient( #DCD964, #213502); */
 }
 
 #spinner-div {
@@ -98,7 +133,7 @@ body{
 }
 
 #spinner-div span {
-  color: blue;
+  color: #4e1187;
   font-size: 2em;
 }
 .sk-spinner {
@@ -118,8 +153,8 @@ body{
 }
 .event-index {
   border: 1px solid black;
-  margin: 5%;
-  height: 400px;
+  margin: 10%;
+  height: 350px;
 }
 
 .event-index-view-event-btn {
@@ -183,8 +218,14 @@ body{
 }
 
 .music-events-container a, .food-and-drinks-events-container a, .business-events-container a{
-  color: white;
+  text-decoration: none;
 }
+
+.music-events-container h1, .food-and-drinks-events-container h1, .business-events-container h1{
+  color: white;
+  margin: 0;
+}
+
 
 .music-events-container {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
@@ -216,13 +257,13 @@ body{
   font-size: 3em;
   background-color: white;
   width: auto;
+  /* background:#DCD964; */
 }
 
 .event-input {
   width: 600px;
   margin: 100px auto;
   padding: 0 60px 60px 60px;
-  
   border: 1px solid black;
 }
 
@@ -340,7 +381,7 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
 
 .eventsInputPage {
   position: fixed;
-  top: 43px;
+  top: 40px;
   width: 100%;
 }
 
@@ -365,9 +406,13 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
   background: transparent;
   font-size: 1.5em;
   color: white;
-
 }
 
+
+#locationAddress::placeholder, 
+#searchTerm::placeholder {
+  color: white;
+}
 .eventDate {
   width: 50px;
   margin: 0px;
