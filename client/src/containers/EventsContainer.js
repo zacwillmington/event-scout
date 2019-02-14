@@ -11,7 +11,7 @@ class EventsContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-               events: this.props.events
+            events: this.props.events
         }
     }
 
@@ -31,7 +31,6 @@ class EventsContainer extends Component {
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
-        // debugger
         if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 

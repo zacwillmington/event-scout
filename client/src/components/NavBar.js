@@ -26,15 +26,30 @@ class NavBar extends Component {
             )
        }
     }
+
+    renderAccountLink = () => {
+        if(this.props.isAuthenticated){
+            return (
+                <li><NavLink to='/Account'>Account</NavLink></li>
+            )
+        }
+    }
+    renderLogoutLink = () => {
+        if(this.props.isAuthenticated){
+            return (
+                <li><NavLink to='/logout'>Logout</NavLink></li>
+            )
+        }
+    }
     render(){
         return (
             <div className='navBar'>
                 <ul className='nav nav-tabs'>
                     <li><NavLink to='/'>Home</NavLink></li>
                     <li><NavLink to='/events'>Events</NavLink></li>
-                    <li><NavLink to='/Account'>Account</NavLink></li>
+                    { this.renderAccountLink() }
                     { this.renderCreateEventLink() }
-                    <li><NavLink to='/logout'>Logout</NavLink></li>
+                    { this.renderLogoutLink() }
                 </ul>
             </div>
         )

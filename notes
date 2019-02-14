@@ -3,7 +3,6 @@ eventScout
 
 
 TODO
-    - Fix search location from home page and from events page.
     - remove account logout and home when use not logged in
     - Edit Event. Delete event if user created event.(Should I delete event create? insted add from eventbrite)
     - Logo url for images(delete option to edit event.)
