@@ -67,8 +67,8 @@ class EventIndexView extends Component {
                     <img src={this.state.logo} alt='event-logo'/>
                     <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
                     <div className='index-view-description'><p>{this.truncate(this.props.description)}</p></div>
-                    <button className='event-index-view-event-btn' onClick={event => this.viewEvent()}>View Event</button>
                 </div> 
+                <button className='event-index-view-event-btn' onClick={event => this.viewEvent()}>View Event</button>
             </div>
         )
     }
