@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import HeartCheckbox from 'react-heart-checkbox';
 import { removeEvent, addEvent, getEvents } from '../actions/eventsActions';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 
 class EventComponent extends Component {
@@ -11,9 +12,8 @@ class EventComponent extends Component {
         this.state = this.props.location.state.currentEvent
     }
 
-
     handleOnClickAddAndDelete = (event) => {
-        //User can save an liked event if loggedin.
+        //User can save a liked event if logged in.
         if(this.props.isAuthenticated){
             if(this.state.checked){
                 this.props.removeEvent(this.state, this.props.currentUser.id)
@@ -26,26 +26,33 @@ class EventComponent extends Component {
         }
     }
 
+    parseTimeDate = (time) => {
+        return moment(time).format('MMMM Do YYYY @ h:mm a');
+    }
+
     render() {
         return (
             <div id={this.state.id} className='event'>
                 <h1>{this.state.name}</h1>
+                <div className='event-content'>
                 <img src={this.state.logo} alt='event-logo'/>
                 <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClickAddAndDelete(event)} />
-                <h3>Description</h3>
-                <p>{this.state.description}</p>
-                <ul>
-                    <p>Starts</p>
-                    <li>Time: {this.state.start}</li>
-                    <p>Ends</p>
-                    <li>{this.state.end}</li>
-                </ul>
-                <a href={this.state.url}>Event Link</a>
+                    <ul>
+                        <span>Starts</span>
+                        <li>{this.parseTimeDate(this.state.start)}</li>
+                        <span>Ends</span>
+                        <li>{this.parseTimeDate(this.state.end)}</li>
+                    </ul>
+                </div>
+                <a className='event-page-link' href={this.state.url}><img src="https://img.icons8.com/ultraviolet/26/000000/link.png"></img></a>
+                <div className='content-description'>
+                    <h3>Description</h3>
+                    <p>{this.state.description}</p>
+                </div>
             </div>
         )
     }   
 }
-
 
 const mapDispatchToProps = dispatch => {
     return {

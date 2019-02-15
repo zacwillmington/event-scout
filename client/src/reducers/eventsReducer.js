@@ -51,6 +51,7 @@ export default function eventsReducer(state = defaultState, action) {
             return {
                 ...state,
                 currentEvent: action.eventData,
+                eventsAreLoading: false,
                 usersEvents: [...state.usersEvents, action.eventData]
             }
 

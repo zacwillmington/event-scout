@@ -17,7 +17,7 @@ class EventsContainer extends Component {
     }
 
     componentWillMount(){
-
+        debugger
     }
 
     componentDidMount(){
@@ -58,7 +58,7 @@ class EventsContainer extends Component {
     renderViewYourEventsBtn = () => {
         if(this.props.isAuthenticated) {
             return (
-                <button id='view-users-events' onClick={event => this.handleViewEventsClick(event)}>View Your Events</button>
+                <button id='view-users-events' onClick={event => this.handleViewEventsClick(event)}>Your Events</button>
             )
         }
     }
@@ -69,7 +69,7 @@ class EventsContainer extends Component {
                 {this.renderViewYourEventsBtn()}
                 {this.props.eventsAreLoading ? 
                 <div id='spinner-div'>
-                    <Spinner  name="ball-scale-ripple-multiple" color="#4e1187"/><span>LOADING</span>
+                    <Spinner  name="ball-scale-ripple-multiple" color="#bbf8fc"/><span>LOADING</span>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
             </div>

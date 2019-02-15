@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class BusinessEvents extends Component {
-     
-    render() {
-        return (
-            <div className='business-events-container'>
-                <a onClick={event => this.props.handleDisplayEvents(event)}>
-                    <h1>Business</h1>
-                </a>
-            </div>
-        );
-    }
+const BusinessEvents = props => {
+    return (
+        <div className='business-events-container'>
+            <a onClick={event => props.handleDisplayEvents(event)}>
+                <h1>Business</h1>
+            </a>
+        </div>
+    );
 }
 
 export default BusinessEvents;
