@@ -16,10 +16,6 @@ class EventsContainer extends Component {
         }
     }
 
-    componentWillMount(){
-        debugger
-    }
-
     componentDidMount(){
         window.scrollTo(0, 0)
     } 
@@ -32,14 +28,18 @@ class EventsContainer extends Component {
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
+        // debugger
         if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 
             })
-        }else if(prevProps.events[0].name.text !== this.props.events[0].name.text) {
+        }else if(prevProps.events.length > 0){
+            //Check to see of events have been updated to new array
+            if(prevProps.events[0].name.text !== this.props.events[0].name.text) {
                 this.setState({
                     events: this.props.events
                 })
+            }
         }
     }
     
@@ -50,6 +50,9 @@ class EventsContainer extends Component {
 
     handleViewEventsClick = event => {
         event.preventDefault();
+        if(this.props.usersEvents.length <= 0){
+            this.props.getUsersEvents(this.props.currentUser)
+        }
         this.setState({ 
             events: this.props.usersEvents
         })  

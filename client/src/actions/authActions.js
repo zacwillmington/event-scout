@@ -26,12 +26,6 @@ const loadingAuthRequest = () => {
     }
 }
 
-const logoutSuccess = () => {
-    return {
-        type: 'LOGOUT_USER'
-    }
-}
-
 
 export const authenticate = user => {
     return dispatch => {
@@ -115,7 +109,7 @@ export const logoutUser = user => {
         .then( response => {
             if (response.ok === true){
                 localStorage.clear()
-                dispatch(logoutSuccess());
+                dispatch({type: 'RESET'});
             }
         })
         .catch(e => console.log(e));

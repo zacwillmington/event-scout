@@ -14,13 +14,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 const options = {
     position: 'top left',
-    timeout: 5000,
+    timeout: 10000,
     offset: '30px',
     transition: 'scale'
   }
-
-
-//Create loading bar component for redux persist loading time.
 // change logger to dev only //https://github.com/LogRocket/redux-logger
 
 ReactDOM.render(

@@ -29,13 +29,11 @@ const deleteUserSuccess = user => {
 
 
 export const setUsersLocation = coords => {
-    debugger
     return dispatch => { dispatch({ type: 'SET_LOCATION', coords: coords})}
 
 }
 
 export const editUser = user => {
-    //Should I authenticate first?
     return dispatch => {
         dispatch(sendingUpdate(user));
         fetch(`/api/v1/users/${user.id}`, {

@@ -13,7 +13,7 @@ class EventInput extends Component {
         super(props);
         this.state = {
             name: '',
-            logo: '',
+            logo: 'https://res.cloudinary.com/zacwillmington/image/upload/v1550263383/md-duran-628447-unsplash_udufrg.jpg',
             description: '',
             url: '',
             start: new Date(),
@@ -77,7 +77,7 @@ class EventInput extends Component {
         this.setState({
             name: '',
             venue_id: '',
-            logo: '',
+            logo: 'https://res.cloudinary.com/zacwillmington/image/upload/v1550263383/md-duran-628447-unsplash_udufrg.jpg',//Standard image 
             description: '',
             url: '',
             start: new Date(),
@@ -87,12 +87,13 @@ class EventInput extends Component {
             user_id: this.props.currentUser.id,
             alerted: false
         })    
+        this.props.history.push('/events');
       }
 
     render() {
         return (
             <div className='event-input'>
-            <div id='create-event-input-title-div'><h1>CREATE YOUR EVENT</h1></div>
+            <div id='create-event-input-title-div'><h2>CREATE YOUR EVENT</h2></div>
                 <form onSubmit={event => this.handleOnSubmit(event)}>
                     <section className='event-input-section-1'>
                         <div className='event-input-form-section' id='event-name'>
@@ -127,13 +128,13 @@ class EventInput extends Component {
                             value={this.state.url}/>
                         </div>
                     </section>
-
-                    <ImageUploader
+                    {/* todo: implement save file to cloudnary api with dispatch action save image */}
+                    {/* <ImageUploader
                         withIcon={true}
                         buttonText='Choose images'
                         onChange={event => this.onDrop(event)}
                         imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
-                    />
+                    /> */}
                     <br></br>
                     <input id='user_id'
                      type='hidden' 

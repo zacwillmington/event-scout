@@ -21,7 +21,11 @@ h1 {
   font-size: 4em;
 }
 
-input, a, h1, span {
+h2 {
+  font-size: 1.1em;
+}
+
+input, a, h1, h2, h3, h4, h5, h6, span {
   font-family: 'Patua One', cursive;
 }
 
@@ -160,12 +164,14 @@ body{
 .event-index {
   border-radius: 15px;
   margin: 10%;
-  height: 350px;
+  min-height: 350px;
   border: 1px solid grey;
 }
 
 .event-index img {
   border-radius: 10px;
+  max-width: 420px;
+  max-height: 250px;
 }
 
 .event-index-view-event-btn {
@@ -187,10 +193,18 @@ body{
   min-height: 600px;
 }
 
+.event img {
+  max-width: 420px;  
+  max-height: 250px;
+  border-radius: 10px;
+
+}
+
 .event h1 {
   margin-bottom: 25px; 
   color: #4e1187;
 }
+
 
 .event-content {
   display: flex;
@@ -311,7 +325,6 @@ body{
   font-size: 3em;
   background-color: white;
   width: auto;
-  /* background:#DCD964; */
 }
 
 .event-input {

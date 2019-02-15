@@ -48,8 +48,6 @@ export default function authReducer(state = defaultState, action) {
                 errors: action.errors
             }
         
-         case 'LOGOUT_USER':
-            return defaultState  
         default:
             return state;
     }

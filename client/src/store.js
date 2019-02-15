@@ -5,6 +5,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import rootReducer from './reducers/manageReducers';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
+import reduxReset from 'redux-reset';
 
 import logger from 'redux-logger'
 
@@ -17,6 +18,6 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
-	export let store = createStore(persistedReducer, compose(applyMiddleware(thunk, logger)));
+	export let store = createStore(persistedReducer, compose(applyMiddleware(thunk, logger), reduxReset()));
 	export let persistor = persistStore(store);
 	
