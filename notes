@@ -1,15 +1,14 @@
 eventScout
-"Moved UserInput to account container to edit user's account information."
 
 
 TODO
+    - issue with users accounts(Play with login logout flow of application)
     - events search categories location random
-    - style AccountContainerComponent
-    - finish basic styling
+    - loading spinner make different colour and move it down the page.
 
 LAST
-    AUTHENTICATION.... 
-    - siginin funtionality(Authenticate use react router)
+    BEFORE ASSEMENT
+    - siginin funtionality(Look into it)
       - Make sure the backend is tight. check if session needs to be set in this auth flow.
 
 

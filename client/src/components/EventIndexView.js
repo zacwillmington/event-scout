@@ -37,7 +37,7 @@ class EventIndexView extends Component {
     }
 
     handleOnClick = (event) => {
-        //User can save an liked event if loggedin.
+        //User can save a liked event if loggedin.
         if(this.props.isAuthenticated){
             if(this.state.checked){
                 this.props.removeEvent(this.state, this.props.currentUser.id)

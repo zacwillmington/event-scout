@@ -12,6 +12,10 @@ class EventComponent extends Component {
         this.state = this.props.location.state.currentEvent
     }
 
+    componentDidMount() {
+        debugger
+    }
+
     handleOnClickAddAndDelete = (event) => {
         //User can save a liked event if logged in.
         if(this.props.isAuthenticated){

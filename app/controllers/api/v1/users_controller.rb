@@ -1,10 +1,9 @@
 module Api
     module V1
         class UsersController < ApplicationController
-          
-
+    
             def create
-                @user = User.new(strong_params)
+                @user = User.new(user_name: params['user']['user_name'], email: params['user']['email'], password_digest: params['user']['password'])
                 if @user.save    
                     render json: { 
                         user: @user,
@@ -24,11 +23,17 @@ module Api
             end
 
             def update
+                binding.pry
                 @user = User.find(params[:id].to_i)
-                @user.update(strong_params)
+                @user.update(user_name: params['user_name'], email: params['email'], password_digest: params['password'])
                 if @user.save
-                    render json: @user, status: 201
+                    render json: {
+                        user: @user, 
+                        status: 201,
+                        ok: true
+                    }
                 else
+                    binding.pry
                     render json: { 
                         :user => @user, 
                         :errors => @user.errors,
@@ -68,7 +73,7 @@ module Api
               end
 
             def strong_params
-                params.require(:user).permit(:id,:user_name, :email, :password)
+                params.require(:user).permit(:id, :user_name, :email, :password_digest)
             end
 
 

@@ -51,7 +51,6 @@ class Events extends Component {
 
     checkPropsEventsEmpty(){
         if(this.props.events.length > 0){
-            // debugger
             if(this.props.events[0].name.text === undefined ){
                return this.renderEventsFromEventScoutAPI()
             } else {    

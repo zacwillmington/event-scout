@@ -11,18 +11,12 @@ export const authSuccess = (user, token) => {
         user: user,
         token: token
     }
-}
+} 
 
 export const authFailure = (errors) => {
     return {
         type: 'AUTHENTICATION_FAILURE',
         errors: errors
-    }
-}
-
-const loadingAuthRequest = () => {
-    return {
-        type: 'LOADING_AUTH_REQUEST'
     }
 }
 
@@ -74,7 +68,6 @@ export const getUser = user => {
 }
 
 export const signupUser = user => {
-
     return dispatch => {
         dispatch(authRequest());
         return fetch('/api/v1/signup', {
@@ -88,7 +81,7 @@ export const signupUser = user => {
         .then( resp => resp.json())
         .then( userData => {
             if(!userData.ok){
-                dispatch(authFailure(user))
+                dispatch(authFailure(userData.errors))
             }else {
                 dispatch(authenticate(user))
             }
@@ -112,7 +105,6 @@ export const logoutUser = user => {
                 dispatch({type: 'RESET'});
             }
         })
-        .catch(e => console.log(e));
     }
 }
 

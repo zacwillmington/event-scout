@@ -32,13 +32,12 @@ class UserInput extends Component {
       handleSubmit = event => {
           
           event.preventDefault();
-          this.setState({
-              user_name: this.state.user_name,
-              email: this.state.email,
-              password: this.state.password
-          })
-          const user = this.state;
-          
+          const user = {
+            id: this.state.id,
+            user_name: this.state.user_name,
+            email: this.state.email,
+            password: this.state.password
+          }
           this.props.editUser(user);
       } 
 
@@ -48,7 +47,7 @@ class UserInput extends Component {
                <form id='user-edit-form' onSubmit={event => this.handleSubmit(event)} > 
                 <div id='user-edit-title'><h1>EDIT ACCOUNT</h1></div>
                   <div id='user-edit-form-div'>
-                     <input id='user-edit-email' onChange={event => this.handleOnChange(event)} name='email' type='text' value={this.state.email} placeholder='New Email'/>
+                     <input id='user-edit-user_name' onChange={event => this.handleOnChange(event)} name='user_name' type='text' value={this.state.user_name} placeholder='New User Name'/>
                       
                     <input id='user-edit-password' onChange={event => this.handleOnChange(event)} name='password' type='password' value={this.state.password} placeholder='New Password' />
                   </div>

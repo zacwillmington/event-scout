@@ -492,7 +492,7 @@ input.form-control {
 }  
 
 
-#signup-user_name, #signup-email, #signup-password, #signin-email, #signin-password, #user-edit-email,#user-edit-password {
+#signup-user_name, #signup-email, #signup-password, #signin-email, #signin-password, #user-edit-email, #user-edit-user_name, #user-edit-password {
   margin-bottom: 20px;
   border: 0;
   outline: 0;

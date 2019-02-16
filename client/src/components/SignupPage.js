@@ -36,7 +36,7 @@ class SignupPage extends Component {
       this.setState({
           user_name: this.state.user_name,
           email: this.state.email,
-          password: this.state.password_digest
+          password: this.state.password
       })
       const newUser = this.state;
       this.props.signupUser(newUser);
