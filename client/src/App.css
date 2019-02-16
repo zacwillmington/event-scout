@@ -25,7 +25,7 @@ h2 {
   font-size: 1.1em;
 }
 
-input, a, h1, h2, h3, h4, h5, h6, span {
+input, a, h1, h2, h3, h4, h5, h6, span, button {
   font-family: 'Patua One', cursive;
 }
 
@@ -175,9 +175,18 @@ body{
 }
 
 .event-index-view-event-btn {
-  border-radius: 10px;
+  border-radius: 20px;
   height: 35px;
   width: 150px;
+  position: relative;
+  right: -40%;
+  margin-bottom: 15px;
+  background-color: #bbf8fc;
+  font-size: 1.2em;
+}
+
+.event-index-view-event-btn:hover {
+  background-color: #d6fcff;
 }
 
 .index-view-description {
@@ -283,6 +292,27 @@ body{
     width: 400px;
     border: 1px solid grey;
     margin: 5px;
+}
+
+.music-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+} 
+
+.food-and-drinks-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549856215/matthieu-joannon-294645-unsplash_ojfdcn.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.business-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855789/adult-brainstorming-business-1437908_zn9r09.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 .music-events-container a, .food-and-drinks-events-container a, .business-events-container a{
