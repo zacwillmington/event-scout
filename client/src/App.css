@@ -115,21 +115,59 @@ body{
 }
 /* ACCOUNT */
 
+
 .account-container {
-  display: flex;
-  flex-direction: row;
   min-height: 600px;
+  margin: 150px auto;
 }
 
-#delete-account-btn{
-  
+/* Account delete button */
+ 
+#delete-account-button {
+  background: transparent;
+  border: none;
+  position: relative;
+  top: -450px;
+  left: 235px;
+}
 
+.fa-times:hover {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.box-left {
+  height: 100px;
+  width: 100px;
+  background-color: #e74c3c;
+  cursor: pointer;
+  border-radius: 13px;
+}
+
+.fa-times {
+  font-size: 70px !important;
+  margin: 23px;
+  color: #fff;
 }
 
 
-  #edit-account-btn {
-    
-  }
+.fa-check {
+  font-size: 70px !important;
+  margin-left: 7px;
+  /* margin-top: 13px; */
+}
+
+
+.cl-bar2 {
+  /* width: 80px; */
+}
+
+
 
 /* Events */
 
@@ -435,6 +473,10 @@ input.form-control {
   width: 200px;
 }
 
+#user-edit-title h1 {
+  font-size: 4em;
+}
+
 #signup-form, #signin-form, #user-edit-form {
   margin: 10% auto;
   border: 1px solid black;
@@ -470,7 +512,9 @@ input.form-control {
   font-weight: bolder;
 }
  
-
+.signup-user-btn:hover, .signin-user-btn:hover, .user-edit-btn:hover {
+    background-color: rgb(57, 255, 136); 
+}
 /* HeartCheckbox Styling */
 
 button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::before  {
@@ -793,7 +837,7 @@ td.rdtYear:hover {
 .footer {
   height: 65px;
   padding: 15px;
-  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
+  background: rgb(193, 193, 193);
 }
 
 .footer p {

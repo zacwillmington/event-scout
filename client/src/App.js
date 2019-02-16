@@ -41,8 +41,7 @@ class App extends Component {
             
 
             {/* Account routes */}
-            <Route path='/Account' component={AccountContainer} />
-            <Route exact path='/users/:id' component={UserInput} />
+            <Route exact path='/users/:id' component={AccountContainer} />
 
            {/* NON protected routes */}
             <Route path='/signup' component={SignupPage} />

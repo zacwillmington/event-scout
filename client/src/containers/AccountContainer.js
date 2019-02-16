@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { deleteUser } from '../actions/userActions';
 import { logoutUser } from '../actions/authActions';
+import UserInput from '../components/UserInput';
 
 class AccountContainer extends Component {
   
@@ -20,17 +21,15 @@ class AccountContainer extends Component {
 
     }
 
-    handleEditEventLink = () => {
-        this.props.history.push(`/users/${this.props.currentUser.id}`);
-    }
-
     render() {
         return(
             <div className='account-container'>
-                    <button id='delete-account-btn' onClick={(event) => this.handleDelete(event)}>
-                        Delete
+                    <UserInput />
+                    <button id='delete-account-button' onClick={(event) => this.handleDelete(event)}>
+                        <div class='box-left'>
+                            <i class='but-icon fa fa-lg fa-times'></i>
+                        </div>
                     </button>
-                    <button id='edit-account-btn' onClick={event => this.handleEditEventLink()}>Edit Account Info</button>
             </div>
         )
     }

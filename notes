@@ -1,9 +1,8 @@
 eventScout
-
+"Moved UserInput to account container to edit user's account information."
 
 
 TODO
-    - merge branch
     - events search categories location random
     - style AccountContainerComponent
     - finish basic styling

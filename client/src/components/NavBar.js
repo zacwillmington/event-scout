@@ -30,7 +30,7 @@ class NavBar extends Component {
     renderAccountLink = () => {
         if(this.props.isAuthenticated){
             return (
-                <li><NavLink to='/Account'>Account</NavLink></li>
+                <li><NavLink to={`/users/${this.props.currentUser.id}`}>Account</NavLink></li>
             )
         }
     }
