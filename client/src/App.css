@@ -143,7 +143,7 @@ body{
 }
 
 #spinner-div span {
-  color:  #bbf8fc;
+  color:  #4ceaf5;
   font-size: 2em;
 }
 .sk-spinner {
@@ -159,19 +159,21 @@ body{
 }
 
 .event-index h1 {
-  margin-bottom: 40px;
+  padding: 30px;
 }
 .event-index {
-  border-radius: 15px;
+  border-radius: 10px;
   margin: 10%;
   min-height: 350px;
-  border: 1px solid grey;
+  box-shadow: 3px 6px 20px 12px rgba(6, 38, 57, 0.65);
 }
 
 .event-index img {
   border-radius: 10px;
+  padding-left: 25px;
   max-width: 420px;
   max-height: 250px;
+  /* box-shadow: 3px 6px 20px 12px rgba(180, 180, 181, 0.65); */
 }
 
 .event-index-view-event-btn {
@@ -181,12 +183,13 @@ body{
   position: relative;
   right: -40%;
   margin-bottom: 15px;
-  background-color: #bbf8fc;
+  background-color: #d6fcff;
   font-size: 1.2em;
+
 }
 
 .event-index-view-event-btn:hover {
-  background-color: #d6fcff;
+  background-color:  #bbf8fc;;
 }
 
 .index-view-description {
@@ -196,9 +199,11 @@ body{
 /* Event */
 
 .event {
-  margin: 10% auto;
+  top: 0px;
+  bottom: 0px;
+  border-right: 300px solid rgb(239, 235, 235);
+  border-left: 300px solid rgb(239, 235, 235);
   padding: 0 20px;
-  width: 70%;
   min-height: 600px;
 }
 
@@ -206,12 +211,13 @@ body{
   max-width: 420px;  
   max-height: 250px;
   border-radius: 10px;
-
 }
 
 .event h1 {
-  margin-bottom: 25px; 
+  margin: 0px; 
   color: #4e1187;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 
@@ -236,7 +242,10 @@ body{
 }
 
 .content-description {
-    margin: 25px 100px;
+  padding-bottom: 100px;
+}
+.content-description p {
+    margin: 0px;
 }
 
 .content-description h3 {
