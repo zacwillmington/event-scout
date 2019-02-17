@@ -25,6 +25,7 @@ class EventCategoriesContainer extends Component {
     }
 
     handleDisplayEvents = event => {
+        debugger
         this.props.getEvents(event.target.innerText, this.props.usersLocation)
         this.setState({
             events: this.props.events
@@ -54,6 +55,7 @@ class EventCategoriesContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.authReducer.isAuthenticated,
         events: state.eventsReducer.events,
         usersLocation: state.usersReducer.usersLocation,
         locationSet: state.usersReducer.locationSet

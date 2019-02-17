@@ -29,8 +29,9 @@ const deleteUserSuccess = user => {
 
 
 export const setUsersLocation = coords => {
-    return dispatch => { dispatch({ type: 'SET_LOCATION', coords: coords})}
-
+    if(coords !== null){
+        return dispatch => { dispatch({ type: 'SET_LOCATION', coords: coords})}
+    }
 }
 
 export const editUser = user => {

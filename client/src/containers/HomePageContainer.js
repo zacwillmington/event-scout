@@ -10,25 +10,13 @@ import EventsSearchPage from '../components/eventsSearchPage';
 import MainImageComponent from '../components/MainImageComponent';
 
 class HomePageContainer extends Component {
-    constructor(){
-        super();
-        this.state = {
-        } 
-    }
-
-    componentDidMount() {
-        // if (!this.props.isAuthenticated && !this.props.isAuthenticating){
-        //     this.props.history.push('/signin');
-        // }
+    constructor(props){
+        super(props);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        //Auth redirect
-        // if (!this.props.isAuthenticated && !this.props.isAuthenticating){
-        //     this.props.history.push('/signin');
-        // } 
         //Set Geolocation
-        if (!this.props.locationSet) {
+        if (this.props.locationSet && Object.entries(this.props.usersLocation).length === 0) {
             this.props.setUsersLocation(this.props.coords);
         }
     }

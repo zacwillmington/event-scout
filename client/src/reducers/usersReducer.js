@@ -4,7 +4,8 @@ const defaultState = {
     hasErrors: false,
     isLoading: false,
     isLoggedin: false,
-    locationSet: false
+    locationSet: false,
+    usersLocation: {}
 }
 
 export default function usersReducer(state = defaultState, action) {
