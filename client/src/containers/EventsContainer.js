@@ -21,9 +21,11 @@ class EventsContainer extends Component {
     } 
 
     componentWillReceiveProps(prevProps){
-        this.setState({
-            events: this.props.events
-        })
+        if(this.props.events.length >0){
+            this.setState({
+                events: this.props.events
+            })
+        }
     }
 
     componentDidUpdate(prevProps){
@@ -33,7 +35,8 @@ class EventsContainer extends Component {
             this.setState({
                 events: this.props.usersEvents 
             })
-        }else if(prevProps.events.length > 0){
+        }
+         if(prevProps.events.length > 0){
             //Check to see of events have been updated to new array
             if(prevProps.events[0].name.text !== this.props.events[0].name.text) {
                 this.setState({

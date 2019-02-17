@@ -4,6 +4,7 @@ import { removeEvent, addEvent, getEvents } from '../actions/eventsActions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment/moment.js';
+import { withAlert } from 'react-alert';
 
 
 class EventComponent extends Component {
@@ -27,6 +28,8 @@ class EventComponent extends Component {
             this.setState({
                 checked: !this.state.checked 
             })
+        } else{
+                this.props.alert.info("Create an account to save events.");
         }
     }
 
@@ -76,7 +79,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventComponent))
+export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(EventComponent)))
 
 //Event date receieved per event
 // capacity: null

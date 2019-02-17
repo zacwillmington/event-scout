@@ -25,13 +25,17 @@ export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
         //Added this dispatch so that React object lifecycle method will can use prevProps to know whether to display error in signIn component.
+        debugger
         const userTokenUrl = 'http://localhost:3000/api/user_token';
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }, body: JSON.stringify({auth: user})
+            }, body: JSON.stringify({auth: {
+                email: user.email,
+                password: user.password
+            }})
         })
         .then( resp => {
            return resp.json()
@@ -62,7 +66,11 @@ export const getUser = user => {
         })
         .then(resp => resp.json())
         .then( receivedUser => {
-            dispatch(authSuccess(receivedUser, localStorage.getItem('token')));    
+            if(!receivedUser.ok){
+                dispatch(authFailure(receivedUser.errors));
+            }else {
+                dispatch(authSuccess(receivedUser, localStorage.getItem('token'))); 
+            }   
         })
     }
 }

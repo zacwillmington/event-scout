@@ -17,16 +17,16 @@ class HomePageContainer extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.isAuthenticated && !this.props.isAuthenticating){
-            this.props.history.push('/signin');
-        }
+        // if (!this.props.isAuthenticated && !this.props.isAuthenticating){
+        //     this.props.history.push('/signin');
+        // }
     }
 
     componentDidUpdate(prevProps, prevState) {
         //Auth redirect
-        if (!this.props.isAuthenticated && !this.props.isAuthenticating){
-            this.props.history.push('/signin');
-        } 
+        // if (!this.props.isAuthenticated && !this.props.isAuthenticating){
+        //     this.props.history.push('/signin');
+        // } 
         //Set Geolocation
         if (!this.props.locationSet) {
             this.props.setUsersLocation(this.props.coords);

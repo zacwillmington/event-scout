@@ -41,7 +41,6 @@ export default function eventsReducer(state = defaultState, action) {
             }
         
         case 'USERS_EVENTS_FETCH_SUCCESS':
-        console.log('got user events')
             return {
                 ...state,
                 eventsAreLoading: false,

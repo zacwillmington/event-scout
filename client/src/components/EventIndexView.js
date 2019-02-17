@@ -36,21 +36,21 @@ class EventIndexView extends Component {
         }
     }
 
-    handleOnClick = (event) => {
-        //User can save a liked event if loggedin.
-        if(this.props.isAuthenticated){
-            if(this.state.checked){
-                this.props.removeEvent(this.state, this.props.currentUser.id)
-            } else{
-                this.props.addEvent(this.state, this.props.currentUser.id)
-            }
-            this.setState({
-                checked: !this.state.checked 
-            })
-        } else{
-            this.props.alert.info("Create an account to save events.");
-        }
-    }
+    // handleOnClick = (event) => {
+    //     //User can save a liked event if loggedin.
+    //     if(this.props.isAuthenticated){
+    //         if(this.state.checked){
+    //             this.props.removeEvent(this.state, this.props.currentUser.id)
+    //         } else{
+    //             this.props.addEvent(this.state, this.props.currentUser.id)
+    //         }
+    //         this.setState({
+    //             checked: !this.state.checked 
+    //         })
+    //     } else{
+    //         this.props.alert.info("Create an account to save events.");
+    //     }
+    // }
 
     viewEvent = () => {
         this.props.history.push({
@@ -65,7 +65,7 @@ class EventIndexView extends Component {
                 <h1>{this.state.name}</h1>
                 <div className='event-index-main-content'>
                     <img src={this.state.logo} alt='event-logo'/>
-                    <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} />
+                    {/* <HeartCheckbox checked={this.state.checked} onClick={event => this.handleOnClick(event)} /> */}
                     <div className='index-view-description'><p>{this.truncate(this.props.description)}</p></div>
                 </div> 
                 <button className='event-index-view-event-btn' onClick={event => this.viewEvent()}>View Event</button>

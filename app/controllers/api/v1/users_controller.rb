@@ -3,8 +3,9 @@ module Api
         class UsersController < ApplicationController
     
             def create
-                @user = User.new(user_name: params['user']['user_name'], email: params['user']['email'], password_digest: params['user']['password'])
-                if @user.save    
+                @user = User.new(user_name: params['user']['user_name'], email: params['user']['email'], password: params['user']['password'])
+                if @user.save 
+                    binding.pry   
                     render json: { 
                         user: @user,
                         status: 201,
@@ -18,14 +19,9 @@ module Api
                 end
             end
             
-            def show
-                               
-            end
-
             def update
-                binding.pry
                 @user = User.find(params[:id].to_i)
-                @user.update(user_name: params['user_name'], email: params['email'], password_digest: params['password'])
+                @user.update(user_name: params['user_name'], email: params['email'], password: params['password'])
                 if @user.save
                     render json: {
                         user: @user, 
@@ -33,7 +29,6 @@ module Api
                         ok: true
                     }
                 else
-                    binding.pry
                     render json: { 
                         :user => @user, 
                         :errors => @user.errors,
@@ -58,11 +53,18 @@ module Api
 
             def find_user
                 @user = User.find_by(email: params['user']['email'])
+                binding.pry
                 if @user 
                     session['id'] = @user.id
-                    render json: @user, status: 201
+                    render json: {
+                        user: @user,
+                        status: 201,
+                        ok: true
+                    }
                 else
-                    render json: { 'errors': 'customise error message in find controller'}
+                    render json: { errors: "We cannot validate your account at this time.",
+                    ok: false
+                }
                 end
             end
 
@@ -73,7 +75,7 @@ module Api
               end
 
             def strong_params
-                params.require(:user).permit(:id, :user_name, :email, :password_digest)
+                params.require(:user).permit(:id, :user_name, :email, :password)
             end
 
 

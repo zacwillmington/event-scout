@@ -24,7 +24,7 @@ class Events extends Component {
                 logo={url}
                 url={event.url} 
                 shareable={event.shareable} 
-                checked={false} />
+                 />
             })
         }
 
