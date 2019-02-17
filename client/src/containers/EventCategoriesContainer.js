@@ -25,7 +25,6 @@ class EventCategoriesContainer extends Component {
     }
 
     handleDisplayEvents = event => {
-        debugger
         this.props.getEvents(event.target.innerText, this.props.usersLocation)
         this.setState({
             events: this.props.events

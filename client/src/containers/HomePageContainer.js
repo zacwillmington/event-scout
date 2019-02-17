@@ -14,6 +14,10 @@ class HomePageContainer extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        // this.props.setUsersLocation(this.props.coords);
+    }
+
     componentDidUpdate(prevProps, prevState) {
         //Set Geolocation
         if (this.props.locationSet && Object.entries(this.props.usersLocation).length === 0) {

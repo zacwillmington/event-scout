@@ -169,14 +169,14 @@ p {
 }
 
 #spinner-div span {
-  color:  #4369c9;
+  color:  #4ff462;
   font-size: 2em;
 }
 .sk-spinner {
   position: absolute;
   top: 22px;
   left: 40%;
-  color: #4369c9;
+  color: #4ff462;
 }
 
 
