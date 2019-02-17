@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment/moment.js';
 import { withAlert } from 'react-alert';
+import eventsReducer from '../reducers/eventsReducer';
 
 
 class EventComponent extends Component {
@@ -14,7 +15,11 @@ class EventComponent extends Component {
     }
 
     componentDidMount() {
-        // debugger
+        if(this.isUsersEvent(this.props.location.state.currentEvent)){
+            this.setState({
+                checked: true
+            })
+        }
     }
 
     handleOnClickAddAndDelete = (event) => {
@@ -35,6 +40,11 @@ class EventComponent extends Component {
 
     parseTimeDate = (time) => {
         return moment(time).format('MMMM Do YYYY @ h:mm a');
+    }
+
+    isUsersEvent = (currentEvent) => {
+        const currentEventId = Number(currentEvent.id);
+         return this.props.usersEvents.some(evnt => evnt.id === currentEventId);
     }
 
     render() {
@@ -75,7 +85,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         currentUser: state.authReducer.currentUser,
-        isAuthenticated: state.authReducer.isAuthenticated
+        isAuthenticated: state.authReducer.isAuthenticated,
+        usersEvents: state.eventsReducer.usersEvents
     }
 }
 

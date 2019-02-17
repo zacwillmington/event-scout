@@ -94,6 +94,7 @@ body{
   top: 0;
   margin: 0;
 }
+
 /* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
 
 #view-users-events {
@@ -177,17 +178,18 @@ body{
 }
 
 #spinner-div {
-    margin: 50px 5%;
+    margin: 22% 5%;
 }
 
 #spinner-div span {
-  color:  #4ceaf5;
+  color:  #4369c9;
   font-size: 2em;
 }
 .sk-spinner {
   position: absolute;
   top: 22px;
   left: 40%;
+  color: #4369c9;
 }
 
 

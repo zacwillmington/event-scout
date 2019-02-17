@@ -18,6 +18,9 @@ class EventsContainer extends Component {
 
     componentDidMount(){
         window.scrollTo(0, 0)
+        if(this.props.isAuthenticated){
+            this.props.getUsersEvents(this.props.currentUser)
+        }
     } 
 
     componentWillReceiveProps(prevProps){
@@ -30,7 +33,6 @@ class EventsContainer extends Component {
 
     componentDidUpdate(prevProps){
         //If a user's event has been deleted then update state with new array.
-        // debugger
         if(prevProps.usersEvents.length !== this.props.usersEvents.length){
             this.setState({
                 events: this.props.usersEvents 
@@ -53,7 +55,7 @@ class EventsContainer extends Component {
 
     handleViewEventsClick = event => {
         event.preventDefault();
-        if(this.props.usersEvents.length <= 0){
+        if(this.props.usersEvents.length === 0){
             this.props.getUsersEvents(this.props.currentUser)
         }
         this.setState({ 
@@ -75,7 +77,7 @@ class EventsContainer extends Component {
                 {this.renderViewYourEventsBtn()}
                 {this.props.eventsAreLoading ? 
                 <div id='spinner-div'>
-                    <Spinner  name="ball-scale-ripple-multiple" color="#4ceaf5"/><span>LOADING</span>
+                    <Spinner  name="ball-scale-ripple-multiple" color="#4369c9"/><span>LOADING</span>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
             </div>
