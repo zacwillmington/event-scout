@@ -14,7 +14,7 @@ class EventComponent extends Component {
     }
 
     componentDidMount() {
-        debugger
+        // debugger
     }
 
     handleOnClickAddAndDelete = (event) => {

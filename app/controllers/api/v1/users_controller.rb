@@ -53,7 +53,6 @@ module Api
 
             def find_user
                 @user = User.find_by(email: params['user']['email'])
-                binding.pry
                 if @user 
                     session['id'] = @user.id
                     render json: {
