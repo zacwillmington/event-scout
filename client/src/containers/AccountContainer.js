@@ -26,8 +26,8 @@ class AccountContainer extends Component {
             <div className='account-container'>
                     <UserInput />
                     <button id='delete-account-button' onClick={(event) => this.handleDelete(event)}>
-                        <div class='box-left'>
-                            <i class='but-icon fa fa-lg fa-times'></i>
+                        <div className='box-left'>
+                            <i className='but-icon fa fa-lg fa-times'></i>
                         </div>
                     </button>
             </div>
