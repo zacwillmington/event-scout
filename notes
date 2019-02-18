@@ -1,15 +1,21 @@
 eventScout
 
+App summary:
+    A user can create an account and search for events based on time and date, location and keyword.
+
+    Event Scout leverages eventbrite's api to search for events and saves them to Event scout's backend when a user likes the event. 
+
+    Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
 
 TODO
-    - location not setting on mounting(and in action check for setting null )
     - event categories have to click twice
-    - events search categories location random
+    - active nav link text change colour
+    - Add slide show of images to mainImageComponent
 
 LAST
     BEFORE ASSEMENT
     - siginin funtionality(Look into it)
-      - Make sure the backend is tight. check if session needs to be set in this auth flow.
+      - Make sure the backend is tight e.g. knock authenticates the salte password. Check if session needs to be set in this auth flow.
 
 
 

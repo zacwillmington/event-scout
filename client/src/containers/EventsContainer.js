@@ -18,10 +18,6 @@ class EventsContainer extends Component {
 
     componentDidMount(){
         window.scrollTo(0, 0)
-        // debugger
-        // if(this.props.isAuthenticated){
-        //     this.props.getUsersEvents(this.props.currentUser)
-        // }
     } 
 
     componentWillReceiveProps(prevProps){

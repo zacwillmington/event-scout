@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Add slide show of images
 class MainImageComponent extends Component {
     render() {
         return (
