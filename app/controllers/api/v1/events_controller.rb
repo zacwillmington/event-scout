@@ -21,10 +21,11 @@ module Api
 
             def create
                 @user = User.find(params['user_id'].to_i)
+                params
                @event = @user.events.create(strong_params)
                 if @event.save
                     render json: {
-                        eventData: @event, 
+                        data: @event, 
                         ok: true
                     }
                 else
@@ -40,8 +41,9 @@ module Api
             end
 
             def destroy
-                @event = Event.find(params[:id]
+                @event = Event.find_by(id: params[:id].to_i
                 )
+                @user = User.find_by(id: params['user_id'].to_i)  
                 @event.destroy
                 render json: {
                     status: 201                    

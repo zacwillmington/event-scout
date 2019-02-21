@@ -21,11 +21,6 @@ class EventsContainer extends Component {
     } 
 
     componentWillReceiveProps(prevProps){
-        if(this.props.events.length >0){
-            this.setState({
-                events: this.props.events
-            })
-        }
     }
 
     componentDidUpdate(prevProps){
@@ -36,12 +31,16 @@ class EventsContainer extends Component {
             })
         }
          if(prevProps.events.length > 0){
-            //Check to see of events have been updated to new array
+            //Check to see of events have been updated to new array or update the events state to the new events 
             if(prevProps.events[0].name.text !== this.props.events[0].name.text) {
                 this.setState({
                     events: this.props.events
                 })
             }
+        } else if(prevProps.eventsAreLoading){
+            this.setState({
+                events: this.props.events
+            })
         }
     }
     
@@ -52,9 +51,10 @@ class EventsContainer extends Component {
 
     handleViewEventsClick = event => {
         event.preventDefault();
-        if(this.props.usersEvents.length === 0){
-            this.props.getUsersEvents(this.props.currentUser)
-        }
+        this.props.getUsersEvents(this.props.currentUser)
+        // if(this.props.usersEvents.length === 0){
+        //     this.props.getUsersEvents(this.props.currentUser)
+        // }
         this.setState({ 
             events: this.props.usersEvents
         })  

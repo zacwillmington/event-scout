@@ -21,6 +21,7 @@ module Api
             end
 
             def destroy
+                @user = User.find_by(email: params['email'])
                 session[:id] = nil
                 render json: {ok: true, status: 201, 'message': 'Successfully logged out.'}
             end

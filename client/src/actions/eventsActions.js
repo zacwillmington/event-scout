@@ -86,10 +86,10 @@ export const addEvent = (eventData, userId) => {
             if(!eventData.ok){
                 dispatch(eventsHasErrored(eventData.errors))
             } else{
-                dispatch(addEventData(eventData.eventData))
+                dispatch(addEventData(eventData.data))
             }
         })
-        .catch(e => console.log(e))   
+        .catch(e => dispatch(eventsHasErrored(e)))   
     }
 
 }

@@ -468,7 +468,7 @@ input.form-control {
 }
 
 #signup-form, #signin-form, #user-edit-form {
-  margin: 10% auto;
+  margin: 250px auto;
   border: 1px solid black;
   min-height: 300px;
   width: 600px;

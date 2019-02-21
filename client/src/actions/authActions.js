@@ -66,7 +66,7 @@ export const getUser = user => {
             }else {
                 dispatch(authSuccess(receivedUser.user, localStorage.getItem('token'))); 
             }   
-        })
+        }).catch(e => dispatch(authFailure(e)))
     }
 }
 
@@ -88,7 +88,7 @@ export const signupUser = user => {
             }else {
                 dispatch(authenticate(user))
             }
-        })
+        }).catch(e => dispatch(authFailure(e)))
     }
 }
 
@@ -99,7 +99,7 @@ export const logoutUser = user => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            }, body: JSON.stringify(user)
         })
         .then( resp =>resp.json())
         .then( response => {
@@ -107,7 +107,7 @@ export const logoutUser = user => {
                 localStorage.clear()
                 dispatch({type: 'RESET'});
             }
-        })
+        }).catch(e => dispatch(authFailure(e)));
     }
 }
 
