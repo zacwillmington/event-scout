@@ -321,7 +321,8 @@ p {
   flex-direction: row;
   margin: 5% auto;
   position: relative;
-  top: -300px;
+  width: 1250px;
+  top: -350px;
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
