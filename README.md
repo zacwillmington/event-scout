@@ -1,24 +1,24 @@
-# README
+#Event Scout
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A user can create an account and search for events based on time and date, location and keyword.Event Scout leverages eventbrite's api to search for events and saves them to Event scout's backend when a user likes the event. Once a user has created an account, he/she can create or delete their own events that remain on the Event Scout application. 
 
-Things you may want to cover:
+##Getting Started
 
-* Ruby version
+Fork, Clone and rake db:migrate this repository in you terminal.  
 
-* System dependencies
+##Prerequisites
 
-* Configuration
+Ruby 2.2.3
+Rails 5.2.2
 
-* Database creation
+##Built With
 
-* Database initialization
+React
+Redux
+Ruby-On-Rails
 
-* How to run the test suite
+##Author
+Zac Willmington - Solo contributor 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##License
+This project is licensed under the MIT License - see the LICENSE.md file for details
