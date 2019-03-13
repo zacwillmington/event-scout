@@ -15,7 +15,7 @@ class EventsContainer extends Component {
             events: this.props.events
         }
     }
-
+    
     componentDidMount(){
         window.scrollTo(0, 0)
     } 
@@ -52,9 +52,6 @@ class EventsContainer extends Component {
     handleViewEventsClick = event => {
         event.preventDefault();
         this.props.getUsersEvents(this.props.currentUser)
-        // if(this.props.usersEvents.length === 0){
-        //     this.props.getUsersEvents(this.props.currentUser)
-        // }
         this.setState({ 
             events: this.props.usersEvents
         })  
