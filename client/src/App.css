@@ -1,11 +1,14 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+} 
 
 .App-header {
   background-color: #282c34;
@@ -231,7 +234,8 @@ p {
   border-right: 300px solid rgb(239, 235, 235);
   border-left: 300px solid rgb(239, 235, 235);
   padding: 0 20px;
-  min-height: 600px;
+  margin: 0px 0px;
+  height: 100%;
 }
 
 .event img {
@@ -825,6 +829,9 @@ td.rdtYear:hover {
 /* FOOTER */
 
 .footer {
+  position: relative;
+  bottom:0;
+  width: 100%;
   height: 65px;
   padding: 15px;
   background: rgb(193, 193, 193);

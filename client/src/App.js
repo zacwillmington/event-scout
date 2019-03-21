@@ -49,7 +49,6 @@ class App extends Component {
             <Route path='/logout' component={LogoutPage} />
       
           </React.Fragment>
-          <Footer />
       </div>
     );
   }
