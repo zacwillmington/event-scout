@@ -600,16 +600,6 @@ button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::befo
    margin: auto;
  }
 
-  /* #eventDate {
-    height: 40px;
-    margin-top: 10px;
-    margin-right: 5px;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    border-bottom: 1px solid black;
-  } */
-
  .rdt {
   position: relative;
 }
