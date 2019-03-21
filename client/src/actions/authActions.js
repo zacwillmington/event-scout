@@ -2,9 +2,9 @@
 export const authRequest = () => {
     return {
         type: 'AUTHENTICATION_REQUEST'
-    }
+    } 
 }
-
+ 
 export const authSuccess = (user, token) => {
     return {
         type: 'AUTHENTICATION_SUCCESS',

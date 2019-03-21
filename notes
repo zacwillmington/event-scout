@@ -1,5 +1,7 @@
 eventScout
 
+"Added Cookies middleware to config file, "
+
 App summary:
     A user can create an account and search for events based on time and date, location and keyword.
 
