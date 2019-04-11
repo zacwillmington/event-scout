@@ -1,0 +1,104 @@
+eventScout
+
+App summary:
+    A user can create an account and search for events based on time and date, location and keyword.
+
+    Event Scout leverages eventbrite's api to search for events and saves them to Event scout's backend when a user likes the event. 
+
+    Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
+
+TODO
+    - Check Auth backend, do you need sessions id? 
+    - event categories have to click twice
+    - active nav link text change colour
+    - Add slide show of images to mainImageComponent
+    - Add edit event input to the events that a user has created.
+
+LAST
+    BEFORE ASSEMENT
+    - siginin funtionality(Look into it)
+      - Make sure the backend is tight e.g. knock authenticates the salte password. Check if session needs to be set in this auth flow.
+
+
+
+Requirements
+
+- Your app should have one HTML page to render your react-redux application(Done)
+- There should be 2 container components(Done)
+- There should be 5 stateless components(Done)
+- There should be 3 routes
+- The Application must make use of react-router and proper RESTful routing (should you choose to use react-router v3 please refer to the appropriate docs; docs for v4 can be found here)
+
+- Your Rails API should handle the data persistence. You should be using fetch() within your actions to GET and POST data from your API - do not use jQuery methods.(Done)
+- Your client-side application should handle the display of data with minimal data manipulation(Done)
+- Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
+
+you can search for events, by liking thr event it saves it to you liked list.
+
+maybe event on share on social media?
+
+Schema 
+    - Users
+        - user_name
+        - email
+        - password
+
+    - Events 
+        - name
+        - venue_id
+        - description
+        - url
+        - start
+        - end
+        - status
+        - currency
+
+    - Venue
+        - address
+        - id
+        - age_restriction
+        - capacity 
+        - name
+
+    - TicketClass
+        - name
+        - event_id
+        - description
+        - cost
+        - fee 
+        - free
+        - maximum_quantity
+
+Pages
+    - /users/:id/events = likes page
+    - /events/:id = event page
+    - /users/:id/events/new = create a new event
+    - /users/:id/events/:id/
+    - /users/:id/events/:id/delete 
+
+Containers 
+
+    - EventsContainerComponent
+    - AccountContainerComponent
+    - HomeContainerComponent
+    
+
+Components
+    - EventComponent(stateless)
+    - EventFormComponent(state)
+    - VenueComponent(stateless)
+    - VeuneFormComponent(state)
+    - AccountComponent
+    - AccountEditComponent(state)
+
+
+EventBrite API Auth
+
+    Client secret: 
+SSAHW2YAGZCOKACZ2FLXMSVRKUQFEPFIUZY7YIRLVD2H4ANWNK
+
+Your personal OAuth token
+OOQWOVIVAWJOL4PMDYPZ
+
+Anonymous access OAuth token
+77ZSPVIUQPRNZ7ZLZN5O

@@ -1,0 +1,834 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+} 
+
+.App-header {
+  background-color: #282c34;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 1.1em;
+}
+
+input, a, h1, h2, h3, h4, h5, h6, span, button {
+  font-family: 'Patua One', cursive;
+}
+
+p {
+  font-family: 'Staatliches', cursive;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+.App-link {
+  color: #bbf8fc;
+}
+
+.navBar {
+  background-color:  black;
+}
+
+.navBar a {
+  color:  #bbf8fc;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.nav-tabs a:hover {
+  color: black;  
+}
+
+.nav-tabs a:active {
+  color: black;
+}
+
+
+
+
+/* MAIN IMAGE COMPONENT */
+
+.main-image-component {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549853716/main-image_cd4hqi.jpg');
+
+  height: 700px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  width: 100%;  
+}
+
+.main-image-component h1 {
+  padding-top: 14%;
+  color: white;
+  font-weight: bolder;
+  font-size: 12em;
+  top: 0;
+  margin: 0;
+}
+
+/* EVENTS CONTAINER VIEW USER'S EVENTS BUTTON */
+
+#view-users-events {
+  width: 150px;
+  height: 50px;
+  position: fixed;
+  font-size: 1.2em;
+  right: 0px;
+  top: 100px;
+  color: #bbf8fc;
+  border-bottom-left-radius: 5px;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
+}
+
+#view-users-events:hover {
+  background-color: #bbf8fc;
+  color: black;
+  background: #bbf8fc;
+}
+/* ACCOUNT */
+
+
+.account-container {
+  min-height: 600px;
+  margin: 150px auto;
+}
+
+/* Account delete button */
+ 
+#delete-account-button {
+  background: transparent;
+  border: none;
+  position: relative;
+  top: -450px;
+  left: 235px;
+}
+
+.fa-times:hover {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.box-left {
+  height: 100px;
+  width: 100px;
+  background-color: #e74c3c;
+  cursor: pointer;
+  border-radius: 13px;
+}
+
+.fa-times {
+  font-size: 70px !important;
+  margin: 23px;
+  color: #fff;
+}
+
+
+.fa-check {
+  font-size: 70px !important;
+  margin-left: 7px;
+  /* margin-top: 13px; */
+}
+
+
+.cl-bar2 {
+  /* width: 80px; */
+}
+
+
+
+/* Events */
+
+.eventsContainer {
+  margin: 10% auto;
+  min-height: 320px;
+}
+
+#spinner-div {
+    margin: 22% 5%;
+}
+
+#spinner-div span {
+  color:  #4ff462;
+  font-size: 2em;
+}
+.sk-spinner {
+  position: absolute;
+  top: 22px;
+  left: 40%;
+  color: #4ff462;
+}
+
+
+/* EVENT INDEX VIEW */
+.event-index-main-content {
+  display: flex;
+}
+
+.event-index h1 {
+  padding: 30px;
+}
+.event-index {
+  border-radius: 10px;
+  margin: 10%;
+  min-height: 350px;
+  box-shadow: 3px 6px 20px 12px rgba(6, 38, 57, 0.65);
+}
+
+.event-index img {
+  border-radius: 10px;
+  padding-left: 25px;
+  max-width: 420px;
+  max-height: 250px;
+  /* box-shadow: 3px 6px 20px 12px rgba(180, 180, 181, 0.65); */
+}
+
+.event-index-view-event-btn {
+  border-radius: 20px;
+  height: 35px;
+  width: 150px;
+  position: relative;
+  right: -40%;
+  margin-bottom: 15px;
+  background-color: #d6fcff;
+  font-size: 1.2em;
+
+}
+
+.event-index-view-event-btn:hover {
+  background-color:  #bbf8fc;;
+}
+
+.index-view-description {
+  margin: 25px;
+}
+
+/* Event */
+
+.event {
+  top: 0px;
+  bottom: 0px;
+  border-right: 300px solid rgb(239, 235, 235);
+  border-left: 300px solid rgb(239, 235, 235);
+  padding: 0 20px;
+  margin: 0px 0px;
+  height: 100%;
+}
+
+.event img {
+  max-width: 420px;  
+  max-height: 250px;
+  border-radius: 10px;
+}
+
+.event h1 {
+  margin: 0px; 
+  color: #4e1187;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+.event-content {
+  display: flex;
+}
+
+.event-content span {
+  color: #4e1187;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.event-content ul {
+  padding: 25px 0px 25px 25px;
+}
+
+.event-content li {
+  list-style: none;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.content-description {
+  padding-bottom: 100px;
+}
+.content-description p {
+    margin: 0px;
+}
+
+.content-description h3 {
+  color: #4e1187;
+  margin-bottom: 20px;
+}
+
+.event-page-link {
+  position: relative;
+  left: -80px;
+  top: 10px;
+}
+
+/* Event Categories Container Home page */
+
+.categories-events-container h1 {
+  font-size: 4em;
+  padding: 50px 100px;
+  margin: 0 15% 0 15%;
+}
+
+
+#categories-title{
+  height: 450px;
+ margin-top: 0;
+ background-color: black;
+}
+
+#categories-title h1 {
+  margin: 0;
+  font-size: 6em;
+  padding-top: 100px;
+  color: white;
+}
+
+
+.categories-events-container {
+  padding: 5%;
+  text-align: center; 
+  height: 300px; 
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5));
+}
+.events-components {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 5% auto;
+  position: relative;
+  width: 1250px;
+  top: -350px;
+}
+
+.music-events-container, .food-and-drinks-events-container, .business-events-container {
+    width: 400px;
+    border: 1px solid grey;
+    margin: 5px;
+}
+
+.music-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+} 
+
+.food-and-drinks-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549856215/matthieu-joannon-294645-unsplash_ojfdcn.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.business-events-container:hover {
+  background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855789/adult-brainstorming-business-1437908_zn9r09.jpg');
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.music-events-container a, .food-and-drinks-events-container a, .business-events-container a{
+  text-decoration: none;
+}
+
+.music-events-container h1, .food-and-drinks-events-container h1, .business-events-container h1{
+  color: white;
+  margin: 0;
+}
+
+
+.music-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.business-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855789/adult-brainstorming-business-1437908_zn9r09.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.food-and-drinks-events-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549856215/matthieu-joannon-294645-unsplash_ojfdcn.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+/* Form Styling */
+
+#create-event-input-title-div {
+  position: relative;
+  top: -40px; 
+  font-weight: bolder;
+  font-size: 3em;
+  background-color: white;
+  width: auto;
+}
+
+.event-input {
+  width: 600px;
+  margin: 100px auto;
+  padding: 0 60px 60px 60px;
+  border: 1px solid black;
+}
+
+#event-input-name, #event-input-url, #event-input-currency, #event-input-status{
+  margin-bottom: 5px;
+  display: block;
+  width: 245px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+
+#event-input-description  {
+  display: block;
+  width: 200px;
+}
+
+input#event-input-name, input#event-input-currency {
+  margin-right: 5px;
+}
+
+
+label{
+  float: left;
+}
+
+.event-input-section-1, .event-input-section-2 {
+  display: flex;
+}
+
+#event-input-description {
+  width: 100%;
+  height: 250px;
+}
+
+.event-dateTime {
+  display: flex;
+}
+
+input.form-control {
+  margin: 25px;
+}
+
+#create-event-btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+#create-event-btn input[type='button'] {
+  font-weight: bold;
+}
+
+ /* Signin Form */
+
+ #signup-title, #signin-title, #user-edit-title {
+  position: relative; 
+  top: -40px; 
+  left: 15px;
+  font-weight: bolder;
+  background-color: white;
+  width: 200px;
+}
+
+#user-edit-title h1 {
+  font-size: 4em;
+}
+
+#signup-form, #signin-form, #user-edit-form {
+  margin: 250px auto;
+  border: 1px solid black;
+  min-height: 300px;
+  width: 600px;
+  padding: 0 0 25px 0;
+}
+
+#signup-form-div, #signin-form-div, #user-edit-form-div {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 25px; 
+}  
+
+
+#signup-user_name, #signup-email, #signup-password, #signin-email, #signin-password, #user-edit-email, #user-edit-user_name, #user-edit-password {
+  margin-bottom: 20px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  height: 40px;
+  width: 60%;
+  margin: auto;
+
+}
+
+.signup-user-btn, .signin-user-btn, .user-edit-btn {
+  width: 60%;
+  border-radius: 25px;
+  height: 40px;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+ 
+.signup-user-btn:hover, .signin-user-btn:hover, .user-edit-btn:hover {
+    background-color: rgb(57, 255, 136); 
+}
+/* HeartCheckbox Styling */
+
+button.heart-checkbox, button.heart-checkbox::after, button.heart-checkbox::before  {
+  background-color: #d9edf7
+}
+
+
+/* Searh Events Input Component*/
+
+#events-search-bar {
+  width: 100%;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) );
+}
+
+.eventsInputPage {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+}
+
+#search-events-btn {
+  width: 150px;
+  height: 60px;
+  font-weight: bolder;
+  font-size: 1.5em;
+  background: linear-gradient( rgba( 0, 0, 0,0.5), rgba(0, 0, 0, 0.5) );
+  background: transparent;  
+  color: #bbf8fc;  
+  border-color: transparent;
+}
+
+#search-events-btn:hover {
+  background-color: #bbf8fc;  
+  color: white;  
+  /* border-radius: 5px; */
+}
+
+#searchTerm, #locationAddress {
+  height: 60px;
+  margin-right: 5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 1.5em;
+  color: white;
+}
+
+
+#locationAddress::placeholder, 
+#searchTerm::placeholder {
+  color:  #bbf8fc;
+}
+.eventDate {
+  width: 50px;
+  margin: 0px;
+  display: inline;
+}
+
+.eventDate input{
+  display: inline;
+  margin: 0px;
+  height: 60px;
+  margin-right: 5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  /* border-bottom: 1px solid black; */
+  font-size: 1.5em;
+  color: #bbf8fc;
+}
+
+/* Movie Component Styling */
+
+.movie-component {
+  width: 90%;
+  height: 600px;
+  border: 1px solid grey;
+  margin: 150px auto;
+}
+
+
+/* DateTime  Styling*/
+/*!
+ * https://github.com/YouCanBookMe/react-datetime
+ */
+
+ .form-control {
+   width: auto;
+   margin: auto;
+ }
+
+ .rdt {
+  position: relative;
+}
+.rdtPicker {
+  display: none;
+  position: absolute;
+  width: 250px;
+  padding: 4px;
+  margin-top: 1px;
+  z-index: 99999 !important;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  border: 1px solid #f9f9f9;
+}
+.rdtOpen .rdtPicker {
+  display: block;
+}
+.rdtStatic .rdtPicker {
+  box-shadow: none;
+  position: static;
+}
+
+.rdtPicker .rdtTimeToggle {
+  text-align: center;
+}
+
+.rdtPicker table {
+  width: 100%;
+  margin: 0;
+}
+.rdtPicker td,
+.rdtPicker th {
+  text-align: center;
+  height: 28px;
+}
+.rdtPicker td {
+  cursor: pointer;
+}
+.rdtPicker td.rdtDay:hover,
+.rdtPicker td.rdtHour:hover,
+.rdtPicker td.rdtMinute:hover,
+.rdtPicker td.rdtSecond:hover,
+.rdtPicker .rdtTimeToggle:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.rdtPicker td.rdtOld,
+.rdtPicker td.rdtNew {
+  color: #999999;
+}
+.rdtPicker td.rdtToday {
+  position: relative;
+}
+.rdtPicker td.rdtToday:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid #428bca;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+.rdtPicker td.rdtActive,
+.rdtPicker td.rdtActive:hover {
+  background-color: #428bca;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.rdtPicker td.rdtActive.rdtToday:before {
+  border-bottom-color: #fff;
+}
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.rdtPicker td span.rdtOld {
+  color: #999999;
+}
+.rdtPicker td span.rdtDisabled,
+.rdtPicker td span.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+.rdtPicker th {
+  border-bottom: 1px solid #f9f9f9;
+}
+.rdtPicker .dow {
+  width: 14.2857%;
+  border-bottom: none;
+  cursor: default;
+}
+.rdtPicker th.rdtSwitch {
+  width: 100px;
+}
+.rdtPicker th.rdtNext,
+.rdtPicker th.rdtPrev {
+  font-size: 21px;
+  vertical-align: top;
+}
+
+.rdtPrev span,
+.rdtNext span {
+  display: block;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.rdtPicker th.rdtDisabled,
+.rdtPicker th.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+.rdtPicker thead tr:first-child th {
+  cursor: pointer;
+}
+.rdtPicker thead tr:first-child th:hover {
+  background: #eeeeee;
+}
+
+.rdtPicker tfoot {
+  border-top: 1px solid #f9f9f9;
+}
+
+.rdtPicker button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.rdtPicker button:hover {
+  background-color: #eee;
+}
+
+.rdtPicker thead button {
+  width: 100%;
+  height: 100%;
+}
+
+td.rdtMonth,
+td.rdtYear {
+  height: 50px;
+  width: 25%;
+  cursor: pointer;
+}
+td.rdtMonth:hover,
+td.rdtYear:hover {
+  background: #eee;
+}
+
+.rdtCounters {
+  display: inline-block;
+}
+
+.rdtCounters > div {
+  float: left;
+}
+
+.rdtCounter {
+  height: 100px;
+}
+
+.rdtCounter {
+  width: 40px;
+}
+
+.rdtCounterSeparator {
+  line-height: 100px;
+}
+
+.rdtCounter .rdtBtn {
+  height: 40%;
+  line-height: 40px;
+  cursor: pointer;
+  display: block;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+}
+.rdtCounter .rdtBtn:hover {
+  background: #eee;
+}
+.rdtCounter .rdtCount {
+  height: 20%;
+  font-size: 1.2em;
+}
+
+.rdtMilli {
+  vertical-align: middle;
+  padding-left: 8px;
+  width: 48px;
+}
+
+.rdtMilli input {
+  width: 100%;
+  font-size: 1.2em;
+  margin-top: 37px;
+}
+
+.rdtTime td {
+  cursor: default;
+}
+
+
+/* FOOTER */
+
+.footer {
+  position: relative;
+  bottom:0;
+  width: 100%;
+  height: 65px;
+  padding: 15px;
+  background: rgb(193, 193, 193);
+}
+
+.footer p {
+  color: white;
+  font-style: bold;
+  font-size: 1.5em;
+}
