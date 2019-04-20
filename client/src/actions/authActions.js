@@ -20,11 +20,13 @@ export const authFailure = (errors) => {
     }
 }
 
+const BASE_URL = 'http://event-scout.herokuapp.com/';
+// const BASE_URL = 'http://localhost:5000/';
 
 export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
-        const userTokenUrl = 'http://event-scout.herokuapp.com/api/user_token';
+        const userTokenUrl = `api/user_token`;
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
@@ -52,7 +54,7 @@ export const authenticate = user => {
 
 export const getUser = user => {
     return dispatch => {
-        return fetch('http://event-scout.herokuapp.com/api/v1/find_user', {
+        return fetch(`${BASE_URL}api/v1/find_user`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -73,7 +75,7 @@ export const getUser = user => {
 export const signupUser = user => {
     return dispatch => {
         dispatch(authRequest());
-        return fetch('http://event-scout.herokuapp.com/api/v1/signup', {
+        return fetch(`${BASE_URL}/api/v1/signup`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -94,7 +96,7 @@ export const signupUser = user => {
 
 export const logoutUser = user => {
     return dispatch => {
-        return fetch('http://event-scout.herokuapp.com/api/v1/logout', {
+        return fetch(`${BASE_URL}/api/v1/logout`, {
             method:  'POST',
             headers: {
                 'Accept': 'application/json',

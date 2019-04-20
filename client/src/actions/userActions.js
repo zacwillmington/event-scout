@@ -27,6 +27,8 @@ const deleteUserSuccess = user => {
     }
 }
 
+const BASE_URL = 'http://event-scout.herokuapp.com/';
+// const BASE_URL = 'http://localhost:3001/';
 
 export const setUsersLocation = coords => {
     if(coords !== null){
@@ -37,7 +39,7 @@ export const setUsersLocation = coords => {
 export const editUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user));
-        fetch(`http://event-scout.herokuapp.com/api/v1/users/${user.id}`, {
+        fetch(`${BASE_URL}api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -61,7 +63,7 @@ export const editUser = user => {
 export const deleteUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user))
-        fetch(`http://event-scout.herokuapp.com/api/v1/users/${user.id}`,{
+        fetch(`${BASE_URL}api/v1/users/${user.id}`,{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/js',

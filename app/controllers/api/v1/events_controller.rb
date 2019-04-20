@@ -23,7 +23,6 @@ module Api
                 @user = User.find(params['user_id'].to_i)
                 params
                @event = @user.events.create(strong_params)
-               binding.pry
                 if @event.save
                     render json: {
                         data: @event, 
