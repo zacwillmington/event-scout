@@ -26,6 +26,7 @@ gem 'dotenv-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem "active_model_serializers", require: true
 
 gem 'AMS', '~> 0.99.0' 
 
