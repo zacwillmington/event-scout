@@ -4,7 +4,7 @@ A user can create an account and search for events based on time and date, locat
 
 ## Getting Started
 
-Fork, Clone and rake db:migrate this repository in you terminal.  
+Fork, Clone and rake db:migrate this repository in your terminal.  
 
 ## Prerequisites
 
