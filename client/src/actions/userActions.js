@@ -37,7 +37,7 @@ export const setUsersLocation = coords => {
 export const editUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user));
-        fetch(`/api/v1/users/${user.id}`, {
+        fetch(`http://event-scout.herokuapp.com/api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -61,7 +61,7 @@ export const editUser = user => {
 export const deleteUser = user => {
     return dispatch => {
         dispatch(sendingUpdate(user))
-        fetch(`/api/v1/users/${user.id}`,{
+        fetch(`http://event-scout.herokuapp.com/api/v1/users/${user.id}`,{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/js',

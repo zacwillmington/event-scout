@@ -51,7 +51,7 @@ export const getEvents = (searchTerm, geoLocation) => {
 
         // $search_url?token=$token&q=&date_created.keyword=today&page=$repeat&sort_by=$date&expand=venue
 
-        const homePageUrl = "http://localhost:3000/";
+        const homePageUrl = "http://event-scout.herokuapp.com";
         //Coors issue perhaps because I'm developing on two different ports e.g. 3000 frontend and 3001 on backend.
         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
@@ -74,7 +74,7 @@ export const getEvents = (searchTerm, geoLocation) => {
 export const addEvent = (eventData, userId) => {
     return dispatch => {
         dispatch(addingEvent());
-        fetch(`/api/v1/users/${userId}/events`, {
+        fetch(`http://event-scout.herokuapp.com/api/v1/users/${userId}/events`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -97,7 +97,7 @@ export const addEvent = (eventData, userId) => {
 export const getUsersEvents = user => {
     return dispatch => {
         dispatch(eventsAreLoading(true));
-        const url = `/api/v1/users/${user.id}/events`
+        const url = `http://event-scout.herokuapp.com/api/v1/users/${user.id}/events`
         fetch(url, {
             method: 'GET',
             headers: {
@@ -123,7 +123,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
 
-        const homePageUrl = "http://localhost:3000/";
+        const homePageUrl = "http://event-scout.herokuapp.com/";
 
         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
@@ -145,7 +145,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
 
 export const removeEvent = (eventData, userId) => {
     return dispatch => {
-        const url = `/api/v1/users/${userId}/events/${eventData.id}` 
+        const url = `http://event-scout.herokuapp.com/api/v1/users/${userId}/events/${eventData.id}` 
         fetch(url,{
             method: "DELETE",
             headers: {
