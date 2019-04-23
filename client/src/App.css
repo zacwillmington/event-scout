@@ -330,7 +330,7 @@ p {
 }
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
-    width: 400px;
+    max-width: 400px;
     border: 1px solid grey;
     margin: 5px;
 }
@@ -831,4 +831,25 @@ td.rdtYear:hover {
   color: white;
   font-style: bold;
   font-size: 1.5em;
+}
+
+
+/* RESPONSIVE STYLES */
+
+/* HOME PAGE */
+@media only screen and (max-width: 1000px) {
+
+  h1 {
+    font-size: 2em;
+  }
+  .events-components {
+    position: none;
+    width: 100%;
+  }
+
+  .music-events-container h1, .food-and-drinks-events-container h1, .business-events-container h1{
+    color: white;
+    margin: 0;
+    font-size: 2em;
+  }
 }

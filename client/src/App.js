@@ -27,21 +27,21 @@ class App extends Component {
           <Route exact path='/' component={HomePageContainer} />
 
           {/* user's events routes */}
-            <Route exact path='/users/:id/events/new' component={EventInput} />
+            <Route path='/users/:id/events/new' component={EventInput} />
 
-            <Route exact path='/users/:id/events/:event_id/edit' component={EventInput} />
+            <Route path='/users/:id/events/:event_id/edit' component={EventInput} />
 
-            <Route exact path='/users/:id/events' component={EventsContainer} />
+            <Route path='/users/:id/events' component={EventsContainer} />
 
 
             {/* events routes */}
-            <Route exact path='/events' component={EventsContainer} />
-            <Route exact path='/events/:id' component={EventComponent} />
+            <Route path='/events' component={EventsContainer} />
+            <Route path='/events/:id' component={EventComponent} />
 
             
 
             {/* Account routes */}
-            <Route exact path='/users/:id' component={AccountContainer} />
+            <Route path='/users/:id' component={AccountContainer} />
 
            {/* NON protected routes */}
             <Route path='/signup' component={SignupPage} />
