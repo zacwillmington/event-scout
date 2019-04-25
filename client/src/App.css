@@ -69,7 +69,7 @@ p {
 .main-image-component {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://res.cloudinary.com/zacwillmington/image/upload/v1549853716/main-image_cd4hqi.jpg');
 
-  height: 700px; /* You must set a specified height */
+  min-height: 700px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -839,17 +839,34 @@ td.rdtYear:hover {
 /* HOME PAGE */
 @media only screen and (max-width: 1000px) {
 
-  h1 {
-    font-size: 2em;
+  .main-image-component h1 {
+    font-size: 5em;
+    height: 300px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  width: 100%;  
+  }
+
+
+  #categories-title h1 {
+    font-size: 5em;
+    padding: 20px 0px;
   }
   .events-components {
     position: none;
     width: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
   }
 
   .music-events-container h1, .food-and-drinks-events-container h1, .business-events-container h1{
     color: white;
     margin: 0;
+    padding-top: 20px;
+    width: 350px;
+    height: 100px;
     font-size: 2em;
   }
 }
