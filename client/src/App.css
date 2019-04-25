@@ -869,4 +869,14 @@ td.rdtYear:hover {
     height: 100px;
     font-size: 2em;
   }
+
+  /* events page */
+
+  .event-index {
+    min-width: 500px;
+  }
+  .event-index-main-content{
+    display: block;
+  }
+
 }
