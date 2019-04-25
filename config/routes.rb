@@ -18,14 +18,11 @@ Rails.application.routes.draw do
       resources :users do 
         resources :events
       end
-      #users' events
-      # post '/users/:id/events', to: 'events#create'
-      # post '/users/:id/events/:event_id', to: 'events#update'
-
       resources :venues
       resources :ticket_classes
+
     end
   end
-
+  get "*path" => redirect("/")
 end
 
