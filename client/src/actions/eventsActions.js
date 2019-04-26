@@ -51,11 +51,8 @@ export const getEvents = (searchTerm, geoLocation) => {
             const locationString = `location.latitude=${geoLocation.latitude}&location.longitude=${geoLocation.longitude}`
             eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&${locationString}&expand=venue`;
         }
-
-        // $search_url?token=$token&q=&date_created.keyword=today&page=$repeat&sort_by=$date&expand=venue
-
         const homePageUrl = BASE_URL;
-        //Coors issue perhaps because I'm developing on two different ports e.g. 3000 frontend and 3001 on backend.
+        
         const CORSProxyServerUrl = "https://cors-anywhere.herokuapp.com/";
 
         return fetch(CORSProxyServerUrl + eventbriteUrlSearch, {

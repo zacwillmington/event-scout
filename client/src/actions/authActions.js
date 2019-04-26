@@ -26,7 +26,7 @@ const BASE_URL = 'http://event-scout.herokuapp.com/';
 export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
-        const userTokenUrl = `api/user_token`;
+        const userTokenUrl = `/api/user_token`;
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
@@ -84,7 +84,7 @@ export const signupUser = user => {
             body: JSON.stringify({ user: user })
         })
         .then( resp => resp.json())
-        .then( userData => {
+        .then(userData => {
             if(!userData.ok){
                 dispatch(authFailure(userData.errors))
             }else {
