@@ -8,6 +8,7 @@ App summary:
     Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
 
 TODO 
+    *Try Readd (*)routing for back end and push to heroku
     - event categories have to click twice
     - active nav link text change colour
     - Check Auth backend, do you need sessions id?
