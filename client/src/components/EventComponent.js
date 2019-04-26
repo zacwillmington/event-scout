@@ -15,6 +15,7 @@ class EventComponent extends Component {
     }
 
     componentDidMount() {
+        console.log(this.state);
         if(this.isUsersEvent(this.props.location.state.currentEvent)){
             this.setState({
                 checked: true
