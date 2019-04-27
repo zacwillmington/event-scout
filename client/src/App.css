@@ -177,7 +177,7 @@ p {
 }
 .sk-spinner {
   position: absolute;
-  top: 25px;
+  top: 50%;
   left: 40%;
   color: #4ff462;
 }

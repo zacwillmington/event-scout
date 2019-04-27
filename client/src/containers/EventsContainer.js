@@ -68,10 +68,7 @@ class EventsContainer extends Component {
     render() {
         return(
             <div className='eventsContainer'> 
-                {this.renderViewYourEventsBtn()}
-                <div id='spinner-div'>
-                    <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/><span>LOADING</span>
-                </div> 
+                {this.renderViewYourEventsBtn()} 
                 {/* {this.props.eventsAreLoading ? 
                 <div id='spinner-div'>
                     <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/><span>LOADING</span>
