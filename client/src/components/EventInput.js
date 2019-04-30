@@ -68,7 +68,13 @@ class EventInput extends Component {
       }
 
       onDrop = picture => {
-          this.setState({ logo: picture[0].name })
+          const cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/dmjs1tfzn/image/upload`
+          fetch(cloudinaryUploadURL, {
+              method: 'POST',
+              headers: {}
+          })
+          .then()
+        //   this.setState({ logo: picture[0].name })
       }
 
       handleOnSubmit = event => {
@@ -128,13 +134,12 @@ class EventInput extends Component {
                             value={this.state.url}/>
                         </div>
                     </section>
-                    {/* todo: implement save file to cloudnary api with dispatch action save image */}
-                    {/* <ImageUploader
+                    <ImageUploader
                         withIcon={true}
                         buttonText='Choose images'
                         onChange={event => this.onDrop(event)}
                         imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
-                    /> */}
+                    />
                     <br></br>
                     <input id='user_id'
                      type='hidden' 
