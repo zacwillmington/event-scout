@@ -22,6 +22,7 @@ module Api
             def create
                 @user = User.find(params['user_id'].to_i)
                 params
+                binding.pry
                @event = @user.events.create(strong_params)
                 if @event.save
                     render json: {

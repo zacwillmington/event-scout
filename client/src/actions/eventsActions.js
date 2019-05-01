@@ -74,6 +74,7 @@ export const getEvents = (searchTerm, geoLocation) => {
 export const addEvent = (eventData, userId) => {
     return dispatch => {
         dispatch(addingEvent());
+        debugger
         fetch(`${BASE_URL}api/v1/users/${userId}/events`, {
             method: 'POST',
             headers: {
@@ -86,6 +87,7 @@ export const addEvent = (eventData, userId) => {
             if(!eventData.ok){
                 dispatch(eventsHasErrored(eventData.errors))
             } else{
+                debugger
                 dispatch(addEventData(eventData.data))
             }
         })
