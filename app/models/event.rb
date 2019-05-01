@@ -5,5 +5,7 @@ class Event < ApplicationRecord
     validates :start,  presence: true
     validates :end,  presence: true
 
+    mount_uploader :logo, LogoUploader
+
     belongs_to :user
 end
