@@ -1,5 +1,5 @@
-task :start_dev_one do
-    exec 'foreman start -p 3000'
+task :start_dev do
+    exec 'foreman start -f Procfile.dev'
   end
   
   namespace :start do

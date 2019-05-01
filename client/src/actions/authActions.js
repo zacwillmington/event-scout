@@ -20,13 +20,13 @@ export const authFailure = (errors) => {
     }
 }
 
-const BASE_URL = 'http://event-scout.herokuapp.com/';
-// const BASE_URL = 'http://localhost:5000/';
+// const BASE_URL = 'http://event-scout.herokuapp.com/';
+const BASE_URL = 'http://localhost:5000/';
 
 export const authenticate = user => {
     return dispatch => {
         dispatch(authRequest());
-        const userTokenUrl = `/api/user_token`;
+        const userTokenUrl = `${BASE_URL}/api/user_token`;
         return fetch( userTokenUrl, {
             method: 'POST',
             headers: {
