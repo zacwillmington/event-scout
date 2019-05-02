@@ -74,15 +74,18 @@ export const getEvents = (searchTerm, geoLocation) => {
 export const addEvent = (eventData, userId) => {
     return dispatch => {
         dispatch(addingEvent());
-        debugger
+        var event = new FormData();
+        for(var name in eventData){
+            event.append(name, eventData[name]);
+        }
         fetch(`${BASE_URL}api/v1/users/${userId}/events`, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }, body: JSON.stringify(eventData)
+            body: event
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            debugger
+            return resp.json()
+        })
         .then( eventData => {
             debugger
             if(!eventData.ok){

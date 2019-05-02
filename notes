@@ -9,7 +9,7 @@ App summary:
 
 TODO 
     - events not displayed in heroku application
-    - fix CORS/Authentication
+    - how to send image files through fetch react
     - event categories have to click twice
     - active nav link text change colour
     - Check Auth backend, do you need sessions id?
