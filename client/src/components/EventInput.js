@@ -68,13 +68,14 @@ class EventInput extends Component {
       }
 
       onDrop = picture => {
-          const cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/dmjs1tfzn/image/upload`
-          fetch(cloudinaryUploadURL, {
-              method: 'POST',
-              headers: {}
-          })
-          .then()
-        //   this.setState({ logo: picture[0].name })
+        //   fetch(`/api/v1/events/upload_image`, {
+        //       method: 'POST',
+        //       body: {file: picture}
+        //   })
+        //   .then( res => {
+        //       debugger
+        //   })
+          this.setState({ logo: picture })
       }
 
       handleOnSubmit = event => {
@@ -83,7 +84,7 @@ class EventInput extends Component {
         this.setState({
             name: '',
             venue_id: '',
-            logo: 'https://res.cloudinary.com/zacwillmington/image/upload/v1550263383/md-duran-628447-unsplash_udufrg.jpg',//Standard image 
+            logo: '',
             description: '',
             url: '',
             start: new Date(),

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       post '/signup', to: 'users#create'
       post '/find_user', to: 'users#find_user'
 
+      post '/upload_image', to: 'events#upload_image'
+
       resources :users do 
         resources :events
       end

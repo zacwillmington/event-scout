@@ -19,11 +19,15 @@ module Api
                 end
             end
 
+            def upload_image 
+                binding.pry
+                # cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/dmjs1tfzn/image/upload`
+            end
+
             def create
                 @user = User.find(params['user_id'].to_i)
-                params
-                binding.pry
                @event = @user.events.create(strong_params)
+               binding.pry
                 if @event.save
                     render json: {
                         data: @event, 
