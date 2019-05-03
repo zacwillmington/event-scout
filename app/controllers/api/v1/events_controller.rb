@@ -36,11 +36,23 @@ module Api
                    user_id: params['user_id']
                    )
                binding.pry
-
+               if params['logo'].is_a? String
+                    event = {
+                            name: @event.name,
+                            id: @event.id,
+                            description: @event.description,
+                            logo: @event.logo_in_database,
+                            start: @event.start,
+                            end: @event.end,
+                            user_id: @event.user_id
+                        }
+                else
+                    event = @event
+                end
                 if @event.save
                     binding.pry
                     render json: {
-                        data: @event, 
+                        data: event, 
                         ok: true
                     }
                 else

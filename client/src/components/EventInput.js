@@ -37,7 +37,7 @@ class EventInput extends Component {
             displayErrors(this.props.eventErrors, this.props.alert)
             this.setState({ alerted: true})
     } else if(this.props.eventSuccess) {
-            debugger
+            // debugger
             // const userId = this.props.currentUser.id;
             // const eventId = this.props.currentEvent.id;
             // this.setState({ alerted: true })
@@ -68,16 +68,6 @@ class EventInput extends Component {
       }
 
       onDrop = picture => {
-        //   fetch(`/api/v1/events/upload_image`, {
-        //       method: 'POST',
-        //       body: {file: picture}
-        //   })
-        //   .then( res => {
-        //       debugger
-        //   })
-        // upload preset !!!!!!!eegiasd9
-        // upload preset gzidyacn
-        // cloud name dmjs1tfzn
           this.setState({ logo: picture[0] })
       }
 

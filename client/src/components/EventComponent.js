@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment/moment.js';
 import { withAlert } from 'react-alert';
-import eventsReducer from '../reducers/eventsReducer';
 
 
 class EventComponent extends Component {

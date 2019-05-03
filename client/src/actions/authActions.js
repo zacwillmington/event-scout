@@ -20,8 +20,8 @@ export const authFailure = (errors) => {
     }
 }
 
-// const BASE_URL = 'http://event-scout.herokuapp.com/';
-const BASE_URL = 'http://localhost:5000/';
+const BASE_URL = 'http://event-scout.herokuapp.com/';
+// const BASE_URL = 'http://localhost:5000/';
 
 export const authenticate = user => {
     return dispatch => {

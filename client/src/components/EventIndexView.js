@@ -9,6 +9,7 @@ import { withAlert } from 'react-alert';
 class EventIndexView extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
             id: this.props.id,
             name: this.props.name,
@@ -22,10 +23,6 @@ class EventIndexView extends Component {
             currency: this.props.currency,
             checked: this.props.checked
         }
-    }
-
-    componentDidMount(){
-        
     }
 
     truncate = (description) => {
