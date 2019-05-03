@@ -38,8 +38,8 @@ function getUsersEventsFromEventScout(events, user){
     }
 }
 
-const BASE_URL = 'http://event-scout.herokuapp.com/';
-// const BASE_URL = 'http://localhost:5000/';
+// const BASE_URL = 'http://event-scout.herokuapp.com/';
+const BASE_URL = 'http://localhost:5000/';
 
 export const getEvents = (searchTerm, geoLocation) => {
     return dispatch => {
@@ -84,15 +84,12 @@ export const addEvent = (eventData, userId) => {
             body: event
         })
         .then(resp => {
-            debugger
             return resp.json()
         })
         .then( eventData => {
-            debugger
             if(!eventData.ok){
                 dispatch(eventsHasErrored(eventData.errors))
             } else{
-                debugger
                 dispatch(addEventData(eventData.data))
             }
         })

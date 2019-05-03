@@ -7,7 +7,7 @@ import ImageUploader from 'react-images-upload';
 
 import { addEvent } from '../actions/eventsActions';
 import { displayErrors } from './Errors';
-//Remove Create event. use liked event instead to create event and persist to database.
+
 class EventInput extends Component {
     constructor(props){
         super(props);
