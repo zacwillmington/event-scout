@@ -1,9 +1,9 @@
 development:
-  cloud_name: "event scout development"
+  cloud_name: "dmjs1tfzn"
   api_key: "643437531268363"
   api_secret: "yixLKs48iAX3pCRpMwkMXShxDLI"
 
 production:
-  cloud_name: "event scout production"
+  cloud_name: "dmjs1tfzn"
   api_key: "643437531268363"
   api_secret: "yixLKs48iAX3pCRpMwkMXShxDLI"

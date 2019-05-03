@@ -78,6 +78,7 @@ export const addEvent = (eventData, userId) => {
         for(var name in eventData){
             event.append(name, eventData[name]);
         }
+
         fetch(`${BASE_URL}api/v1/users/${userId}/events`, {
             method: 'POST',
             body: event

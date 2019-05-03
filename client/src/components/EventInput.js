@@ -13,7 +13,7 @@ class EventInput extends Component {
         super(props);
         this.state = {
             name: '',
-            logo: 'https://res.cloudinary.com/zacwillmington/image/upload/v1550263383/md-duran-628447-unsplash_udufrg.jpg',
+            logo: '',
             description: '',
             url: '',
             start: new Date(),
@@ -75,7 +75,10 @@ class EventInput extends Component {
         //   .then( res => {
         //       debugger
         //   })
-          this.setState({ logo: picture })
+        // upload preset !!!!!!!eegiasd9
+        // upload preset gzidyacn
+        // cloud name dmjs1tfzn
+          this.setState({ logo: picture[0] })
       }
 
       handleOnSubmit = event => {
