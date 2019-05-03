@@ -26,18 +26,31 @@ module Api
 
             def create
                 @user = User.find(params['user_id'].to_i)
-                # if params['']
-                binding.pry
-               @event = @user.events.create(
-                   name: params['name'],
-                   logo: params['logo'],
-                   description: params['description'],
-                   url: params['url'],
-                   start: params['start'],
-                   end: params['end'],
-                   user_id: params['user_id']
-                   )
+                if !params['logo'].is_a? String
+                #Create event with eventbrite logo url
+                @event = @user.events.create(
+                    name: params['name'],
+                    logo: params['logo'],
+                    description: params['description'],
+                    url: params['url'],
+                    start: params['start'],
+                    end: params['end'],
+                    user_id: params['user_id']
+                    )
+                else
+                #Create event with eventscout event logo url
+                @event = @user.events.create(
+                    name: params['name'],
+                    eventbrite_logo: params['logo'],
+                    description: params['description'],
+                    url: params['url'],
+                    start: params['start'],
+                    end: params['end'],
+                    user_id: params['user_id']
+                    )
+                end
                 if @event.save
+                    # binding.pry
                     render json: {
                         data: @event, 
                         ok: true
