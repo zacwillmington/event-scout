@@ -4,6 +4,12 @@ import { removeEvent, addEvent } from '../actions/eventsActions';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { withAlert } from 'react-alert';
+import { bounce } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
+
+
+// const Bounce = styled.button`animation: 2s ${keyframes`${bounce}`} infinite`;
+
 
 
 class EventIndexView extends Component {
