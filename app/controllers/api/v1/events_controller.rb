@@ -26,6 +26,7 @@ module Api
 
             def create
                 @user = User.find(params['user_id'].to_i)
+                binding.pry
                 if !params['logo'].is_a? String
                 #Create event with eventbrite logo url
                 @event = @user.events.create(

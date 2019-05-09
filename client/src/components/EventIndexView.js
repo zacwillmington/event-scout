@@ -42,8 +42,8 @@ class EventIndexView extends Component {
 
     viewEvent = () => {
         this.props.history.push({
-            pathname: `/events/${this.props.id}`,
-            state: { currentEvent: this.state }
+            pathname: `/events/${this.props.id}`, 
+            state: { currentEvent: this.state } 
         })
     } 
 
