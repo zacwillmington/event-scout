@@ -331,7 +331,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 5% auto;
+  margin: 8% auto;
   position: relative;
   width: 1230px;
   top: -350px;
@@ -341,43 +341,12 @@ p {
     max-width: 400px;
     border: 1px solid grey;
     margin: 5px;
-    /* animation: expand 2s; */
     transition: all .2s ease-in-out;
-    /* z-index: 999; */
 }
 
 .music-events-container:hover, .food-and-drinks-events-container:hover, .business-events-container:hover {
   transform: scale(1.2);
   margin: 1%;
-}
-
-/* .navback { 
-  position:absolute;
-  bottom:0px;
-  padding-bottom:-8px;
-  width:100%;
-  height:17px;
-  background-color:#FFF;
-  border-top: 1px solid #d0d0d0;
-  z-index:999;
-  }   
-  @
-  .navback{
-  -webkit-animation:expandline 2s;
-  } */
-
-@keyframes expand {
-  0% {
-
-  }
-  50% {
-    width: 450px;
-    height: 300px;
-  }
-  100% {
-    width: 500px;
-    height: 350px;
-  }
 }
 
 
@@ -409,6 +378,7 @@ p {
 .music-events-container h1, .food-and-drinks-events-container h1, .business-events-container h1{
   color: white;
   margin: 0;
+  width: 390px;
 }
 
 
