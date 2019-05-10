@@ -196,6 +196,13 @@ p {
   margin: 10%;
   min-height: 350px;
   box-shadow: 3px 6px 20px 12px rgba(6, 38, 57, 0.65);
+  transition: width 500ms;
+}
+
+
+.event-index:hover {
+    /* width: 95%; */
+    
 }
 
 .event-index img {
@@ -225,6 +232,7 @@ p {
 .index-view-description {
   margin: 25px;
 }
+
 
 /* Event */
 
@@ -333,7 +341,45 @@ p {
     max-width: 400px;
     border: 1px solid grey;
     margin: 5px;
+    /* animation: expand 2s; */
+    transition: all .2s ease-in-out;
+    /* z-index: 999; */
 }
+
+.music-events-container:hover, .food-and-drinks-events-container:hover, .business-events-container:hover {
+  transform: scale(1.2);
+  margin: 1%;
+}
+
+/* .navback { 
+  position:absolute;
+  bottom:0px;
+  padding-bottom:-8px;
+  width:100%;
+  height:17px;
+  background-color:#FFF;
+  border-top: 1px solid #d0d0d0;
+  z-index:999;
+  }   
+  @
+  .navback{
+  -webkit-animation:expandline 2s;
+  } */
+
+@keyframes expand {
+  0% {
+
+  }
+  50% {
+    width: 450px;
+    height: 300px;
+  }
+  100% {
+    width: 500px;
+    height: 350px;
+  }
+}
+
 
 .music-events-container:hover {
   background: url('https://res.cloudinary.com/zacwillmington/image/upload/v1549855632/bass-guitar-chord-close-up-96380_ezdjbj.jpg');
@@ -832,7 +878,15 @@ td.rdtYear:hover {
   font-style: bold;
   font-size: 1.5em;
 }
+/* Animations */
 
+.animated-page-wrapper {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* RESPONSIVE STYLES */
 

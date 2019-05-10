@@ -10,11 +10,10 @@ import HomePageContainer from './containers/HomePageContainer';
 import EventsContainer from './containers/EventsContainer';
 import AccountContainer from './containers/AccountContainer';
 import EventComponent from './components/EventComponent';
-import UserInput from './components/UserInput';
 import EventInput from './components/EventInput';
-import Footer from './components/Footer';
 import styled from 'styled-components';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
+// import TransitionGroup from "react-transition-group/TransitionGroup";
 
 const PageContainer = styled.div`
   position: relative;
@@ -24,38 +23,26 @@ const PageContainer = styled.div`
   font-family: "Open Sans", sans-serif;
 `;
 
-
+// const { location: { pathname } } = this.props;
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">
           <React.Fragment>
-          <PageContainer>
-            <TransitionGroup component={null}> 
-            <CSSTransition
-                     timeout={300} 
-                     classNames="page" 
-                     key={window.location.key }>               
-              <NavBar />
-              {/* Protected routes */}
+          <NavBar />             
               <Route exact path='/' component={HomePageContainer} />
-              {/* user's events routes */}
                 <Route exact path='/users/:id/events/new' component={EventInput} />
                 <Route exact path='/users/:id/events/:event_id/edit' component={EventInput} />
                 <Route exact path='/users/:id/events' component={EventsContainer} />
-                {/* events routes */}
                 <Route exact path='/events' component={EventsContainer} />
                 <Route exact path='/events/:id' component={EventComponent} />
-                {/* Account routes */}
                 <Route exact path='/users/:id' component={AccountContainer} />
-              {/* NON protected routes */}
                 <Route path='/signup' component={SignupPage} />
                 <Route path='/signin' component={SigninPage} />
                 <Route path='/logout' component={LogoutPage} />
-                </CSSTransition> 
-               </TransitionGroup>
-          </PageContainer>
           </React.Fragment>
       </div>
     );
