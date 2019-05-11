@@ -76,6 +76,8 @@ p {
   width: 100%;  
 }
 
+
+
 .main-image-component h1 {
   padding-top: 14%;
   color: white;
@@ -171,14 +173,10 @@ p {
     margin: 22% 5%;
 }
 
-#spinner-div span {
-  color:  #4ff462;
-  font-size: 2em;
-}
 .sk-spinner {
   position: absolute;
   top: 50%;
-  left: 40%;
+  left: 50%;
   color: #4ff462;
 }
 
