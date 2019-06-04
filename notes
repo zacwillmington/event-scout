@@ -11,9 +11,9 @@ TODO
     - event categories have to click twice
     - active nav link text change colour
     - Check Auth backend, do you need sessions id?
-    - cloudniary API upload image
     - Add slide show of images to mainImageComponent
     - Add edit event input to the events that a user has created.
+    - Edit Schema to remove uneeded tables.
 
 
 Schema 

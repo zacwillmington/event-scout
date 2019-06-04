@@ -174,7 +174,7 @@ p {
 }
 
 .sk-spinner {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   color: #4ff462;
@@ -334,6 +334,7 @@ p {
   width: 1230px;
   top: -350px;
 }
+
 
 .music-events-container, .food-and-drinks-events-container, .business-events-container {
     max-width: 400px;
