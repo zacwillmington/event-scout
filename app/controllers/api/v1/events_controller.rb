@@ -19,12 +19,16 @@ module Api
                 end
             end
 
+            def upload_image 
+                binding.pry
+                # cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/dmjs1tfzn/image/upload`
+            end
 
             def create
                 @user = User.find(params['user_id'].to_i)
+                # binding.pry
                 if !params['logo'].is_a? String
                 #Create event with eventbrite logo url
-                # binding.pry
                 @event = @user.events.create(
                     name: params['name'],
                     logo: params['logo'],
@@ -36,7 +40,6 @@ module Api
                     )
                 else
                 #Create event with eventscout event logo url
-                # binding.pry
                 @event = @user.events.create(
                     name: params['name'],
                     eventbrite_logo: params['logo'],
