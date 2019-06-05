@@ -8,12 +8,14 @@ App summary:
     Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
 
 TODO 
+    - create migration to remove duplicate event and user_id from events_users join table.
     - event categories have to click twice
     - active nav link text change colour
     - Check Auth backend, do you need sessions id?
     - Add slide show of images to mainImageComponent
     - Add edit event input to the events that a user has created.
     - Edit Schema to remove uneeded tables.
+    - Correct loading spinner position.
 
 
 Schema 

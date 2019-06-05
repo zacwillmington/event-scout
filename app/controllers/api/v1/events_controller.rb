@@ -24,7 +24,7 @@ module Api
                 @user = User.find(params['user_id'].to_i)
                 if !params['logo'].is_a? String
                 #Create event with eventbrite logo url
-                binding.pry
+                # binding.pry
                 @event = @user.events.create(
                     name: params['name'],
                     logo: params['logo'],
@@ -36,7 +36,7 @@ module Api
                     )
                 else
                 #Create event with eventscout event logo url
-                binding.pry
+                # binding.pry
                 @event = @user.events.create(
                     name: params['name'],
                     eventbrite_logo: params['logo'],
@@ -48,7 +48,7 @@ module Api
                     )
                 end
                 if @event.save
-                    binding.pry
+                    # binding.pry
                     render json: {
                         data: @event, 
                         ok: true
