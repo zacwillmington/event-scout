@@ -155,13 +155,6 @@ p {
   /* margin-top: 13px; */
 }
 
-
-.cl-bar2 {
-  /* width: 80px; */
-}
-
-
-
 /* Events */
 
 .eventsContainer {
@@ -231,6 +224,14 @@ p {
   margin: 25px;
 }
 
+.view-more-events-btn {
+  border-radius: 20px;
+  height: 35px;
+  width: 150px;
+  margin-bottom: 15px;
+  background-color: #d6fcff;
+  font-size: 1.2em;
+}
 
 /* Event */
 

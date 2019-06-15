@@ -78,6 +78,7 @@ class EventsContainer extends Component {
                     <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
+                {this.state.events.length > 1 ? <button className='view-more-events-btn'>View More</button> : ""}
             </div>
         )
     }
