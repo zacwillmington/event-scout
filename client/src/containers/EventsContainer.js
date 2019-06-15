@@ -69,6 +69,10 @@ class EventsContainer extends Component {
         }
     }
 
+    handleViewMoreEvents = () => {
+        debugger
+    }
+
     render() {
         return(
             <div className='eventsContainer'> 
@@ -78,7 +82,7 @@ class EventsContainer extends Component {
                     <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                {this.state.events.length > 1 ? <button className='view-more-events-btn'>View More</button> : ""}
+                {this.props.pagination.has_more_items ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
             </div>
         )
     }
@@ -93,7 +97,8 @@ const mapStateToProps = state => {
         events: state.eventsReducer.events,
         usersEvents: state.eventsReducer.usersEvents,
         usersLocation: state.usersReducer.usersLocation,
-        eventsHasErrors: state.eventsReducer.eventsHasErrors
+        eventsHasErrors: state.eventsReducer.eventsHasErrors,
+        pagination: state.eventsReducer.pagination
     }
 }
 

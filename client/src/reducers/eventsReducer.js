@@ -3,7 +3,8 @@ const defaultState = {
     eventsHasErrors: false,
     eventsAreLoading: false,
     currentEvent: {},
-    usersEvents: []
+    usersEvents: [],
+    pagination: { has_more_events: false }
 }
 
 export default function eventsReducer(state = defaultState, action) {
@@ -29,7 +30,8 @@ export default function eventsReducer(state = defaultState, action) {
                 ...state,
                 eventsAreLoading: false,
                 eventsHasErrors: false,
-                events: action.events.events
+                events: action.events.events,
+                pagination: action.events.pagination
             }
 
         case 'ADDING_EVENT': 

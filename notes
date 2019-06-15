@@ -8,6 +8,9 @@ App summary:
     Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
 
 TODO 
+    - process commands
+    - Added Pagination feature for events
+    - ARIA css elements
     - create migration to remove duplicate event and user_id from events_users join table.
     - event categories have to click twice
     - active nav link text change colour
