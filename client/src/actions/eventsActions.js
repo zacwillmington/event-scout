@@ -147,6 +147,13 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     }
 }
 
+export const getPaginatedEvents = (paginationData) => {
+    return dispatch => {
+        dispatch(eventsAreLoading);
+        debugger;
+    }
+}
+
 export const removeEvent = (eventData, userId) => {
     return dispatch => {
         const url = `${BASE_URL}api/v1/users/${userId}/events/${eventData.id}` 

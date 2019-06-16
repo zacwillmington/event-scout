@@ -57,6 +57,12 @@ export default function eventsReducer(state = defaultState, action) {
                 usersEvents: [...state.usersEvents, action.eventData]
             }
 
+        case 'GET_PAGINATED_EVENTS_SUCCESS': 
+            console.log(action);
+            return {
+                ...state
+            }
+            
         case 'REMOVE_EVENT': 
             return {
                 ...state,

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import EventsSearchPage from '../components/eventsSearchPage';
 import Events from '../components/Events';
-import { getUsersEvents, getEventsBySearchBar } from '../actions/eventsActions';
+import { getUsersEvents, getEventsBySearchBar, getPaginatedEvents } from '../actions/eventsActions';
 var Spinner = require('react-spinkit');
 
 
@@ -71,6 +71,7 @@ class EventsContainer extends Component {
 
     handleViewMoreEvents = () => {
         debugger
+        this.props.getPaginatedEvents(this.props.pagination);
     }
 
     render() {
@@ -82,7 +83,7 @@ class EventsContainer extends Component {
                     <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                {this.props.pagination.has_more_items ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
+                {this.props.pagination.has_more_items && !this.props.eventsAreLoading ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
             </div>
         )
     }
@@ -92,7 +93,6 @@ const mapStateToProps = state => {
     return {
         currentUser: state.authReducer.currentUser,
         isAuthenticated: state.authReducer.isAuthenticated,
-
         eventsAreLoading: state.eventsReducer.eventsAreLoading,
         events: state.eventsReducer.events,
         usersEvents: state.eventsReducer.usersEvents,
@@ -109,7 +109,10 @@ const mapDispatchToProps = dispatch => {
         },
         getUsersEvents: (user) => {
             return dispatch(getUsersEvents(user))
-        } 
+        },
+        getPaginatedEvents: (paginationData) => {
+            return dispatch(getPaginatedEvents(paginationData))
+        }
     }
 }
 
