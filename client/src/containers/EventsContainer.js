@@ -70,7 +70,6 @@ class EventsContainer extends Component {
     }
 
     handleViewMoreEvents = () => {
-        debugger
         this.props.getPaginatedEvents(this.props.pagination);
     }
 

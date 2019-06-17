@@ -64,7 +64,13 @@ export const getEvents = (searchTerm, geoLocation) => {
             }
         )
         .then(resp => resp.json())
-        .then( events => {
+        .then( eventsData => {
+            // Create copy of events response data and add request url to hit the same endpoint for pagination e.g. pagination url/endpoint =  // https://www.initialRequestUrl/?continuation=dGhpcyBpcyBwYWdlIDE
+            const events = { ...eventsData, 
+                pagination: {
+                    ...eventsData.pagination, initialRequestUrl: CORSProxyServerUrl +     eventbriteUrlSearch
+                }
+            }
                 dispatch(eventsFetchDataSuccess(events))
             }
         ) 
@@ -141,16 +147,28 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         )
         .then( response => response.json())
         .then( eventsData => {
-            dispatch(eventsFetchDataSuccess(eventsData));
+             // Create copy of events response and add request url to hit the same endpoint for pagination e.g. pagination url/endpoint =  // https://www.initialRequestUrl/?continuation=dGhpcyBpcyBwYWdlIDE
+             const events = { ...eventsData, 
+                pagination: {
+                    ...eventsData.pagination, initialRequestUrl: CORSProxyServerUrl +     eventbriteUrlSearch
+                }
+            }
+            dispatch(eventsFetchDataSuccess(events));
         })
         .catch( error => dispatch(eventsHasErrored(error)));
     }
 }
 
 export const getPaginatedEvents = (paginationData) => {
-    return dispatch => {
-        dispatch(eventsAreLoading);
-        debugger;
+
+    return (dispatch, pagination) => {
+        // dispatch(eventsAreLoading);
+        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
+        const paginationQueryString = `${paginationData.initialRequestUrl}/?continuation=${anonymousAccessOAuthToken}`;
+
+        console.log(paginationQueryString);
+
+        // v3/example/?continuation=dGhpcyBpcyBwYWdlIDE
     }
 }
 
