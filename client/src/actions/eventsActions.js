@@ -38,6 +38,13 @@ function getUsersEventsFromEventScout(events, user){
     }
 }
 
+function addPaginatedEvents(eventsData){
+    return {
+        type: 'ADD_PAGINATED_EVENTS_SUCCESS',
+        events: eventsData
+    }
+}
+
 const BASE_URL = 'http://event-scout.herokuapp.com/';
 // const BASE_URL = 'http://localhost:5000/';
 
@@ -148,6 +155,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         .then( response => response.json())
         .then( eventsData => {
              // Create copy of events response and add request url to hit the same endpoint for pagination e.g. pagination url/endpoint =  // https://www.initialRequestUrl/?continuation=dGhpcyBpcyBwYWdlIDE
+             debugger;
              const events = { ...eventsData, 
                 pagination: {
                     ...eventsData.pagination, initialRequestUrl: CORSProxyServerUrl +     eventbriteUrlSearch
@@ -160,15 +168,33 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
 }
 
 export const getPaginatedEvents = (paginationData) => {
+    
+//pagination Object = { has_more_items: true
+    // object_count: 244
+    // page_count: 5
+    // page_number: 1
+    // page_size: 50}
 
+    //logic if
+    //hit same api endpoint on event brigt and specfiiy page by page_number + 1 if page number is > pages 
+    //https://www.eventbriteapi.com/v3/events/search?q=music&page=2 
     return (dispatch, pagination) => {
         // dispatch(eventsAreLoading);
-        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
-        const paginationQueryString = `${paginationData.initialRequestUrl}/?continuation=${anonymousAccessOAuthToken}`;
+        const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O"; 
+        const paginationQueryString = `${paginationData.initialRequestUrl}&page=${paginationData.page_number + 1}`;
 
-        console.log(paginationQueryString);
-
-        // v3/example/?continuation=dGhpcyBpcyBwYWdlIDE
+        const homePageUrl = BASE_URL;
+        fetch(paginationQueryString, {
+            method: "GET",
+            headers: {
+                    "Authorization": 'Bearer 77ZSPVIUQPRNZ7ZLZN5O',
+                    "Origin": homePageUrl
+                }
+            }
+            )
+        .then(resp => resp.json())
+        .then(paginatedEventsData => dispatch(addPaginatedEvents(paginatedEventsData)))
+        .catch(err => dispatch(eventsHasErrored(err)))
     }
 }
 

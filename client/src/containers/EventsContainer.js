@@ -18,6 +18,7 @@ class EventsContainer extends Component {
     
     componentDidMount(){
         window.scrollTo(0, 0)
+        console.log(this.state);
     } 
 
     componentWillReceiveProps(prevProps){

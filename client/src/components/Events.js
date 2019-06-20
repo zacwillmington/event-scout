@@ -9,9 +9,10 @@ class Events extends Component {
 
     renderEventsFromEventBrite = () => { 
         const events = this.props.events;
-        if ( !this.props.eventsAreLoading && events){  
+        if (events){  
             return  events.map(event => {
-                let url = event.logo !== null ? event.logo.url : ''
+                let url = event.logo !== null ? event.logo.original.url : ''
+                debugger;
                 return <EventIndexView
                 key={event.id}
                 id={event.id}
@@ -31,10 +32,10 @@ class Events extends Component {
     }
 
     renderEventsFromEventScoutAPI() {
+        
         const events = this.props.events;
         if ( !this.props.eventsAreLoading && events){  
             return  events.map(event => {
-                // debugger
                 let url = event.eventbrite_logo !== null ? event.eventbrite_logo : `${event.logo.url}`
                 return <EventIndexView 
                 id={event.id}
