@@ -10,6 +10,10 @@ App summary:
 TODO 
     - process commands
     - Added Pagination feature for events
+        - New events array not updating page
+        - back to top buttom
+        - fix undefind url connection error after second page
+        - add page numbers at bottom
     - ARIA css elements
     - create migration to remove duplicate event and user_id from events_users join table.
     - event categories have to click twice

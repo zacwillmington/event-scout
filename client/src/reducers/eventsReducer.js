@@ -58,8 +58,7 @@ export default function eventsReducer(state = defaultState, action) {
             }
 
         case 'ADD_PAGINATED_EVENTS_SUCCESS': 
-            const events = [...state.events, action.events.events];
-            debugger
+            const events = [...state.events, ...action.events.events];
             return {
                 ...state,
                 events: events,

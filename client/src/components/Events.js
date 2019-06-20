@@ -9,10 +9,9 @@ class Events extends Component {
 
     renderEventsFromEventBrite = () => { 
         const events = this.props.events;
-        if (events){  
+        if (!this.props.eventsAreLoading && events){
             return  events.map(event => {
-                let url = event.logo !== null ? event.logo.original.url : ''
-                debugger;
+                let url = event.logo !== null ? event.logo.url : ''
                 return <EventIndexView
                 key={event.id}
                 id={event.id}
