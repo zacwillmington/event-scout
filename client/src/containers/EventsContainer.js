@@ -76,6 +76,10 @@ class EventsContainer extends Component {
         this.props.getPaginatedEvents(this.props.pagination);
     }
 
+    backToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return(
             <div className='eventsContainer'> 
@@ -86,6 +90,7 @@ class EventsContainer extends Component {
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
                 {this.props.pagination.has_more_items && !this.props.eventsAreLoading ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
+                <button className='view-more-events-btn' onClick={() => this.backToTop()}>^Back To Top^</button>
             </div>
         )
     }
