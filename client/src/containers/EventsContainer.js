@@ -30,6 +30,9 @@ class EventsContainer extends Component {
                 events: this.props.usersEvents 
             })
         }
+        if(prevProps.events.length < this.props.events.length){
+            this.setState({events: this.props.events});
+        }
          if(prevProps.events.length > 0){
             //Check to see of events have been updated to new array or update the events state to the new events 
             if (this.props.events.length > 0){

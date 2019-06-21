@@ -135,7 +135,7 @@ export const getUsersEvents = user => {
 
 export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     return (dispatch) => {
-        dispatch(eventsAreLoading(true));
+        // dispatch(eventsAreLoading(true));
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
         
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
@@ -155,7 +155,7 @@ export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
         .then( response => response.json())
         .then( eventsData => {
              // Create copy of events response and add request url to hit the same endpoint for pagination e.g. pagination url/endpoint =  // https://www.initialRequestUrl/?continuation=dGhpcyBpcyBwYWdlIDE
-             debugger;
+             
              const events = { ...eventsData, 
                 pagination: {
                     ...eventsData.pagination, initialRequestUrl: CORSProxyServerUrl +     eventbriteUrlSearch
@@ -182,7 +182,7 @@ export const getPaginatedEvents = (paginationData) => {
         // dispatch(eventsAreLoading);
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O"; 
         const paginationQueryString = `${paginationData.initialRequestUrl}&page=${paginationData.page_number + 1}`;
-
+        debugger;
         const homePageUrl = BASE_URL;
         fetch(paginationQueryString, {
             method: "GET",
@@ -193,7 +193,10 @@ export const getPaginatedEvents = (paginationData) => {
             }
             )
         .then(resp => resp.json())
-        .then(paginatedEventsData => dispatch(addPaginatedEvents(paginatedEventsData)))
+        .then(paginatedEventsData => {
+            debugger;
+            dispatch(addPaginatedEvents(paginatedEventsData))
+        })
         .catch(err => dispatch(eventsHasErrored(err)))
     }
 }
