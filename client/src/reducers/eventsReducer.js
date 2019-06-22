@@ -57,12 +57,15 @@ export default function eventsReducer(state = defaultState, action) {
                 usersEvents: [...state.usersEvents, action.eventData]
             }
 
-        case 'ADD_PAGINATED_EVENTS_SUCCESS': 
+        case 'ADD_PAGINATED_EVENTS_SUCCESS':
             const events = [...state.events, ...action.events.events];
+            const paginationData =  {
+                ...action.events.pagination, initialRequestUrl: state.pagination.initialRequestUrl 
+            }
             return {
                 ...state,
                 events: events,
-                pagination: action.events.pagination 
+                pagination: paginationData
             }
 
         case 'REMOVE_EVENT': 
