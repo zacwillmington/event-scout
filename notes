@@ -8,11 +8,9 @@ App summary:
     Once a user has created an account, he/she can create and delete their own events that remain on the Event Scout application. 
 
 TODO 
-    - process commands
+    - Push to heroku and test deployed version
+    - process commands (Rake start_dev)
     - Added Pagination feature for events
-        - New events array not updating page
-        - back to top buttom
-        - fix undefind url connection error after second page
         - add page numbers at bottom
     - ARIA css elements
     - create migration to remove duplicate event and user_id from events_users join table.
