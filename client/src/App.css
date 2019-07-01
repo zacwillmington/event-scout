@@ -159,7 +159,8 @@ p {
 
 .eventsContainer {
   margin: 10% auto;
-  min-height: 320px;
+  /* min-height: 320px; */
+  height: 100vh;
 }
 
 #spinner-div {

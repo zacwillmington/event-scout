@@ -135,7 +135,7 @@ export const getUsersEvents = user => {
 
 export const getEventsBySearchBar = (loc, searchTerm, eventDate) => {
     return (dispatch) => {
-        // dispatch(eventsAreLoading(true));
+        dispatch(eventsAreLoading(true));
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O";         
         
         const eventbriteUrlSearch = `https://www.eventbriteapi.com/v3/events/search?q=${searchTerm}&location.address=${loc}&start_date.range_start=${eventDate}`;
@@ -179,7 +179,7 @@ export const getPaginatedEvents = (paginationData) => {
     //hit same api endpoint on event brigt and specfiiy page by page_number + 1 if page number is > pages 
     //https://www.eventbriteapi.com/v3/events/search?q=music&page=2 
     return (dispatch, pagination) => {
-        // dispatch(eventsAreLoading);
+        // dispatch(eventsAreLoading(true));
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O"; 
         const paginationQueryString = `${paginationData.initialRequestUrl}&page=${paginationData.page_number + 1}`;
         const homePageUrl = BASE_URL;
