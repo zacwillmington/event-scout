@@ -159,7 +159,6 @@ p {
 
 .eventsContainer {
   margin: 10% auto;
-  /* min-height: 320px; */
   height: 100vh;
 }
 
@@ -231,6 +230,11 @@ p {
   border: 2px solid black;
   margin: 15px;
   transition: all .2s ease-in-out;
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 0px;
 }
 
 .view-more-events-btn:hover {

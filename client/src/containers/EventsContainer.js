@@ -91,7 +91,7 @@ class EventsContainer extends Component {
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
                 {<p>Page {this.props.pagination.page_number}</p> ? !this.props.eventsAreLoading : ""}
                 {this.props.pagination.has_more_items && !this.props.eventsAreLoading ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
-                <button className='view-more-events-btn' onClick={() => this.backToTop()}>Back To Top</button>
+                <button className='view-more-events-btn back-to-top-btn' onClick={() => this.backToTop()}>Back To Top</button>
             </div>
         )
     }
