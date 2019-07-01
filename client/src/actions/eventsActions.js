@@ -179,7 +179,6 @@ export const getPaginatedEvents = (paginationData) => {
     //hit same api endpoint on event brigt and specfiiy page by page_number + 1 if page number is > pages 
     //https://www.eventbriteapi.com/v3/events/search?q=music&page=2 
     return (dispatch, pagination) => {
-        // dispatch(eventsAreLoading(true));
         const anonymousAccessOAuthToken = "77ZSPVIUQPRNZ7ZLZN5O"; 
         const paginationQueryString = `${paginationData.initialRequestUrl}&page=${paginationData.page_number + 1}`;
         const homePageUrl = BASE_URL;
