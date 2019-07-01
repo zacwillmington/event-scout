@@ -159,7 +159,7 @@ p {
 
 .eventsContainer {
   margin: 10% auto;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #spinner-div {
@@ -233,8 +233,8 @@ p {
 }
 
 .back-to-top-btn {
-  position: fixed;
-  bottom: 0px;
+  position: sticky;
+  bottom: 15px;
 }
 
 .view-more-events-btn:hover {

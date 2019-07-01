@@ -89,7 +89,7 @@ class EventsContainer extends Component {
                     <Spinner  name="ball-scale-ripple-multiple" color="#4ff462"/>
                 </div> :  <Events events={this.state.events} />}
                 <EventsSearchPage getSearchTerm={this.getSearchTerm} />
-                {<p>Page {this.props.pagination.page_number}</p> ? !this.props.eventsAreLoading : ""}
+                {!this.props.eventsAreLoading ? <p>Page {this.props.pagination.page_number}</p>  : null }
                 {this.props.pagination.has_more_items && !this.props.eventsAreLoading ? <button className='view-more-events-btn' onClick={() => this.handleViewMoreEvents()}>View More</button> : ""}
                 <button className='view-more-events-btn back-to-top-btn' onClick={() => this.backToTop()}>Back To Top</button>
             </div>
