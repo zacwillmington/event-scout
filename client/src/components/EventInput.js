@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withAlert } from 'react-alert';
 import DateTime from 'react-datetime';
 import ImageUploader from 'react-images-upload';
-
 import { addEvent } from '../actions/eventsActions';
 import { displayErrors } from './Errors';
 
@@ -27,17 +26,17 @@ class EventInput extends Component {
 
     componentWillMount() {
         if (!this.props.isAuthenticated && !this.props.isAuthenticating){
-            this.props.alert.info("Please Signin to create or edit an event.")
+            this.props.alert.info("Please sign into your account to create or edit an event.")
             this.props.history.push('/signin');
         }
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.eventsHasErrors && !this.state.alerted) {
+        if (this.props.eventsHasErrors && !this.state.alerted) {
             displayErrors(this.props.eventErrors, this.props.alert)
             this.setState({ alerted: true})
-    } else if(this.props.eventSuccess) {
-            // debugger
+        } else if (this.props.eventSuccess) {
+            // TODO
             // const userId = this.props.currentUser.id;
             // const eventId = this.props.currentEvent.id;
             // this.setState({ alerted: true })
@@ -52,28 +51,29 @@ class EventInput extends Component {
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
-        })
-      }
+        });
+    }
 
-      handleOnChangeDateTimeStart = event => {
+    handleOnChangeDateTimeStart = event => {
         this.setState({
             start: event._d
-        })
-      }
+        });
+    }
 
-      handleOnChangeDateTimeEnd = event => {
+    handleOnChangeDateTimeEnd = event => {
         this.setState({
             end: event._d
-        })
-      }
+        });
+    }
 
-      onDrop = picture => {
-          this.setState({ logo: picture[0] })
-      }
+    onDrop = picture => {
+        this.setState({ logo: picture[0] });
+    }
 
-      handleOnSubmit = event => {
+    handleOnSubmit = event => {
         event.preventDefault();
         this.props.addEvent(this.state, this.state.user_id);
+
         this.setState({
             name: '',
             venue_id: '',
@@ -86,30 +86,32 @@ class EventInput extends Component {
             currency: '',
             user_id: this.props.currentUser.id,
             alerted: false
-        })    
+        });
+
         this.props.history.push('/events');
-      }
+    }
 
     render() {
         return (
             <div className='event-input'>
             <div id='create-event-input-title-div'><h2>CREATE YOUR EVENT</h2></div>
                 <form onSubmit={event => this.handleOnSubmit(event)}>
+
                     <section className='event-input-section-1'>
                         <div className='event-input-form-section' id='event-name'>
                             <label htmlFor='event-input-name'>Event Name</label>
                             <input id='event-input-name' onChange={event => this.handleOnChange(event)}
-                            type='text' 
-                            name='name' 
+                            type='text'
+                            name='name'
                             value={this.state.name}/>
                         </div>
                         <div className='event-input-form-section'>
                             <label htmlFor='event-input-status'>Event Status</label>
                             <input id='event-input-status' onChange={event => this.handleOnChange(event)}
-                            type='text' 
-                            name='status' 
+                            type='text'
+                            name='status'
                             value={this.state.status}/>
-                        </div>   
+                        </div>
                  </section>
 
                     <section className='event-input-section-2'>
@@ -135,15 +137,18 @@ class EventInput extends Component {
                         imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
                     />
                     <br></br>
-                    <input id='user_id'
-                     type='hidden' 
-                     name='user_id' 
+                    <input
+                        id='user_id'
+                        type='hidden'
+                        name='user_id'
                      />
                     <label htmlFor='event-input-description'>Description</label>
-                    <textarea id='event-input-description' onChange={event => this.handleOnChange(event)}
-                     type='text-area' 
-                     name='description' 
-                     value={this.state.description}/>
+                    <textarea id='event-input-description'
+                        onChange={event => this.handleOnChange(event)}
+                        type='text-area'
+                        name='description'
+                        value={this.state.description}
+                    />
                     <br></br>
                     <div className='event-dateTime'>
                         <DateTime value={this.props.start} onChange={event => this.handleOnChangeDateTimeStart(event)}/>
@@ -161,12 +166,11 @@ const mapStateToProps = state => {
         currentUser: state.authReducer.currentUser,
         isAuthenticated: state.authReducer.isAuthenticated,
         isAuthenticating: state.authReducer.isAuthenticating,
-
         eventSuccess: state.eventsReducer.eventSuccess,
         eventsHasErrors: state.eventsReducer.eventsHasErrors,
         eventErrors: state.eventsReducer.errors,
         usersEvents: state.eventsReducer.usersEvents,
-        currentEvent: state.eventsReducer.currentEvent  
+        currentEvent: state.eventsReducer.currentEvent,
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -177,4 +181,8 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(EventInput)))
+export default withAlert(
+    withRouter(
+        connect(mapStateToProps, mapDispatchToProps)(EventInput)
+    )
+)

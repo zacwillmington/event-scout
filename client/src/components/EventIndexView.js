@@ -7,11 +7,6 @@ import { withAlert } from 'react-alert';
 import { bounce } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
 
-
-// const Bounce = styled.button`animation: 2s ${keyframes`${bounce}`} infinite`;
-
-
-
 class EventIndexView extends Component {
     constructor(props) {
         super(props)
@@ -42,20 +37,29 @@ class EventIndexView extends Component {
 
     viewEvent = () => {
         this.props.history.push({
-            pathname: `/events/${this.props.id}`, 
-            state: { currentEvent: this.state } 
+            pathname: `/events/${this.props.id}`,
+            state: { currentEvent: this.state }
         })
-    } 
+    }
 
     render() {
-        return (
-            <div id={this.state.id} className='event-index'>
-                <h1>{this.state.name}</h1>
-                <div className='event-index-main-content'>
-                    <img src={this.state.logo} alt='event-logo'/>
+        const {
+            id,
+            name,
+            logo,
+        } = this.state;
+        const { description } = this.state.props;
 
-                    <div className='index-view-description'><p>{this.truncate(this.props.description)}</p></div>
-                </div> 
+        return (
+            <div id={id} className='event-index'>
+                <h1>{name}</h1>
+                <div className='event-index-main-content'>
+                    <img src={logo} alt='event-logo'/>
+
+                    <div className='index-view-description'>
+                        <p>{this.truncate(description)}</p>
+                    </div>
+                </div>
                 <button className='event-index-view-event-btn' onClick={event => this.viewEvent()}>View Event</button>
             </div>
         )
@@ -80,4 +84,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default withAlert(withRouter(connect(mapStateToProps, mapDispatchToProps)(EventIndexView)));
+export default withAlert(
+    withRouter(
+        connect(mapStateToProps, mapDispatchToProps)(EventIndexView)
+    )
+);
