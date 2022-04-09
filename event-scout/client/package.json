@@ -6,7 +6,7 @@
   "dependencies": {
     "history": "^4.7.2",
     "input-moment": "^0.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.23",
     "react": "^16.7.0",
     "react-alert": "^4.0.4",
