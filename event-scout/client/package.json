@@ -7,7 +7,7 @@
     "history": "^4.7.2",
     "input-moment": "^0.4.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.23",
+    "moment-timezone": "^0.5.35",
     "react": "^16.7.0",
     "react-alert": "^4.0.4",
     "react-alert-template-basic": "^1.0.0",
